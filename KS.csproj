@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{75EBD4F5-8277-48C7-925B-B3BA08CABF9F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>KS</RootNamespace>
+    <AssemblyName>KS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChiTietHoaDon.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChucVu.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Common\RowDichVu.cs" />
+    <Compile Include="Common\RowDatPhong.cs" />
+    <Compile Include="Common\RowThongKeHoaDon.cs" />
+    <Compile Include="DAO\DatDichVuDAO.cs" />
+    <Compile Include="DAO\DatPhongDAO.cs" />
+    <Compile Include="DAO\DichVuDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\LichLamViecDAO.cs" />
+    <Compile Include="DAO\LoaiPhongDAO.cs" />
+    <Compile Include="DAO\PhongDAO.cs" />
+    <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DatDichVu.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DatPhong.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DichVu.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\DatDichVuDTO.cs" />
+    <Compile Include="DTO\DatPhongDTO.cs" />
+    <Compile Include="DTO\DichVuDTO.cs" />
+    <Compile Include="DTO\HoaDonDTO.cs" />
+    <Compile Include="DTO\KhachHangDTO.cs" />
+    <Compile Include="DTO\LichLamViecDTO.cs" />
+    <Compile Include="DTO\LoaiPhongDTO.cs" />
+    <Compile Include="DTO\NhanVienDTO.cs" />
+    <Compile Include="DTO\PhongDTO.cs" />
+    <Compile Include="DTO\TaiKhoanDTO.cs" />
+    <Compile Include="fDatPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDatPhong.Designer.cs">
+      <DependentUpon>fDatPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fAddThongTinPhg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fAddThongTinPhg.Designer.cs">
+      <DependentUpon>fAddThongTinPhg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fDichVu.Designer.cs">
+      <DependentUpon>fDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fLichLamViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fLichLamViec.Designer.cs">
+      <DependentUpon>fLichLamViec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fLogin.Designer.cs">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fPhong.Designer.cs">
+      <DependentUpon>fPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fPrintChiTietHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fPrintChiTietHoaDon.Designer.cs">
+      <DependentUpon>fPrintChiTietHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSoDo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSoDo.Designer.cs">
+      <DependentUpon>fSoDo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fEditDSPhg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditDSPhg.Designer.cs">
+      <DependentUpon>fEditDSPhg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fThanhToan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThanhToan.Designer.cs">
+      <DependentUpon>fThanhToan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThongKe.Designer.cs">
+      <DependentUpon>fThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fThongTinKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThongTinKH.Designer.cs">
+      <DependentUpon>fThongTinKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HoaDon.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KhachHang.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LichLamViec.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiPhong.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phong.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="fThongTinNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThongTinNhanVien.Designer.cs">
+      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QLKSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLKSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QLKSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLKSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaiKhoan.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="fDatPhong.resx">
+      <DependentUpon>fDatPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fAddThongTinPhg.resx">
+      <DependentUpon>fAddThongTinPhg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fDichVu.resx">
+      <DependentUpon>fDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditDSPhg.resx">
+      <DependentUpon>fEditDSPhg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fLichLamViec.resx">
+      <DependentUpon>fLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fLogin.resx">
+      <DependentUpon>fLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fPhong.resx">
+      <DependentUpon>fPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fPrintChiTietHoaDon.resx">
+      <DependentUpon>fPrintChiTietHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSoDo.resx">
+      <DependentUpon>fSoDo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThanhToan.resx">
+      <DependentUpon>fThanhToan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThongKe.resx">
+      <DependentUpon>fThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThongTinKH.resx">
+      <DependentUpon>fThongTinKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThongTinNhanVien.resx">
+      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="DAO\NhanVienDAO.cs" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="QLKSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLKSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="QLKSModel.edmx.diagram">
+      <DependentUpon>QLKSModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="QLKSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLKSModel.edmx</DependentUpon>
+      <LastGenOutput>QLKSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="QLKSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QLKSModel.edmx</DependentUpon>
+      <LastGenOutput>QLKSModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\Icon-khách-sạn.png" />
+    <None Include="Resources\flower.jpg" />
+    <None Include="Resources\back.jpg" />
+    <None Include="Resources\unnamed %281%29.png" />
+    <None Include="Resources\unnamed.png" />
+    <None Include="Resources\489a7166.png" />
+    <None Include="Resources\ICONWEB-15.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
