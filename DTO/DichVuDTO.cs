@@ -15,11 +15,11 @@ namespace KS.DTO
         }
         public List<DichVu> GetDichVu()
         {
-            return db.DichVus.ToList();
+            return db.DichVus.Where(x => x.isDelete == false).ToList();
         }
         public DichVu GetDichVu(int ma)
         {
-            return db.DichVus.FirstOrDefault(x => x.MADV == ma);
+            return db.DichVus.Find(ma);
         }
         public DichVu GetDichVu(string tendv)
         {

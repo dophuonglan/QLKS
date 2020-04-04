@@ -37,11 +37,41 @@ namespace KS.DTO
         }
         public KhachHang GetKhachHang(int? ma)
         {
-            return db.KhachHangs.SingleOrDefault(x=>x.MAKH == ma);
+            return db.KhachHangs.SingleOrDefault(x => x.MAKH == ma);
         }
         public KhachHang GetKhachHang(string cmt)
         {
             return db.KhachHangs.SingleOrDefault(x => x.CHUNGMINHTHU == cmt);
+        }
+        public bool isKhachHangTonTai(KhachHang kh)
+        {
+            if (db.KhachHangs.SingleOrDefault(x=>x.TENKH == kh.TENKH && x.CHUNGMINHTHU ==kh.CHUNGMINHTHU)!= null)
+            {
+                return true;
+            }
+            if(db.KhachHangs.SingleOrDefault(x => x.TENKH == kh.TENKH && x.SODIENTHOAI == kh.SODIENTHOAI) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool isKhachHangHopLe(KhachHang kh)
+        {
+            if (db.KhachHangs.SingleOrDefault(x => x.TENKH != kh.TENKH && x.CHUNGMINHTHU == kh.CHUNGMINHTHU) != null)
+            {
+                return false; //ten khac , cmt giong
+            }
+            if (db.KhachHangs.SingleOrDefault(x => x.TENKH != kh.TENKH && x.SODIENTHOAI == kh.SODIENTHOAI) != null)
+            {
+                return false; //ten khac , sdt giong
+            }
+            if (db.KhachHangs.SingleOrDefault(x => x.TENKH == kh.TENKH && x.SODIENTHOAI == kh.SODIENTHOAI &&
+            x.CHUNGMINHTHU != kh.CHUNGMINHTHU) != null)
+            {
+                return false;//ten giong , sdt giong , cmt khac
+            }
+            
+            return true;
         }
     }
 }

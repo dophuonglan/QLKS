@@ -14,6 +14,10 @@ namespace KS.DAO
         {
             lichLamViecDTO = new LichLamViecDTO();
         }
+        public bool checkExistLichLam(LichLamViec lichLamViec, int type)
+        {
+            return lichLamViecDTO.checkExistLichLam(lichLamViec, type);
+        }
         public List<LichLamViec> GetLichLamViec()
         {
             return lichLamViecDTO.GetLichLamViec();

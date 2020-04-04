@@ -8,10 +8,11 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>KS</RootNamespace>
     <AssemblyName>KS</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,16 +35,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1404.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,9 +82,13 @@
     <Compile Include="ChucVu.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Common\RowChucVu.cs" />
     <Compile Include="Common\RowDichVu.cs" />
     <Compile Include="Common\RowDatPhong.cs" />
+    <Compile Include="Common\RowLichLamViec.cs" />
+    <Compile Include="Common\RowNhanVien.cs" />
     <Compile Include="Common\RowThongKeHoaDon.cs" />
+    <Compile Include="DAO\ChucVuDAO.cs" />
     <Compile Include="DAO\DatDichVuDAO.cs" />
     <Compile Include="DAO\DatPhongDAO.cs" />
     <Compile Include="DAO\DichVuDAO.cs" />
@@ -82,6 +107,7 @@
     <Compile Include="DichVu.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\ChucVuDTO.cs" />
     <Compile Include="DTO\DatDichVuDTO.cs" />
     <Compile Include="DTO\DatPhongDTO.cs" />
     <Compile Include="DTO\DichVuDTO.cs" />
@@ -110,11 +136,11 @@
     <Compile Include="fDichVu.Designer.cs">
       <DependentUpon>fDichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="fLichLamViec.cs">
+    <Compile Include="fChucVu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fLichLamViec.Designer.cs">
-      <DependentUpon>fLichLamViec.cs</DependentUpon>
+    <Compile Include="fChucVu.Designer.cs">
+      <DependentUpon>fChucVu.cs</DependentUpon>
     </Compile>
     <Compile Include="fLogin.cs">
       <SubType>Form</SubType>
@@ -122,17 +148,17 @@
     <Compile Include="fLogin.Designer.cs">
       <DependentUpon>fLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="fManageLichLamViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fManageLichLamViec.Designer.cs">
+      <DependentUpon>fManageLichLamViec.cs</DependentUpon>
+    </Compile>
     <Compile Include="fPhong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fPhong.Designer.cs">
       <DependentUpon>fPhong.cs</DependentUpon>
-    </Compile>
-    <Compile Include="fPrintChiTietHoaDon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fPrintChiTietHoaDon.Designer.cs">
-      <DependentUpon>fPrintChiTietHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="fSoDo.cs">
       <SubType>Form</SubType>
@@ -158,11 +184,17 @@
     <Compile Include="fThongKe.Designer.cs">
       <DependentUpon>fThongKe.cs</DependentUpon>
     </Compile>
-    <Compile Include="fThongTinKH.cs">
+    <Compile Include="fThongTinNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fThongTinKH.Designer.cs">
-      <DependentUpon>fThongTinKH.cs</DependentUpon>
+    <Compile Include="fThongTinNhanVien.Designer.cs">
+      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fThongTinTaiKhoanVaViecLam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThongTinTaiKhoanVaViecLam.Designer.cs">
+      <DependentUpon>fThongTinTaiKhoanVaViecLam.cs</DependentUpon>
     </Compile>
     <Compile Include="HoaDon.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
@@ -184,12 +216,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="fThongTinNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fThongTinNhanVien.Designer.cs">
-      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,6 +242,7 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
@@ -234,17 +261,17 @@
     <EmbeddedResource Include="fEditDSPhg.resx">
       <DependentUpon>fEditDSPhg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fLichLamViec.resx">
-      <DependentUpon>fLichLamViec.cs</DependentUpon>
+    <EmbeddedResource Include="fChucVu.resx">
+      <DependentUpon>fChucVu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="fManageLichLamViec.resx">
+      <DependentUpon>fManageLichLamViec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="fPhong.resx">
       <DependentUpon>fPhong.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fPrintChiTietHoaDon.resx">
-      <DependentUpon>fPrintChiTietHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSoDo.resx">
       <DependentUpon>fSoDo.cs</DependentUpon>
@@ -255,16 +282,16 @@
     <EmbeddedResource Include="fThongKe.resx">
       <DependentUpon>fThongKe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fThongTinKH.resx">
-      <DependentUpon>fThongTinKH.cs</DependentUpon>
+    <EmbeddedResource Include="fThongTinNhanVien.resx">
+      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThongTinTaiKhoanVaViecLam.resx">
+      <DependentUpon>fThongTinTaiKhoanVaViecLam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fThongTinNhanVien.resx">
-      <DependentUpon>fThongTinNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="DAO\NhanVienDAO.cs" />
     <None Include="packages.config" />
@@ -303,6 +330,19 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>QLKSModel.edmx</DependentUpon>
       <LastGenOutput>QLKSModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Icon-khách-sạn.png" />
     <None Include="Resources\flower.jpg" />

@@ -74,6 +74,7 @@
     <EntitySetMapping Name="DichVus">
       <EntityTypeMapping TypeName="QLKSModel.DichVu">
         <MappingFragment StoreEntitySet="DichVu">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
           <ScalarProperty Name="GIADV" ColumnName="GIADV" />
           <ScalarProperty Name="TENDV" ColumnName="TENDV" />
           <ScalarProperty Name="MADV" ColumnName="MADV" />
@@ -127,6 +128,7 @@
     <EntitySetMapping Name="NhanViens">
       <EntityTypeMapping TypeName="QLKSModel.NhanVien">
         <MappingFragment StoreEntitySet="NhanVien">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
           <ScalarProperty Name="SODIENTHOAI" ColumnName="SODIENTHOAI" />
           <ScalarProperty Name="MACHUCVU" ColumnName="MACHUCVU" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
@@ -140,6 +142,7 @@
     <EntitySetMapping Name="Phongs">
       <EntityTypeMapping TypeName="QLKSModel.Phong">
         <MappingFragment StoreEntitySet="Phong">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
           <ScalarProperty Name="DONVITIENTE" ColumnName="DONVITIENTE" />
           <ScalarProperty Name="GIAPHONG" ColumnName="GIAPHONG" />
           <ScalarProperty Name="MALOAIPHONG" ColumnName="MALOAIPHONG" />

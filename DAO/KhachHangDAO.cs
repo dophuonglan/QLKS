@@ -26,5 +26,13 @@ namespace KS.DAO
         {
             return khachHangDTO.GetKhachHang(cmt);
         }
+        public bool isKhachHangTonTai(KhachHang kh)
+        {
+            return khachHangDTO.isKhachHangTonTai(kh);
+        }
+        public bool isKhachHangHopLe(KhachHang kh)
+        {
+            return khachHangDTO.isKhachHangHopLe(kh);
+        }
     }
 }

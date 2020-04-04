@@ -26,6 +26,7 @@ namespace KS
         public Nullable<int> MALOAIPHONG { get; set; }
         public Nullable<double> GIAPHONG { get; set; }
         public string DONVITIENTE { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatPhong> DatPhongs { get; set; }

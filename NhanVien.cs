@@ -29,6 +29,7 @@ namespace KS
         public string DIACHI { get; set; }
         public Nullable<int> MACHUCVU { get; set; }
         public string SODIENTHOAI { get; set; }
+        public Nullable<bool> isDelete { get; set; }
     
         public virtual ChucVu ChucVu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

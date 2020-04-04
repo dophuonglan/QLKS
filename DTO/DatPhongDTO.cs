@@ -15,15 +15,7 @@ namespace KS.DTO
         }
         public List<DatPhong> GetDatPhong()
         {
-            List<DatPhong> lst = new List<DatPhong>();
-            foreach (var dp in db.DatPhongs)
-            {
-                if (dp.isDelete == false)
-                {
-                    lst.Add(dp);
-                }
-            }
-            return lst;
+            return db.DatPhongs.Where(x => x.isDelete == false).ToList();
         }
         public DatPhong GetDatPhong(int ma)
         {
@@ -31,19 +23,7 @@ namespace KS.DTO
         }
         public List<DatPhong> GetListDatPhong(int maPhong)
         {
-            List<DatPhong> lst = new List<DatPhong>();
-            foreach (var dphong in db.DatPhongs)
-            {
-                if(dphong.isDelete == false)
-                {
-                    if (dphong.MAPHONG == maPhong)
-                    {
-                        lst.Add(dphong);
-                    }
-                }
-                
-            }
-            return lst;
+            return db.DatPhongs.Where(x => x.isDelete == false && x.MAPHONG ==maPhong).ToList();
         }
         //public DatPhong GetDatPhongg(int ma)
         //{

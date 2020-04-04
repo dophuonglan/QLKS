@@ -18,5 +18,9 @@ namespace KS.DAO
         {
             return NhanVienDTO.GetNhanVien(maNhanVien);
         }
+        public List<NhanVien> GetListNhanVien()
+        {
+            return NhanVienDTO.GetListNhanVien();
+        }
     }
 }

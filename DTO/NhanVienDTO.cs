@@ -17,5 +17,9 @@ namespace KS.DTO
         {
             return db.NhanViens.SingleOrDefault(x => x.MANHANVIEN == maNhanVien);
         }
+        public List<NhanVien> GetListNhanVien()
+        {
+            return db.NhanViens.Where(x=>x.isDelete==false).ToList();
+        }
     }
 }

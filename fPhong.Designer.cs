@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnXoaPhg = new System.Windows.Forms.Button();
@@ -37,7 +37,7 @@
             this.btnExitDSP = new System.Windows.Forms.Button();
             this.labThongTinPhg = new System.Windows.Forms.Label();
             this.btnShowTataCaTT = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelAdmin = new System.Windows.Forms.Panel();
             this.flowRoom = new System.Windows.Forms.FlowLayoutPanel();
             this.pnDSP = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,9 +49,11 @@
             this.tenLoaiPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.giaPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.donVi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelAdmin.SuspendLayout();
             this.pnDSP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrChiTietPhong)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -68,7 +70,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(254, 19);
+            this.button1.Location = new System.Drawing.Point(237, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 69);
             this.button1.TabIndex = 1;
@@ -103,7 +105,7 @@
             // btnExitDSP
             // 
             this.btnExitDSP.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnExitDSP.Location = new System.Drawing.Point(553, 20);
+            this.btnExitDSP.Location = new System.Drawing.Point(173, 19);
             this.btnExitDSP.Name = "btnExitDSP";
             this.btnExitDSP.Size = new System.Drawing.Size(89, 69);
             this.btnExitDSP.TabIndex = 1;
@@ -124,7 +126,7 @@
             // btnShowTataCaTT
             // 
             this.btnShowTataCaTT.BackColor = System.Drawing.Color.PowderBlue;
-            this.btnShowTataCaTT.Location = new System.Drawing.Point(394, 20);
+            this.btnShowTataCaTT.Location = new System.Drawing.Point(8, 19);
             this.btnShowTataCaTT.Name = "btnShowTataCaTT";
             this.btnShowTataCaTT.Size = new System.Drawing.Size(129, 69);
             this.btnShowTataCaTT.TabIndex = 8;
@@ -132,18 +134,16 @@
             this.btnShowTataCaTT.UseVisualStyleBackColor = false;
             this.btnShowTataCaTT.Click += new System.EventHandler(this.button5_Click);
             // 
-            // panel1
+            // panelAdmin
             // 
-            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Controls.Add(this.btnShowTataCaTT);
-            this.panel1.Controls.Add(this.btnExitDSP);
-            this.panel1.Controls.Add(this.btnXoaPhg);
-            this.panel1.Controls.Add(this.btnSuaTTPhg);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(695, 518);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(663, 115);
-            this.panel1.TabIndex = 9;
+            this.panelAdmin.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelAdmin.Controls.Add(this.btnXoaPhg);
+            this.panelAdmin.Controls.Add(this.btnSuaTTPhg);
+            this.panelAdmin.Controls.Add(this.button1);
+            this.panelAdmin.Location = new System.Drawing.Point(695, 518);
+            this.panelAdmin.Name = "panelAdmin";
+            this.panelAdmin.Size = new System.Drawing.Size(371, 115);
+            this.panelAdmin.TabIndex = 9;
             // 
             // flowRoom
             // 
@@ -186,14 +186,14 @@
             // 
             this.dtgrChiTietPhong.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgrChiTietPhong.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrChiTietPhong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrChiTietPhong.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgrChiTietPhong.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrChiTietPhong.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maPhong,
@@ -202,14 +202,14 @@
             this.tenLoaiPhong,
             this.giaPhong,
             this.donVi});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrChiTietPhong.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrChiTietPhong.DefaultCellStyle = dataGridViewCellStyle4;
             this.dtgrChiTietPhong.Location = new System.Drawing.Point(695, 81);
             this.dtgrChiTietPhong.Name = "dtgrChiTietPhong";
             this.dtgrChiTietPhong.RowHeadersVisible = false;
@@ -218,7 +218,7 @@
             // 
             // maPhong
             // 
-            this.maPhong.DataPropertyName = "ma";
+            this.maPhong.DataPropertyName = "MAPHONG";
             this.maPhong.HeaderText = "Mã Phòng";
             this.maPhong.Name = "maPhong";
             // 
@@ -230,7 +230,7 @@
             // 
             // trangThai
             // 
-            this.trangThai.DataPropertyName = "trangThai";
+            this.trangThai.DataPropertyName = "TINHTRANGPHONG";
             this.trangThai.HeaderText = "Trạng Thái";
             this.trangThai.Name = "trangThai";
             // 
@@ -242,15 +242,25 @@
             // 
             // giaPhong
             // 
-            this.giaPhong.DataPropertyName = "gia";
+            this.giaPhong.DataPropertyName = "GIAPHONG";
             this.giaPhong.HeaderText = "Giá Hiện Tại";
             this.giaPhong.Name = "giaPhong";
             // 
             // donVi
             // 
-            this.donVi.DataPropertyName = "DONVI";
+            this.donVi.DataPropertyName = "DONVITIENTE";
             this.donVi.HeaderText = "Đơn Vị TT";
             this.donVi.Name = "donVi";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Controls.Add(this.btnExitDSP);
+            this.panel2.Controls.Add(this.btnShowTataCaTT);
+            this.panel2.Location = new System.Drawing.Point(1064, 518);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(294, 114);
+            this.panel2.TabIndex = 13;
             // 
             // fPhong
             // 
@@ -259,10 +269,11 @@
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.dtgrChiTietPhong);
             this.Controls.Add(this.lbTongSoPhg);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelAdmin);
             this.Controls.Add(this.pnDSP);
             this.Controls.Add(this.labThongTinPhg);
             this.Controls.Add(this.label1);
@@ -272,9 +283,10 @@
             this.Text = "Danh Sách Phòng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fPhong_Load);
-            this.panel1.ResumeLayout(false);
+            this.panelAdmin.ResumeLayout(false);
             this.pnDSP.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrChiTietPhong)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -288,7 +300,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labThongTinPhg;
         private System.Windows.Forms.Button btnShowTataCaTT;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelAdmin;
         private System.Windows.Forms.FlowLayoutPanel flowRoom;
         private System.Windows.Forms.Panel pnDSP;
         private System.Windows.Forms.Label label2;
@@ -300,5 +312,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tenLoaiPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn giaPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn donVi;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -27,6 +27,7 @@ namespace KS
         static string tinhTrangPhg = "";
         QLKSEntities2 db = new QLKSEntities2();
         PhongDAO phongDAO = null;
+        DatDichVuDAO datDichVuDAO = null;
         DatPhongDAO datPhongDAO = null;
         private static int maPtag;
 
@@ -34,26 +35,37 @@ namespace KS
         public static string TinhTrangPhg { get => tinhTrangPhg; set => tinhTrangPhg = value; }
         public static int MaPtag { get => maPtag; set => maPtag = value; }
 
+        private void phanQuyen()
+        {
+            if ((fLogin.maChucVu == 4) || fLogin.maChucVu == 5)
+            {
+                panelAdmin.Enabled = true;
+            }
+            else panelAdmin.Enabled = false;
+        }
         public fPhong()
         {
             InitializeComponent();
             phongDAO = new PhongDAO();
             datPhongDAO = new DatPhongDAO();
+            datDichVuDAO = new DatDichVuDAO();
         }
         private void loadDataPhg()
         {
+            phanQuyen();
             var result = from c in db.Phongs
                          from a in db.LoaiPhongs
 
                          where c.MALOAIPHONG == a.MALOAIPHONG
+                         && c.isDelete == false
                          select new
                          {
-                             Ma = c.MAPHONG,
-                             TenPhong = c.TENPHONG,
-                             TrangThai = c.TINHTRANGPHONG,
-                             TenLoaiPhong = a.TENLOAIPHONG,
-                             Gia = c.GIAPHONG,
-                             DonVi = c.DONVITIENTE
+                             c.MAPHONG,
+                             c.TENPHONG,
+                             c.TINHTRANGPHONG,
+                             a.TENLOAIPHONG,
+                             c.GIAPHONG,
+                             c.DONVITIENTE
                          };
             dtgrChiTietPhong.DataSource = result.ToList();
         }
@@ -61,11 +73,13 @@ namespace KS
         public void refreshSoDo()
         {
             flowRoom.Controls.Clear();
+            loadDataPhg();
             loadSoDoPhong();
         }
         public void loadSoDoPhong()
         {
-            var rooms = phongDAO.GetPhong();
+            phongDAO = new PhongDAO();
+            var rooms = phongDAO.GetPhongNotDeleted();
             int i = 0;
             foreach (var room in rooms)
             {
@@ -132,6 +146,7 @@ namespace KS
                          from a in db.LoaiPhongs
 
                          where c.MALOAIPHONG == a.MALOAIPHONG && c.MAPHONG == id
+                         && c.isDelete ==false
                          select new
                          {
                              c.MAPHONG,
@@ -194,11 +209,20 @@ namespace KS
             {
                 if (MessageBox.Show("Bạn có thật sự muốn xóa phòng "+phongID+" này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    Phong phong = db.Phongs.SingleOrDefault(x => x.MAPHONG == phongID);
-                    db.Phongs.Remove(phong);
-                    MessageBox.Show("Xóa thành công", "Thông báo");
-                    db.SaveChanges();
-                    refreshSoDo();
+                    
+                    var listDatPhong = datPhongDAO.GetListDatPhong(phongID);
+                    if (listDatPhong.Count() != 0)
+                    {
+                        MessageBox.Show("Phòng đang có đơn phòng. Vui lòng hủy đơn đặt và quay lại!");
+                    }
+                    else
+                    {
+                        Phong phong = db.Phongs.Find(phongID);
+                        phong.isDelete = true;
+                        db.SaveChanges();
+                        refreshSoDo();
+                        MessageBox.Show("Xóa thành công", "Thông báo");
+                    }
                 }
             }
         }

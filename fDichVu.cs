@@ -29,6 +29,19 @@ namespace KS
             datDichVuDAO = new DatDichVuDAO();
         }
 
+        void phanQuyen()
+        {
+            if ((fLogin.maChucVu == 4) || fLogin.maChucVu == 5)
+            {
+                panelAdmin1.Enabled = true;
+                panelAdmin2.Enabled = true;
+            }
+            else
+            {
+                panelAdmin1.Enabled = false;
+                panelAdmin2.Enabled = false;
+            }
+        }
         void tinhTienDichVu()
         {
             DichVu dichVuSelected = (DichVu)cbbTenDichVu.SelectedItem;
@@ -63,6 +76,7 @@ namespace KS
         }
         void loadDichVu()
         {
+            DichVuDAO dichVuDAO = new DichVuDAO();
             var lstDichVu = dichVuDAO.GetDichVu();
             cbbTenDichVu.DataSource = lstDichVu;
             cbbTenDichVu.DisplayMember = "TENDV";
@@ -71,6 +85,7 @@ namespace KS
         }
         void loadCacBox()
         {
+
             var lstDatphg = datPhongDAO.GetDatPhong();
             if (lstDatphg.Count != 0)
             {
@@ -80,7 +95,7 @@ namespace KS
                 dtpkNgayO.Value = datPhong.NGAYO.Value;
                 txbmaPhong.Text = datPhong.MAPHONG.ToString();
             }
-            
+
         }
         void loadTenDV_CapNhatDV()
         {
@@ -103,6 +118,7 @@ namespace KS
 
         private void fDichVu_Load(object sender, EventArgs e)
         {
+            phanQuyen();
             var lstDatphg = datPhongDAO.GetDatPhong();
             cbbMaDP.DataSource = lstDatphg;
             cbbMaDP.DisplayMember = "MADATPHONG";
@@ -177,6 +193,7 @@ namespace KS
                 datDV.ngayDung = dtpkNgayDung.Value;
                 datDV.giaDichVuHienTai = Convert.ToDouble(txbTienDV.Text);
                 datDV.MADV = dichVu.MADV;
+                datDV.isDelete = false;
                 db.DatDichVus.Add(datDV);
                 db.SaveChanges();
                 MessageBox.Show("Đặt thành công!");
@@ -192,19 +209,25 @@ namespace KS
             else lbThongBaoGiaDV.Visible = false;
             if (txbThemTenDV.Text != "" && txbThemDonGia.Text != "")
             {
-                if (IsNumber(txbThemDonGia.Text))
+                if (!IsNumber(txbThemDonGia.Text) || (double.Parse(txbThemDonGia.Text) < 0))
                 {
-                    if (db.DichVus.SingleOrDefault(x => x.TENDV == txbThemTenDV.Text) != null)
-                    {
-                        MessageBox.Show("Dịch vụ đã tồn tại");
-                        return;
-                    }
+                    MessageBox.Show("Không hợp lệ");
+                }
+                else if (db.DichVus.SingleOrDefault(x => x.TENDV == txbThemTenDV.Text && x.isDelete ==false) != null)
+                {
+                    MessageBox.Show("Dịch vụ đã tồn tại");
+                    return;
+                }
+                else
+                {
                     DichVu dichVuMoi = new DichVu();
                     dichVuMoi.TENDV = txbThemTenDV.Text;
                     dichVuMoi.GIADV = Convert.ToDouble(txbThemDonGia.Text);
+                    dichVuMoi.isDelete = false;
                     db.DichVus.Add(dichVuMoi);
                     db.SaveChanges();
                     MessageBox.Show("Thêm Thành Công", "Thông Báo");
+                    refreshForm();
                 }
             }
         }
@@ -213,15 +236,21 @@ namespace KS
         {
             if (txbDonGia_Sua.Text != "")
             {
-                if (IsNumber(txbDonGia_Sua.Text))
+                if (!IsNumber(txbDonGia_Sua.Text) || (int.Parse(txbDonGia_Sua.Text) < 0))
+                {
+                    MessageBox.Show("Không hợp lệ");
+                }
+                else
                 {
                     var DV = dichVuDAO.GetDichVu(cbbTenDichVu.Text);
                     DichVu dichVu = db.DichVus.SingleOrDefault(x => x.MADV == DV.MADV);
                     dichVu.GIADV = Convert.ToDouble(txbDonGia_Sua.Text);
                     db.SaveChanges();
-                    refreshForm();
                     MessageBox.Show("Sửa thành công", "Thông Báo");
+                    refreshForm();
+
                 }
+
             }
         }
 
@@ -233,11 +262,16 @@ namespace KS
 
         private void btnXoaDV_Click(object sender, EventArgs e)
         {
-            DichVu dichVuSelected = (DichVu)cbbTenDV_Sua.SelectedItem;
-            db.DichVus.Remove(db.DichVus.Single(x => x.MADV == dichVuSelected.MADV));
-            db.SaveChanges();
-            refreshForm();
-            MessageBox.Show("Xóa dịch vụ " + dichVuSelected.TENDV + " thành công!");
+            if (MessageBox.Show("Bạn có thật sự muốn xóa dịch vụ này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                DichVu dichVuSelected = (DichVu)cbbTenDV_Sua.SelectedItem;
+                //db.DichVus.Remove(db.DichVus.Single(x => x.MADV == dichVuSelected.MADV));
+                var dv = db.DichVus.Single(x => x.MADV == dichVuSelected.MADV);
+                dv.isDelete = true;
+                db.SaveChanges();
+                refreshForm();
+                MessageBox.Show("Xóa dịch vụ " + dichVuSelected.TENDV + " thành công!");
+            }
         }
 
         private void dtgvThongTinDatDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -251,7 +285,7 @@ namespace KS
                 if (MessageBox.Show("Bạn có chắc chắm muốn hủy không?", "Đang xóa...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     datDichVuDAO.Remove(selectedDatDV.Id);
-                    MessageBox.Show("Hủy thành công","Thông báo");
+                    MessageBox.Show("Hủy thành công", "Thông báo");
                     loadThongTinDatDichVu();
                 }
             }

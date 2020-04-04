@@ -49,6 +49,7 @@
     <Property Name="MADV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TENDV" Type="nvarchar" MaxLength="100" />
     <Property Name="GIADV" Type="float" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
@@ -75,9 +76,7 @@
   </EntityType>
   <EntityType Name="LichLamViec">
     <Key>
-      <PropertyRef Name="NGAYLAMVIEC" />
-      <PropertyRef Name="BUOI" />
-      <PropertyRef Name="MANHANVIEN" />
+      <PropertyRef Name="MALICHLAMVIEC" />
     </Key>
     <Property Name="MALICHLAMVIEC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="NGAYLAMVIEC" Type="datetime" Nullable="false" />
@@ -103,6 +102,7 @@
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
     <Property Name="MACHUCVU" Type="int" />
     <Property Name="SODIENTHOAI" Type="nvarchar" MaxLength="100" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="Phong">
     <Key>
@@ -114,6 +114,7 @@
     <Property Name="MALOAIPHONG" Type="int" />
     <Property Name="GIAPHONG" Type="float" />
     <Property Name="DONVITIENTE" Type="nvarchar" MaxLength="100" />
+    <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -290,7 +291,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />

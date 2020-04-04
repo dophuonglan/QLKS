@@ -44,7 +44,8 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(145, 20);
             this.txbUserName.TabIndex = 0;
-            this.txbUserName.Text = "lan";
+            this.txbUserName.Text = "QL";
+            this.txbUserName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbUserName_KeyUp);
             // 
             // txbPass
             // 
@@ -52,7 +53,8 @@
             this.txbPass.Name = "txbPass";
             this.txbPass.Size = new System.Drawing.Size(145, 20);
             this.txbPass.TabIndex = 1;
-            this.txbPass.Text = "123";
+            this.txbPass.Text = "1";
+            this.txbPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbPass_KeyUp);
             // 
             // lbUserName
             // 
@@ -139,6 +141,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

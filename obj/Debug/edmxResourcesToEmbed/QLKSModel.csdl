@@ -167,6 +167,7 @@
     <Property Name="MADV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TENDV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="GIADV" Type="Double" />
+    <Property Name="isDelete" Type="Boolean" />
     <NavigationProperty Name="DatDichVus" Relationship="QLKSModel.FK__DatDichVu__MADV__2A4B4B5E" FromRole="DichVu" ToRole="DatDichVu" />
   </EntityType>
   <EntityType Name="HoaDon">
@@ -199,9 +200,7 @@
   </EntityType>
   <EntityType Name="LichLamViec">
     <Key>
-      <PropertyRef Name="NGAYLAMVIEC" />
-      <PropertyRef Name="BUOI" />
-      <PropertyRef Name="MANHANVIEN" />
+      <PropertyRef Name="MALICHLAMVIEC" />
     </Key>
     <Property Name="MALICHLAMVIEC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NGAYLAMVIEC" Type="DateTime" Nullable="false" Precision="3" />
@@ -229,6 +228,7 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="MACHUCVU" Type="Int32" />
     <Property Name="SODIENTHOAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="isDelete" Type="Boolean" />
     <NavigationProperty Name="ChucVu" Relationship="QLKSModel.FK__NhanVien__MACHUC__1CF15040" FromRole="NhanVien" ToRole="ChucVu" />
     <NavigationProperty Name="HoaDons" Relationship="QLKSModel.FK__HoaDon__MANHANVI__20C1E124" FromRole="NhanVien" ToRole="HoaDon" />
     <NavigationProperty Name="LichLamViecs" Relationship="QLKSModel.FK__LichLamVi__MANHA__2F10007B" FromRole="NhanVien" ToRole="LichLamViec" />
@@ -244,6 +244,7 @@
     <Property Name="MALOAIPHONG" Type="Int32" />
     <Property Name="GIAPHONG" Type="Double" />
     <Property Name="DONVITIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="isDelete" Type="Boolean" />
     <NavigationProperty Name="DatPhongs" Relationship="QLKSModel.FK__DatPhong__MAPHON__173876EA" FromRole="Phong" ToRole="DatPhong" />
     <NavigationProperty Name="LoaiPhong" Relationship="QLKSModel.FK__Phong__MALOAIPHO__145C0A3F" FromRole="Phong" ToRole="LoaiPhong" />
   </EntityType>

@@ -29,10 +29,17 @@ namespace KS
 
         void loadDuLieu(int line ,int page)
         {
+            if (page == 0)
+                page = 1;
+
+            if (line == 0)
+                line = int.MaxValue;
+
+            var skip = (page - 1) * line;
 
             //var hoaDon = hoaDonDAO.GetHoaDon();
             //dtgvThongke.DataSource = hoaDon;
-            var result =  from a in db.HoaDons
+            var result =  (from a in db.HoaDons
                           from b in db.ChiTietHoaDons
                           from c in db.DatPhongs
                           from d in db.KhachHangs
@@ -49,44 +56,52 @@ namespace KS
                               TienDV = a.TIENDV,
                               TienPhong = a.TIENPHONG,
                               TongTien = a.TIENPHONG + a.TIENDV
-                          };
-            if ((result.Count() / line) % 2 == 0)
+                          }).ToList();
+            var dataPagination = result.OrderBy(x=> x.MaHD).Skip(skip).Take(line).ToList();// get list to paginate
+            var pageNumber = (result.ToList().Count() / line);
+            if (result.Count() % 2 == 0)
             {
-                NumCount = (result.Count() / line);
+                NumCount = pageNumber;
             }
-            else NumCount = (result.Count() / line) + 1;
-            var top = result.Take(line*page);//lay ra 5 dong dau o page 1
+            else NumCount = pageNumber + 1;
             ngayThanhToan.DefaultCellStyle.Format = "dd/MM/yyyy";
             ngayO.DefaultCellStyle.Format = "dd/MM/yyyy";
             ngayDi.DefaultCellStyle.Format = "dd/MM/yyyy";
             //var timNum = top.Except(result.Take(line * (page - 1))).ToList();
             if (page != 0)
             {
-                dtgvThongke.DataSource = top.Except(result.Take(line * (page - 1))).ToList();
+                dtgvThongke.DataSource = dataPagination;
             }
-            
+            double? tien = 0;
+            foreach (var hoaDon in result)
+            {
+                tien += hoaDon.TongTien;
+            }
+            lbTongTien.Text = tien + " vnđ";
         }
-       
+
         public void refresh()
         {
             dtgvThongke.DataBindings.Clear();
             int num = int.Parse(txbNumberPage.Text);
-            loadDuLieu(2,num);
+            loadDuLieu(10,num);
         }
         private void fThongKe_Load(object sender, EventArgs e)
         {
             int num = int.Parse(txbNumberPage.Text);
-            loadDuLieu(2,num);
+            loadDuLieu(10,num);
         }
 
         private void dtpkNgayBatDau_ValueChanged(object sender, EventArgs e)
         {
             refresh();
+            txbNumberPage.Text = "1";
         }
 
         private void dtpkNgayKetThuc_ValueChanged(object sender, EventArgs e)
         {
             refresh();
+            txbNumberPage.Text = "1";
         }
 
         private void btnFirstBillPage_Click(object sender, EventArgs e)
@@ -96,6 +111,7 @@ namespace KS
 
         private void btnLastBillPage_Click(object sender, EventArgs e)
         {
+            refresh();
             txbNumberPage.Text = NumCount.ToString();
         }
 

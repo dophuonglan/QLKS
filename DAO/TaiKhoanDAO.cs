@@ -18,5 +18,9 @@ namespace KS.DAO
         {
             return taiKhoanDTO.GetTaiKhoan(tenTaiKhoan);
         }
+        public void CapNhatTKCuaNhanVien(NhanVien nhanVien)
+        {
+             taiKhoanDTO.CapNhatTKCuaNhanVien(nhanVien);
+        }
     }
 }

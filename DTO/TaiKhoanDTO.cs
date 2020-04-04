@@ -21,5 +21,16 @@ namespace KS.DTO
         {
             return db.TaiKhoans.SingleOrDefault(x => x.MANHANVIEN == maTK);
         }
+        public void CapNhatTKCuaNhanVien(NhanVien nhanVien)
+        {
+            foreach (var tk in db.TaiKhoans)
+            {
+                if(tk.MANHANVIEN == nhanVien.MANHANVIEN)
+                {
+                    tk.MACHUCVU = nhanVien.MACHUCVU;
+                }
+            }
+            db.SaveChanges();
+        }
     }
 }

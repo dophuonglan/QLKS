@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnInHoaDon = new System.Windows.Forms.Button();
@@ -96,11 +95,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.flowDanhSachDP = new System.Windows.Forms.FlowLayoutPanel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.labMaPhong = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.lbMaDatPhong = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -261,7 +260,7 @@
             // lbTienThua
             // 
             this.lbTienThua.AutoSize = true;
-            this.lbTienThua.Location = new System.Drawing.Point(234, 319);
+            this.lbTienThua.Location = new System.Drawing.Point(229, 319);
             this.lbTienThua.Name = "lbTienThua";
             this.lbTienThua.Size = new System.Drawing.Size(17, 18);
             this.lbTienThua.TabIndex = 19;
@@ -287,7 +286,7 @@
             // 
             // txbTienMat
             // 
-            this.txbTienMat.Location = new System.Drawing.Point(237, 265);
+            this.txbTienMat.Location = new System.Drawing.Point(232, 262);
             this.txbTienMat.Name = "txbTienMat";
             this.txbTienMat.Size = new System.Drawing.Size(100, 24);
             this.txbTienMat.TabIndex = 15;
@@ -298,47 +297,47 @@
             // lbConLai
             // 
             this.lbConLai.AutoSize = true;
-            this.lbConLai.Location = new System.Drawing.Point(234, 219);
+            this.lbConLai.Location = new System.Drawing.Point(229, 219);
             this.lbConLai.Name = "lbConLai";
-            this.lbConLai.Size = new System.Drawing.Size(56, 18);
+            this.lbConLai.Size = new System.Drawing.Size(17, 18);
             this.lbConLai.TabIndex = 14;
-            this.lbConLai.Text = "Conlai";
+            this.lbConLai.Text = "0";
             // 
             // lbTraTruoc
             // 
             this.lbTraTruoc.AutoSize = true;
-            this.lbTraTruoc.Location = new System.Drawing.Point(234, 174);
+            this.lbTraTruoc.Location = new System.Drawing.Point(229, 174);
             this.lbTraTruoc.Name = "lbTraTruoc";
-            this.lbTraTruoc.Size = new System.Drawing.Size(77, 18);
+            this.lbTraTruoc.Size = new System.Drawing.Size(17, 18);
             this.lbTraTruoc.TabIndex = 13;
-            this.lbTraTruoc.Text = "TrảTruoc";
+            this.lbTraTruoc.Text = "0";
             // 
             // lbTongTien
             // 
             this.lbTongTien.AutoSize = true;
-            this.lbTongTien.Location = new System.Drawing.Point(234, 117);
+            this.lbTongTien.Location = new System.Drawing.Point(229, 117);
             this.lbTongTien.Name = "lbTongTien";
-            this.lbTongTien.Size = new System.Drawing.Size(78, 18);
+            this.lbTongTien.Size = new System.Drawing.Size(17, 18);
             this.lbTongTien.TabIndex = 12;
-            this.lbTongTien.Text = "TongTien";
+            this.lbTongTien.Text = "0";
             // 
             // lbTienDV
             // 
             this.lbTienDV.AutoSize = true;
-            this.lbTienDV.Location = new System.Drawing.Point(234, 63);
+            this.lbTienDV.Location = new System.Drawing.Point(229, 63);
             this.lbTienDV.Name = "lbTienDV";
-            this.lbTienDV.Size = new System.Drawing.Size(55, 18);
+            this.lbTienDV.Size = new System.Drawing.Size(17, 18);
             this.lbTienDV.TabIndex = 11;
-            this.lbTienDV.Text = "tienDv";
+            this.lbTienDV.Text = "0";
             // 
             // lbTienPhg
             // 
             this.lbTienPhg.AutoSize = true;
             this.lbTienPhg.Location = new System.Drawing.Point(229, 12);
             this.lbTienPhg.Name = "lbTienPhg";
-            this.lbTienPhg.Size = new System.Drawing.Size(82, 18);
+            this.lbTienPhg.Size = new System.Drawing.Size(17, 18);
             this.lbTienPhg.TabIndex = 10;
-            this.lbTienPhg.Text = "lbTienPhg";
+            this.lbTienPhg.Text = "0";
             // 
             // label12
             // 
@@ -434,11 +433,13 @@
             // dtpkNgayDi
             // 
             this.dtpkNgayDi.CustomFormat = "dd/MM/yyyy";
+            this.dtpkNgayDi.Enabled = false;
             this.dtpkNgayDi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpkNgayDi.Location = new System.Drawing.Point(693, 111);
             this.dtpkNgayDi.Name = "dtpkNgayDi";
             this.dtpkNgayDi.Size = new System.Drawing.Size(118, 24);
             this.dtpkNgayDi.TabIndex = 17;
+            this.dtpkNgayDi.Value = new System.DateTime(2020, 3, 22, 12, 37, 0, 0);
             this.dtpkNgayDi.ValueChanged += new System.EventHandler(this.dtpkNgayDi_ValueChanged);
             // 
             // dtpkNgayO
@@ -466,54 +467,54 @@
             this.lbSDT.AutoSize = true;
             this.lbSDT.Location = new System.Drawing.Point(690, 18);
             this.lbSDT.Name = "lbSDT";
-            this.lbSDT.Size = new System.Drawing.Size(59, 18);
+            this.lbSDT.Size = new System.Drawing.Size(47, 18);
             this.lbSDT.TabIndex = 14;
-            this.lbSDT.Text = "Mã KH";
+            this.lbSDT.Text = "trống";
             // 
             // lbCMND
             // 
             this.lbCMND.AutoSize = true;
             this.lbCMND.Location = new System.Drawing.Point(402, 116);
             this.lbCMND.Name = "lbCMND";
-            this.lbCMND.Size = new System.Drawing.Size(59, 18);
+            this.lbCMND.Size = new System.Drawing.Size(47, 18);
             this.lbCMND.TabIndex = 13;
-            this.lbCMND.Text = "Mã KH";
+            this.lbCMND.Text = "trống";
             // 
             // lbDiaChi
             // 
             this.lbDiaChi.AutoSize = true;
             this.lbDiaChi.Location = new System.Drawing.Point(402, 63);
             this.lbDiaChi.Name = "lbDiaChi";
-            this.lbDiaChi.Size = new System.Drawing.Size(59, 18);
+            this.lbDiaChi.Size = new System.Drawing.Size(47, 18);
             this.lbDiaChi.TabIndex = 12;
-            this.lbDiaChi.Text = "Mã KH";
+            this.lbDiaChi.Text = "trống";
             // 
             // lbGioiTinh
             // 
             this.lbGioiTinh.AutoSize = true;
             this.lbGioiTinh.Location = new System.Drawing.Point(140, 116);
             this.lbGioiTinh.Name = "lbGioiTinh";
-            this.lbGioiTinh.Size = new System.Drawing.Size(59, 18);
+            this.lbGioiTinh.Size = new System.Drawing.Size(47, 18);
             this.lbGioiTinh.TabIndex = 11;
-            this.lbGioiTinh.Text = "Mã KH";
+            this.lbGioiTinh.Text = "trống";
             // 
             // lbHoTen
             // 
             this.lbHoTen.AutoSize = true;
             this.lbHoTen.Location = new System.Drawing.Point(140, 63);
             this.lbHoTen.Name = "lbHoTen";
-            this.lbHoTen.Size = new System.Drawing.Size(59, 18);
+            this.lbHoTen.Size = new System.Drawing.Size(47, 18);
             this.lbHoTen.TabIndex = 10;
-            this.lbHoTen.Text = "Mã KH";
+            this.lbHoTen.Text = "trống";
             // 
             // lbMaKH
             // 
             this.lbMaKH.AutoSize = true;
             this.lbMaKH.Location = new System.Drawing.Point(140, 17);
             this.lbMaKH.Name = "lbMaKH";
-            this.lbMaKH.Size = new System.Drawing.Size(59, 18);
+            this.lbMaKH.Size = new System.Drawing.Size(47, 18);
             this.lbMaKH.TabIndex = 9;
-            this.lbMaKH.Text = "Mã KH";
+            this.lbMaKH.Text = "trống";
             // 
             // label18
             // 
@@ -689,14 +690,6 @@
             this.soLuong,
             this.ngayDung,
             this.giaDichVuHienTai});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgvThongTinDichVuThanhToan.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvThongTinDichVuThanhToan.Location = new System.Drawing.Point(0, 28);
             this.dtgvThongTinDichVuThanhToan.Name = "dtgvThongTinDichVuThanhToan";
             this.dtgvThongTinDichVuThanhToan.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -764,7 +757,7 @@
             // flowDanhSachDP
             // 
             this.flowDanhSachDP.AutoScroll = true;
-            this.flowDanhSachDP.Location = new System.Drawing.Point(508, 65);
+            this.flowDanhSachDP.Location = new System.Drawing.Point(494, 80);
             this.flowDanhSachDP.Name = "flowDanhSachDP";
             this.flowDanhSachDP.Size = new System.Drawing.Size(824, 91);
             this.flowDanhSachDP.TabIndex = 10;
@@ -897,7 +890,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.FlowLayoutPanel flowDanhSachDP;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.DateTimePicker dtpkNgayDi;
@@ -924,5 +916,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label lbMaDatPhong;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

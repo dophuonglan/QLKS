@@ -54,14 +54,16 @@
             this.btnThemDV = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.panelAdmin1 = new System.Windows.Forms.Panel();
+            this.lbThongBao2 = new System.Windows.Forms.Label();
             this.lbThongBaoGiaDV = new System.Windows.Forms.Label();
             this.lbThongBaoTenDV = new System.Windows.Forms.Label();
             this.txbThemDonGia = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.txbThemTenDV = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panelAdmin2 = new System.Windows.Forms.Panel();
+            this.lbThongBaoSua2 = new System.Windows.Forms.Label();
             this.lbSuaGiaDV = new System.Windows.Forms.Label();
             this.cbbTenDV_Sua = new System.Windows.Forms.ComboBox();
             this.txbDonGia_Sua = new System.Windows.Forms.TextBox();
@@ -83,13 +85,11 @@
             this.thanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.lbThongBao2 = new System.Windows.Forms.Label();
-            this.lbThongBaoSua2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).BeginInit();
             this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panelAdmin1.SuspendLayout();
+            this.panelAdmin2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongTinDatDichVu)).BeginInit();
             this.SuspendLayout();
@@ -339,8 +339,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.SteelBlue;
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panelAdmin1);
+            this.panel2.Controls.Add(this.panelAdmin2);
             this.panel2.Location = new System.Drawing.Point(973, 283);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(385, 371);
@@ -357,21 +357,32 @@
             this.label7.TabIndex = 33;
             this.label7.Text = "Cập nhật dịch vụ";
             // 
-            // panel4
+            // panelAdmin1
             // 
-            this.panel4.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panel4.Controls.Add(this.lbThongBao2);
-            this.panel4.Controls.Add(this.lbThongBaoGiaDV);
-            this.panel4.Controls.Add(this.lbThongBaoTenDV);
-            this.panel4.Controls.Add(this.txbThemDonGia);
-            this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.btnThemDV);
-            this.panel4.Controls.Add(this.txbThemTenDV);
-            this.panel4.Location = new System.Drawing.Point(0, 44);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(426, 119);
-            this.panel4.TabIndex = 31;
+            this.panelAdmin1.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelAdmin1.Controls.Add(this.lbThongBao2);
+            this.panelAdmin1.Controls.Add(this.lbThongBaoGiaDV);
+            this.panelAdmin1.Controls.Add(this.lbThongBaoTenDV);
+            this.panelAdmin1.Controls.Add(this.txbThemDonGia);
+            this.panelAdmin1.Controls.Add(this.label14);
+            this.panelAdmin1.Controls.Add(this.label13);
+            this.panelAdmin1.Controls.Add(this.btnThemDV);
+            this.panelAdmin1.Controls.Add(this.txbThemTenDV);
+            this.panelAdmin1.Location = new System.Drawing.Point(0, 44);
+            this.panelAdmin1.Name = "panelAdmin1";
+            this.panelAdmin1.Size = new System.Drawing.Size(426, 119);
+            this.panelAdmin1.TabIndex = 31;
+            // 
+            // lbThongBao2
+            // 
+            this.lbThongBao2.AutoSize = true;
+            this.lbThongBao2.ForeColor = System.Drawing.Color.Red;
+            this.lbThongBao2.Location = new System.Drawing.Point(293, 46);
+            this.lbThongBao2.Name = "lbThongBao2";
+            this.lbThongBao2.Size = new System.Drawing.Size(70, 13);
+            this.lbThongBao2.TabIndex = 32;
+            this.lbThongBao2.Text = "Giá ko hợp lệ";
+            this.lbThongBao2.Visible = false;
             // 
             // lbThongBaoGiaDV
             // 
@@ -432,21 +443,32 @@
             this.txbThemTenDV.Size = new System.Drawing.Size(105, 21);
             this.txbThemTenDV.TabIndex = 28;
             // 
-            // panel5
+            // panelAdmin2
             // 
-            this.panel5.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panel5.Controls.Add(this.lbThongBaoSua2);
-            this.panel5.Controls.Add(this.lbSuaGiaDV);
-            this.panel5.Controls.Add(this.cbbTenDV_Sua);
-            this.panel5.Controls.Add(this.txbDonGia_Sua);
-            this.panel5.Controls.Add(this.label15);
-            this.panel5.Controls.Add(this.btnSuaDV);
-            this.panel5.Controls.Add(this.btnXoaDV);
-            this.panel5.Controls.Add(this.label16);
-            this.panel5.Location = new System.Drawing.Point(0, 169);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(426, 130);
-            this.panel5.TabIndex = 32;
+            this.panelAdmin2.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panelAdmin2.Controls.Add(this.lbThongBaoSua2);
+            this.panelAdmin2.Controls.Add(this.lbSuaGiaDV);
+            this.panelAdmin2.Controls.Add(this.cbbTenDV_Sua);
+            this.panelAdmin2.Controls.Add(this.txbDonGia_Sua);
+            this.panelAdmin2.Controls.Add(this.label15);
+            this.panelAdmin2.Controls.Add(this.btnSuaDV);
+            this.panelAdmin2.Controls.Add(this.btnXoaDV);
+            this.panelAdmin2.Controls.Add(this.label16);
+            this.panelAdmin2.Location = new System.Drawing.Point(0, 169);
+            this.panelAdmin2.Name = "panelAdmin2";
+            this.panelAdmin2.Size = new System.Drawing.Size(426, 130);
+            this.panelAdmin2.TabIndex = 32;
+            // 
+            // lbThongBaoSua2
+            // 
+            this.lbThongBaoSua2.AutoSize = true;
+            this.lbThongBaoSua2.ForeColor = System.Drawing.Color.Red;
+            this.lbThongBaoSua2.Location = new System.Drawing.Point(277, 71);
+            this.lbThongBaoSua2.Name = "lbThongBaoSua2";
+            this.lbThongBaoSua2.Size = new System.Drawing.Size(70, 13);
+            this.lbThongBaoSua2.TabIndex = 33;
+            this.lbThongBaoSua2.Text = "Giá ko hợp lệ";
+            this.lbThongBaoSua2.Visible = false;
             // 
             // lbSuaGiaDV
             // 
@@ -635,6 +657,7 @@
             this.giaHienTai.DataPropertyName = "GIADV";
             this.giaHienTai.HeaderText = "Đơn Giá";
             this.giaHienTai.Name = "giaHienTai";
+            this.giaHienTai.Visible = false;
             // 
             // thanhTien
             // 
@@ -663,28 +686,6 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Dịch Vụ";
             // 
-            // lbThongBao2
-            // 
-            this.lbThongBao2.AutoSize = true;
-            this.lbThongBao2.ForeColor = System.Drawing.Color.Red;
-            this.lbThongBao2.Location = new System.Drawing.Point(293, 46);
-            this.lbThongBao2.Name = "lbThongBao2";
-            this.lbThongBao2.Size = new System.Drawing.Size(70, 13);
-            this.lbThongBao2.TabIndex = 32;
-            this.lbThongBao2.Text = "Giá ko hợp lệ";
-            this.lbThongBao2.Visible = false;
-            // 
-            // lbThongBaoSua2
-            // 
-            this.lbThongBaoSua2.AutoSize = true;
-            this.lbThongBaoSua2.ForeColor = System.Drawing.Color.Red;
-            this.lbThongBaoSua2.Location = new System.Drawing.Point(277, 71);
-            this.lbThongBaoSua2.Name = "lbThongBaoSua2";
-            this.lbThongBaoSua2.Size = new System.Drawing.Size(70, 13);
-            this.lbThongBaoSua2.TabIndex = 33;
-            this.lbThongBaoSua2.Text = "Giá ko hợp lệ";
-            this.lbThongBaoSua2.Visible = false;
-            // 
             // fDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,10 +708,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numSoLuong)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panelAdmin1.ResumeLayout(false);
+            this.panelAdmin1.PerformLayout();
+            this.panelAdmin2.ResumeLayout(false);
+            this.panelAdmin2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongTinDatDichVu)).EndInit();
@@ -756,8 +757,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txbThemDonGia;
         private System.Windows.Forms.TextBox txbThemTenDV;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panelAdmin1;
+        private System.Windows.Forms.Panel panelAdmin2;
         private System.Windows.Forms.ComboBox cbbTenDV_Sua;
         private System.Windows.Forms.TextBox txbDonGia_Sua;
         private System.Windows.Forms.Label label15;
@@ -766,6 +767,8 @@
         private System.Windows.Forms.Label lbThongBaoTenDV;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbSuaGiaDV;
+        private System.Windows.Forms.Label lbThongBao2;
+        private System.Windows.Forms.Label lbThongBaoSua2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn maDatPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn maDV;
@@ -774,7 +777,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn giaHienTai;
         private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
-        private System.Windows.Forms.Label lbThongBao2;
-        private System.Windows.Forms.Label lbThongBaoSua2;
     }
 }

@@ -17,6 +17,10 @@ namespace KS.DTO
         {
             return db.Phongs.ToList();
         }
+        public List<Phong> GetPhongNotDeleted()
+        {
+            return db.Phongs.Where(x => x.isDelete == false).ToList();
+        }
         public Phong GetPhong(int ma)
         {
             return db.Phongs.Find( ma);

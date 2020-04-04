@@ -24,12 +24,17 @@ namespace KS
             InitializeComponent();
         }
 
+        void PhanQuyen()
+        {
+            if ((fLogin.maChucVu == 4) || fLogin.maChucVu == 5)
+            {
+                adminToolStripMenuItem.Enabled = true;
+            }
+            else adminToolStripMenuItem.Enabled = false;
+        }
         private void fSoDo_Load(object sender, EventArgs e)
         {
-            //FormBorderStyle = FormBorderStyle.Sizable;
-            //WindowState = FormWindowState.Maximized;
-            //TopMost = true;
-            
+            PhanQuyen();
         }
 
         private void viewAllPhg_Click(object sender, EventArgs e)
@@ -40,17 +45,9 @@ namespace KS
             this.Show();
         }
 
-        private void btnLichLamViec_Click(object sender, EventArgs e)
-        {
-            fLichLamViec lichlam = new fLichLamViec();
-            this.Hide();
-            lichlam.ShowDialog();
-            this.Show();
-        }
-
         private void btnThongTinNhanVien_Click(object sender, EventArgs e)
         {
-            fThongTinNhanVien thongTinNhanVien = new fThongTinNhanVien();
+            fThongTinTaiKhoanVaViecLam thongTinNhanVien = new fThongTinTaiKhoanVaViecLam();
             this.Hide();
             thongTinNhanVien.ShowDialog();
             this.Show();
@@ -58,10 +55,10 @@ namespace KS
 
         private void btnDatPhg_Click(object sender, EventArgs e)
         {
-                fDatPhong datPhong = new fDatPhong();
-                this.Hide();
-                datPhong.ShowDialog();
-                this.Show();
+            fDatPhong datPhong = new fDatPhong();
+            this.Hide();
+            datPhong.ShowDialog();
+            this.Show();
         }
 
         private void btnDichVu_Click(object sender, EventArgs e)
@@ -75,7 +72,7 @@ namespace KS
         private void button1_Click(object sender, EventArgs e)
         {
             var lstDatPhong = datPhongDAO.GetDatPhong();
-            if (lstDatPhong.Count == 0)
+            if (lstDatPhong.Count != 0)
             {
                 fThanhToan thanhToan = new fThanhToan();
                 IsClick = true;
@@ -86,12 +83,55 @@ namespace KS
             else MessageBox.Show("Hiện không có phòng cần thanh toán");
         }
 
+        private void thôngTinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fThongTinTaiKhoanVaViecLam fThongTinNhanVien = new fThongTinTaiKhoanVaViecLam();
+            Hide();
+            fThongTinNhanVien.ShowDialog();
+            Show();
+        }
+
         private void thốngKêToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fThongKe fThongKe = new fThongKe();
             Hide();
             fThongKe.ShowDialog();
             Show();
+        }
+
+        private void danhSáchNhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fThongTinNhanVien fThongTinNhanVien = new fThongTinNhanVien();
+            Hide();
+            fThongTinNhanVien.ShowDialog();
+            Show();
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PhanQuyen();
+            this.Close();
+        }
+
+        private void quảnLýLịchLàmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fManageLichLamViec fManageLichLamViec = new fManageLichLamViec();
+            Hide();
+            fManageLichLamViec.ShowDialog();
+            Show();
+        }
+
+        private void quảnLýChứcVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fChucVu fChucVu = new fChucVu();
+            Hide();
+            fChucVu.ShowDialog();
+            Show();
+        }
+
+        private void fSoDo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PhanQuyen();
         }
     }
 }
