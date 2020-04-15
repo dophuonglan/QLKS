@@ -36,6 +36,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lbTuaDe = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.llbQuenMatKhau = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txbUserName
@@ -51,9 +52,10 @@
             // 
             this.txbPass.Location = new System.Drawing.Point(120, 291);
             this.txbPass.Name = "txbPass";
+            this.txbPass.PasswordChar = '*';
             this.txbPass.Size = new System.Drawing.Size(145, 20);
             this.txbPass.TabIndex = 1;
-            this.txbPass.Text = "1";
+            this.txbPass.Text = "123";
             this.txbPass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbPass_KeyUp);
             // 
             // lbUserName
@@ -121,12 +123,24 @@
             this.panel1.Size = new System.Drawing.Size(186, 122);
             this.panel1.TabIndex = 7;
             // 
+            // llbQuenMatKhau
+            // 
+            this.llbQuenMatKhau.AutoSize = true;
+            this.llbQuenMatKhau.Location = new System.Drawing.Point(238, 327);
+            this.llbQuenMatKhau.Name = "llbQuenMatKhau";
+            this.llbQuenMatKhau.Size = new System.Drawing.Size(86, 13);
+            this.llbQuenMatKhau.TabIndex = 8;
+            this.llbQuenMatKhau.TabStop = true;
+            this.llbQuenMatKhau.Text = "Quên mật khẩu?";
+            this.llbQuenMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbQuenMatKhau_LinkClicked);
+            // 
             // fLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(376, 486);
+            this.Controls.Add(this.llbQuenMatKhau);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbTuaDe);
             this.Controls.Add(this.btnExit);
@@ -137,7 +151,6 @@
             this.Controls.Add(this.txbUserName);
             this.MaximizeBox = false;
             this.Name = "fLogin";
-            this.RightToLeftLayout = true;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng Nhập";
@@ -157,6 +170,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbTuaDe;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.LinkLabel llbQuenMatKhau;
     }
 }
 

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,6 +14,7 @@ namespace KS
 {
     public partial class fLogin : Form
     {
+        
         private TaiKhoanDAO taiKhoanDAO;
         public fLogin()
         {
@@ -22,9 +24,21 @@ namespace KS
 
         static public int maChucVu { get; private set; }
         static public int MaNhanVien { get; private set; }
-
+        static public string tenDN;
+        string maHoaPass(string pass)
+        {
+            byte[] temp = ASCIIEncoding.ASCII.GetBytes(pass);
+            byte[] hasData = new MD5CryptoServiceProvider().ComputeHash(temp);
+            string hasPass = "";
+            foreach (var item in hasData)
+            {
+                hasPass += item;
+            }
+            return hasPass;
+        }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
             var user = taiKhoanDAO.GetTaiKhoan(txbUserName.Text);
             if (user == null)
             {
@@ -32,7 +46,7 @@ namespace KS
             }
             else
             {
-                if (txbPass.Text != user.PASS)
+                if (maHoaPass(txbPass.Text)!= user.PASS)
                 {
                     MessageBox.Show("Sai mật khẩu!", "Thông Báo");
                 }
@@ -40,6 +54,7 @@ namespace KS
                 {
                     maChucVu = Convert.ToInt32(user.MACHUCVU);
                     MaNhanVien = Convert.ToInt32(user.MANHANVIEN);
+                    tenDN = user.TENTAIKHOAN;
                     fSoDo fMain = new fSoDo();
                     this.Hide();
                     fMain.ShowDialog();
@@ -76,6 +91,11 @@ namespace KS
             {
                 e.Cancel = true;
             }
+        }
+
+        private void llbQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }
