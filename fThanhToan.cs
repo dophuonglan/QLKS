@@ -76,7 +76,7 @@ namespace KS
             }
             foreach (var dp in lstDatPhong)
             {
-                var btn = new Button() { Width = 80, Height = 80 };
+                var btn = new Button() { Width = 60, Height = 60};
                 float fontSize = 9;
                 Font f = new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold);
                 btn.Font = f;

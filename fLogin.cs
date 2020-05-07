@@ -86,16 +86,11 @@ namespace KS
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có thật sự muốn thoát chương trình?", "Thông Báo", MessageBoxButtons.OKCancel) 
-                != System.Windows.Forms.DialogResult.OK)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void llbQuenMatKhau_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
+            //if (MessageBox.Show("Bạn có thật sự muốn thoát chương trình?", "Thông Báo", MessageBoxButtons.OKCancel) 
+            //    != System.Windows.Forms.DialogResult.OK)
+            //{
+            //    e.Cancel = true;
+            //}
         }
     }
 }

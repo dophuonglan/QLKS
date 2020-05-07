@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnInHoaDon = new System.Windows.Forms.Button();
@@ -405,7 +407,7 @@
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.ForeColor = System.Drawing.Color.Black;
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
@@ -417,7 +419,7 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(600, 116);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(67, 18);
+            this.label20.Size = new System.Drawing.Size(60, 18);
             this.label20.TabIndex = 19;
             this.label20.Text = "Ngày Đi";
             // 
@@ -426,7 +428,7 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(600, 63);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(64, 18);
+            this.label19.Size = new System.Drawing.Size(58, 18);
             this.label19.TabIndex = 18;
             this.label19.Text = "Ngày Ở";
             // 
@@ -467,7 +469,7 @@
             this.lbSDT.AutoSize = true;
             this.lbSDT.Location = new System.Drawing.Point(690, 18);
             this.lbSDT.Name = "lbSDT";
-            this.lbSDT.Size = new System.Drawing.Size(47, 18);
+            this.lbSDT.Size = new System.Drawing.Size(42, 18);
             this.lbSDT.TabIndex = 14;
             this.lbSDT.Text = "trống";
             // 
@@ -476,7 +478,7 @@
             this.lbCMND.AutoSize = true;
             this.lbCMND.Location = new System.Drawing.Point(402, 116);
             this.lbCMND.Name = "lbCMND";
-            this.lbCMND.Size = new System.Drawing.Size(47, 18);
+            this.lbCMND.Size = new System.Drawing.Size(42, 18);
             this.lbCMND.TabIndex = 13;
             this.lbCMND.Text = "trống";
             // 
@@ -485,7 +487,7 @@
             this.lbDiaChi.AutoSize = true;
             this.lbDiaChi.Location = new System.Drawing.Point(402, 63);
             this.lbDiaChi.Name = "lbDiaChi";
-            this.lbDiaChi.Size = new System.Drawing.Size(47, 18);
+            this.lbDiaChi.Size = new System.Drawing.Size(42, 18);
             this.lbDiaChi.TabIndex = 12;
             this.lbDiaChi.Text = "trống";
             // 
@@ -494,7 +496,7 @@
             this.lbGioiTinh.AutoSize = true;
             this.lbGioiTinh.Location = new System.Drawing.Point(140, 116);
             this.lbGioiTinh.Name = "lbGioiTinh";
-            this.lbGioiTinh.Size = new System.Drawing.Size(47, 18);
+            this.lbGioiTinh.Size = new System.Drawing.Size(42, 18);
             this.lbGioiTinh.TabIndex = 11;
             this.lbGioiTinh.Text = "trống";
             // 
@@ -503,7 +505,7 @@
             this.lbHoTen.AutoSize = true;
             this.lbHoTen.Location = new System.Drawing.Point(140, 63);
             this.lbHoTen.Name = "lbHoTen";
-            this.lbHoTen.Size = new System.Drawing.Size(47, 18);
+            this.lbHoTen.Size = new System.Drawing.Size(42, 18);
             this.lbHoTen.TabIndex = 10;
             this.lbHoTen.Text = "trống";
             // 
@@ -512,7 +514,7 @@
             this.lbMaKH.AutoSize = true;
             this.lbMaKH.Location = new System.Drawing.Point(140, 17);
             this.lbMaKH.Name = "lbMaKH";
-            this.lbMaKH.Size = new System.Drawing.Size(47, 18);
+            this.lbMaKH.Size = new System.Drawing.Size(42, 18);
             this.lbMaKH.TabIndex = 9;
             this.lbMaKH.Text = "trống";
             // 
@@ -521,7 +523,7 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(623, 18);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(41, 18);
+            this.label18.Size = new System.Drawing.Size(38, 18);
             this.label18.TabIndex = 8;
             this.label18.Text = "SĐT";
             // 
@@ -530,7 +532,7 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(305, 116);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 18);
+            this.label17.Size = new System.Drawing.Size(54, 18);
             this.label17.TabIndex = 7;
             this.label17.Text = "CMND";
             // 
@@ -539,7 +541,7 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(305, 63);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 18);
+            this.label16.Size = new System.Drawing.Size(56, 18);
             this.label16.TabIndex = 6;
             this.label16.Text = "Địa Chỉ";
             // 
@@ -548,7 +550,7 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(284, 17);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(84, 18);
+            this.label15.Size = new System.Drawing.Size(75, 18);
             this.label15.TabIndex = 5;
             this.label15.Text = "Ngày Sinh";
             // 
@@ -557,7 +559,7 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(30, 116);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(76, 18);
+            this.label14.Size = new System.Drawing.Size(67, 18);
             this.label14.TabIndex = 4;
             this.label14.Text = "Giới Tính";
             // 
@@ -566,7 +568,7 @@
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(43, 63);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 18);
+            this.label13.Size = new System.Drawing.Size(57, 18);
             this.label13.TabIndex = 3;
             this.label13.Text = "Họ Tên";
             // 
@@ -575,7 +577,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(47, 17);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 18);
+            this.label7.Size = new System.Drawing.Size(54, 18);
             this.label7.TabIndex = 2;
             this.label7.Text = "Mã KH";
             // 
@@ -604,6 +606,14 @@
             // 
             this.dtgvThongTinPhongThanhToan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvThongTinPhongThanhToan.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvThongTinPhongThanhToan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgvThongTinPhongThanhToan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvThongTinPhongThanhToan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maPhong,
@@ -672,7 +682,7 @@
             this.panel4.Controls.Add(this.dtgvThongTinDichVuThanhToan);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel4.ForeColor = System.Drawing.Color.White;
+            this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(491, 521);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(871, 160);
@@ -682,6 +692,14 @@
             // 
             this.dtgvThongTinDichVuThanhToan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvThongTinDichVuThanhToan.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgvThongTinDichVuThanhToan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgvThongTinDichVuThanhToan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvThongTinDichVuThanhToan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.maDatDichVu,
@@ -737,6 +755,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(22, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(191, 25);
@@ -749,9 +768,9 @@
             this.panel7.Controls.Add(this.panel2);
             this.panel7.Controls.Add(this.label2);
             this.panel7.ForeColor = System.Drawing.Color.White;
-            this.panel7.Location = new System.Drawing.Point(491, 177);
+            this.panel7.Location = new System.Drawing.Point(491, 149);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(871, 183);
+            this.panel7.Size = new System.Drawing.Size(871, 211);
             this.panel7.TabIndex = 9;
             // 
             // flowDanhSachDP
@@ -759,7 +778,7 @@
             this.flowDanhSachDP.AutoScroll = true;
             this.flowDanhSachDP.Location = new System.Drawing.Point(494, 80);
             this.flowDanhSachDP.Name = "flowDanhSachDP";
-            this.flowDanhSachDP.Size = new System.Drawing.Size(824, 91);
+            this.flowDanhSachDP.Size = new System.Drawing.Size(824, 63);
             this.flowDanhSachDP.TabIndex = 10;
             // 
             // labMaPhong

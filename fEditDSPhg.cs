@@ -69,7 +69,7 @@ namespace KS
                 else maLP = 1;
                 Phong phg = new Phong()
                 {
-                     
+
                     MAPHONG = Convert.ToInt32(txbEditMaPhg.Text),
                     TINHTRANGPHONG = "Trống",
                     TENPHONG = txbEditTenPhg.Text,
@@ -84,8 +84,11 @@ namespace KS
                 phong.MALOAIPHONG = maLP;
                 phong.GIAPHONG = Convert.ToDouble(txbEditGiaPhg.Text);
                 phong.DONVITIENTE = txbEditDonViTT.Text;
-                db.SaveChanges();
-                MessageBox.Show("Updata thành công!");
+                if (MessageBox.Show("Bạn có thật sự muốn sửa phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    db.SaveChanges();
+                    MessageBox.Show("Updata thành công!");
+                }
                 this.Close();
             }
         }

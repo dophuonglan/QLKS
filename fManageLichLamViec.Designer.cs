@@ -76,11 +76,11 @@
             this.groupBoxAdmin.Controls.Add(this.cbbBuoiLich);
             this.groupBoxAdmin.Controls.Add(this.cbbMaNhanVienLich);
             this.groupBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAdmin.Location = new System.Drawing.Point(804, 154);
+            this.groupBoxAdmin.Location = new System.Drawing.Point(804, 13);
             this.groupBoxAdmin.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxAdmin.Name = "groupBoxAdmin";
             this.groupBoxAdmin.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxAdmin.Size = new System.Drawing.Size(553, 509);
+            this.groupBoxAdmin.Size = new System.Drawing.Size(566, 650);
             this.groupBoxAdmin.TabIndex = 3;
             this.groupBoxAdmin.TabStop = false;
             this.groupBoxAdmin.Text = "Thêm lịch làm việc";
@@ -357,6 +357,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);

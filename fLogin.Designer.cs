@@ -36,7 +36,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lbTuaDe = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.llbQuenMatKhau = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // txbUserName
@@ -45,7 +44,7 @@
             this.txbUserName.Name = "txbUserName";
             this.txbUserName.Size = new System.Drawing.Size(145, 20);
             this.txbUserName.TabIndex = 0;
-            this.txbUserName.Text = "QL";
+            this.txbUserName.Text = "quanly";
             this.txbUserName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txbUserName_KeyUp);
             // 
             // txbPass
@@ -62,11 +61,11 @@
             // 
             this.lbUserName.AutoSize = true;
             this.lbUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUserName.Location = new System.Drawing.Point(33, 233);
+            this.lbUserName.Location = new System.Drawing.Point(24, 228);
             this.lbUserName.Name = "lbUserName";
-            this.lbUserName.Size = new System.Drawing.Size(81, 15);
+            this.lbUserName.Size = new System.Drawing.Size(90, 15);
             this.lbUserName.TabIndex = 2;
-            this.lbUserName.Text = "Tên tài khoản";
+            this.lbUserName.Text = "Tên đăng nhập";
             // 
             // lbPass
             // 
@@ -123,24 +122,12 @@
             this.panel1.Size = new System.Drawing.Size(186, 122);
             this.panel1.TabIndex = 7;
             // 
-            // llbQuenMatKhau
-            // 
-            this.llbQuenMatKhau.AutoSize = true;
-            this.llbQuenMatKhau.Location = new System.Drawing.Point(238, 327);
-            this.llbQuenMatKhau.Name = "llbQuenMatKhau";
-            this.llbQuenMatKhau.Size = new System.Drawing.Size(86, 13);
-            this.llbQuenMatKhau.TabIndex = 8;
-            this.llbQuenMatKhau.TabStop = true;
-            this.llbQuenMatKhau.Text = "Quên mật khẩu?";
-            this.llbQuenMatKhau.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbQuenMatKhau_LinkClicked);
-            // 
             // fLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(376, 486);
-            this.Controls.Add(this.llbQuenMatKhau);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbTuaDe);
             this.Controls.Add(this.btnExit);
@@ -170,7 +157,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lbTuaDe;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.LinkLabel llbQuenMatKhau;
     }
 }
 

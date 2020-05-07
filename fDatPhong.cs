@@ -106,6 +106,11 @@ namespace KS
 
         void editDatPhong()
         {
+            if(dtgvThongTinPhg.RowCount ==0)
+            {
+                MessageBox.Show("Bạn chưa chọn đơn đặt phòng!!");
+                return;
+            }
             int id = int.Parse(dtgvThongTinPhg.SelectedCells[0].OwningRow.Cells["maDatPhong"].Value.ToString());
             DatPhong datPhong = db.DatPhongs.Find(id);
             datPhong.MAPHONG = int.Parse(cbbChonPhg.Text);
@@ -142,6 +147,7 @@ namespace KS
                          from a in db.LoaiPhongs
                          where c.MALOAIPHONG == a.MALOAIPHONG
                          && c.isDelete == false
+                         && a.TENLOAIPHONG == cbbChonLoaiPhg.Text
                          select new
                          {
                              c.MAPHONG,
@@ -211,15 +217,16 @@ namespace KS
             if (checkDatPhongHopLe() == true)
             {
                 var kh = khachHangDAO.GetKhachHang(txbCMT.Text);
-                DatPhong datPhong = new DatPhong()
+                DatPhong datPhong;
+                datPhong = new DatPhong()
                 {
-                    MAPHONG = Convert.ToInt32(cbbChonPhg.Text),
-                    MAKH = kh.MAKH,
-                    TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
+                    //MAPHONG = Convert.ToInt32(cbbChonPhg.Text),
+                    //MAKH = null,
+                    //TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
                     NGAYO = dtPKerNgayVao.Value.Date,
                     NGAYDI = dtPKerNgayRa.Value.Date,
                     TrangThaiThanhToan = "Trả trước 20%",
-                    GiaPhongHienTai = Convert.ToDouble(txbgiaPhong.Text),
+                    //GiaPhongHienTai = Convert.ToDouble(txbgiaPhong.Text),
                     isDelete = false
                 };
 
@@ -237,10 +244,38 @@ namespace KS
                         {
                             db.KhachHangs.Add(khachHang);
                             db.SaveChanges();
+                             datPhong = new DatPhong()
+                            {
+                                MAPHONG = Convert.ToInt32(cbbChonPhg.Text),
+                                MAKH = khachHang.MAKH,
+                                TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
+                                NGAYO = dtPKerNgayVao.Value.Date,
+                                NGAYDI = dtPKerNgayRa.Value.Date,
+                                TrangThaiThanhToan = "Trả trước 20%",
+                                GiaPhongHienTai = Convert.ToDouble(txbgiaPhong.Text),
+                                isDelete = false
+                            };
+                            db.DatPhongs.Add(datPhong);
+                            db.SaveChanges();
                         }
-                        db.DatPhongs.Add(datPhong);
+                        else
+                        {
+                            datPhong = new DatPhong()
+                            {
+                                MAPHONG = Convert.ToInt32(cbbChonPhg.Text),
+                                MAKH = kh.MAKH,
+                                TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
+                                NGAYO = dtPKerNgayVao.Value.Date,
+                                NGAYDI = dtPKerNgayRa.Value.Date,
+                                TrangThaiThanhToan = "Trả trước 20%",
+                                GiaPhongHienTai = Convert.ToDouble(txbgiaPhong.Text),
+                                isDelete = false
+                            };
+                            db.DatPhongs.Add(datPhong);
+                            db.SaveChanges();
+                        }
+                        
                         MessageBox.Show("Đặt phòng thành công", "Thông báo");
-                        db.SaveChanges();
                         loadThongTinPhongDangChon();
                     }
                 }
@@ -253,6 +288,8 @@ namespace KS
             loadDanhSachPhong();
             RefreshForm();
             CreateButtonDelete();
+            dtPKerNgayVao.MinDate = DateTime.Today;
+            dtPKerNgayRa.MinDate = DateTime.Today;
         }
 
         private void txbSDT_KeyUp(object sender, KeyEventArgs e)
@@ -336,7 +373,7 @@ namespace KS
                     db.DatDichVus.RemoveRange(selectedDatPhong.DatDichVus.ToList());
                     db.DatPhongs.Remove(selectedDatPhong);
                     db.SaveChanges();
-                    MessageBox.Show("remove success");
+                    MessageBox.Show("Hủy thành công");
                     loadThongTinPhongDangChon();
                 }
             }
@@ -355,6 +392,11 @@ namespace KS
         private void btnSuaDatPhong_Click(object sender, EventArgs e)
         {
             editDatPhong();
+        }
+
+        private void cbbChonLoaiPhg_TextChanged(object sender, EventArgs e)
+        {
+            loadDanhSachPhong();
         }
     }
 }

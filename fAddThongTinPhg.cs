@@ -54,10 +54,6 @@ namespace KS
                 labTBSaiDVTT.Visible = true;
             }
             else labTBSaiDVTT.Visible = false;
-            //if (db.Phongs.SingleOrDefault(x => x.MAPHONG.ToString() == txbAddMaPhg.Text)!= null){
-            //    labTBTrungMaPhg.Visible = true;
-            //}
-            //else labTBTrungMaPhg.Visible = false;
             if(!IsNumber(txbAddGiaPhg.Text))
             {
                 MessageBox.Show("Giá phòng không hợp lệ");
@@ -77,7 +73,8 @@ namespace KS
                         TENPHONG = txbAddTenPhg.Text,
                         MALOAIPHONG = maLP,
                         GIAPHONG = Convert.ToDouble(txbAddGiaPhg.Text),
-                        DONVITIENTE = txbAddDonViTT.Text
+                        DONVITIENTE = txbAddDonViTT.Text,
+                        isDelete = false
                     };
                     db.Phongs.Add(phg);
                     db.SaveChanges();

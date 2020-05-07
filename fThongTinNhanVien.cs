@@ -142,7 +142,7 @@ namespace KS
                 nhanVien.SODIENTHOAI = txbSDT.Text;
                 if (CheckExistSDT(nhanVien, 1) == false)
                 {
-                    MessageBox.Show("SDT tồn tại");
+                    MessageBox.Show("SĐT tồn tại");
                     return;
                 }
                 nhanVien.DIACHI = txbDiaChi.Text;
@@ -265,6 +265,7 @@ namespace KS
                 {
                     loadCbbChucVuAll();
                 }
+                else loadCbbChucVu();
                 txbTenNhanVien.Text = row.Cells["TENNHANVIEN"].Value.ToString();
                 cbbGioiTinh.Text = row.Cells["GIOITINH"].Value.ToString();
                 dtpkNgaySinh.Value = DateTime.Parse(row.Cells["NGAYSINH"].Value.ToString());

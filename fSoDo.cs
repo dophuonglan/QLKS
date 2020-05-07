@@ -132,6 +132,11 @@ namespace KS
         private void fSoDo_FormClosing(object sender, FormClosingEventArgs e)
         {
             PhanQuyen();
+            if (MessageBox.Show("Bạn có thật sự muốn thoát chương trình?", "Thông Báo", MessageBoxButtons.OKCancel)
+                != System.Windows.Forms.DialogResult.OK)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

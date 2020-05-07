@@ -396,7 +396,7 @@
             this.MaximizeBox = false;
             this.Name = "fThongTinNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "fThongTinKH";
+            this.Text = "fThongTinNhanVien";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.fThongTinKH_Load);
             this.tabControl1.ResumeLayout(false);

@@ -192,8 +192,7 @@
             this.txbAddDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbAddDonViTT.FormattingEnabled = true;
             this.txbAddDonViTT.Items.AddRange(new object[] {
-            "vnd",
-            "$"});
+            "vnd"});
             this.txbAddDonViTT.Location = new System.Drawing.Point(358, 136);
             this.txbAddDonViTT.Name = "txbAddDonViTT";
             this.txbAddDonViTT.Size = new System.Drawing.Size(157, 26);
