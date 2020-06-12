@@ -18,6 +18,10 @@ namespace KS.DAO
         {
             return datPhongDTO.GetDatPhong();
         }
+        public List<DatPhong> GetDatPhongCoDatPhongTre()
+        {
+            return datPhongDTO.GetDatPhongCoDatPhongTre();
+        }
         public List<DatPhong> GetListDatPhong(int maPhong)
         {
             return datPhongDTO.GetListDatPhong(maPhong);

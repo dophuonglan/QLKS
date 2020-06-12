@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,6 @@ namespace KS
     {
         fPhong f = new fPhong();
         QLKSEntities2 db = null;
-
-        KhachHangDAO khachHangDAO = null;
-        DatPhongDAO datPhongDAO = null;
-        PhongDAO phongDAO = null;
-        DatDichVuDAO datDichVuDAO = null;
         private static string maDatp;
 
         public static string MaDatp { get => maDatp; set => maDatp = value; }
@@ -28,14 +24,11 @@ namespace KS
         {
             InitializeComponent();
             db = new QLKSEntities2();
-            khachHangDAO = new KhachHangDAO();
-            datPhongDAO = new DatPhongDAO();
-            phongDAO = new PhongDAO();
-            datDichVuDAO = new DatDichVuDAO();
         }
 
         double? tinhTongTienDichVu(int maDatPhong)
         {
+            DatDichVuDAO datDichVuDAO = new DatDichVuDAO();
             double? gia = 0;
             var lsDatDichVu = datDichVuDAO.GetListDatDichVu(maDatPhong);
             foreach (var datDichVu in lsDatDichVu)
@@ -46,35 +39,35 @@ namespace KS
         }
         private void fThanhToan_Load(object sender, EventArgs e)
         {
-            DatPhongDAO datPhongDAO = new DatPhongDAO();
-            List<DatPhong> lstDatPhong = null;
-            //clik lấy ra mã phong đang click
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            KhachHangDAO khachHangDAO = new KhachHangDAO();
+            List<ThuePhong> lstThuePhong = null;
             if (fSoDo.IsClick == true)
             {
-                lstDatPhong = datPhongDAO.GetDatPhong();
-                if (lstDatPhong.Count == 0)
+                lstThuePhong = thuePhongDAO.GetThuePhong();
+                if (lstThuePhong.Count == 0)
                 {
-                    MessageBox.Show("Hiện không có đơn đăt phòng");
+                    MessageBox.Show("Hiện không có phòng thuê");
                     this.Close();
                 }
                 else
                 {
-                    loadThongTin(lstDatPhong[0].MADATPHONG);
+                    loadThongTin(lstThuePhong[0].MATHUEPHONG);
                     fSoDo.IsClick = false;
                 }
             }
             else
             {
-                lstDatPhong = datPhongDAO.GetListDatPhong(fPhong.MaPtag);
-                if (lstDatPhong.Count() == 0)
+                lstThuePhong = thuePhongDAO.GetListThuePhong(fPhong.MaPtag);
+                if (lstThuePhong.Count() == 0)
                 {
-                    MessageBox.Show("Hiện không có đơn đăt phòng");
+                    MessageBox.Show("Hiện không có phòng thuê");
                     this.Close();
                 }
                 else
-                loadThongTin(lstDatPhong[0].MADATPHONG);
+                loadThongTin(lstThuePhong[0].MATHUEPHONG);
             }
-            foreach (var dp in lstDatPhong)
+            foreach (var dp in lstThuePhong)
             {
                 var btn = new Button() { Width = 60, Height = 60};
                 float fontSize = 9;
@@ -83,35 +76,37 @@ namespace KS
                 btn.BackColor = Color.LightBlue;
                 flowDanhSachDP.Controls.Add(btn);
                 btn.Tag = dp;
-                btn.Text = dp.MADATPHONG.ToString();
+                btn.Text = dp.MATHUEPHONG.ToString();
                 var kh = khachHangDAO.GetKhachHang(dp.MAKH);
                 toolTip1.SetToolTip(btn, "Phòng: " + dp.MAPHONG + "\n" + "Tên KH :" + kh.TENKH + "\n" + "Ngày Ở: " + dp.NGAYO.Value.ToShortDateString());
                 btn.Click += btn_Click;
             }
         }
-        double? tinhTongTienPhong(DatPhong datPhong)
+        double? tinhTongTienPhong(ThuePhong thuePhong)
         {
             PhongDAO phongDAO = new PhongDAO();
-            var phong = phongDAO.GetPhong(Convert.ToInt32(datPhong.MAPHONG));
+            var phong = phongDAO.GetPhong(Convert.ToInt32(thuePhong.MAPHONG));
             double soNgay = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
             if(soNgay == 0)
             {
-                soNgay = 0.5;
+                soNgay = 1;
             }
             double? tienPhong = phong.GIAPHONG * soNgay;
             return tienPhong;
         }
 
-        void loadThongTin(int maDatPhong)
+        void loadThongTin(int maThuePhong)
         {
-            var datPhong = datPhongDAO.GetDatPhong(maDatPhong);
-            var khachHang = khachHangDAO.GetKhachHang(datPhong.MAKH);
+            KhachHangDAO khachHangDAO = new KhachHangDAO();
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            var thuePhong = thuePhongDAO.GetThuePhong(maThuePhong);
+            var khachHang = khachHangDAO.GetKhachHang(thuePhong.MAKH);
 
 
-            lbMaDatPhong.Text = datPhong.MADATPHONG.ToString();
-            MaDatp = lbMaDatPhong.Text;
-            labMaPhong.Text = datPhong.MAPHONG.ToString();
-            lbMaKH.Text = datPhong.MAKH.ToString();
+            lbMaThuePhong.Text = thuePhong.MATHUEPHONG.ToString();
+            MaDatp = lbMaThuePhong.Text;
+            labMaPhong.Text = thuePhong.MAPHONG.ToString();
+            lbMaKH.Text = thuePhong.MAKH.ToString();
             lbHoTen.Text = khachHang.TENKH;
             lbGioiTinh.Text = khachHang.GIOITINH;
             dtpkNgaySinh.Value = khachHang.NGAYSINH.Value.Date;
@@ -119,10 +114,10 @@ namespace KS
             lbCMND.Text = khachHang.CHUNGMINHTHU;
             lbSDT.Text = khachHang.SODIENTHOAI;
 
-            var lstDatPhong = datPhongDAO.GetListDatPhong(fPhong.MaPtag);
-            dtpkNgayDi.MinDate = datPhong.NGAYO.Value.Date;
+            var lstDatPhong = thuePhongDAO.GetListThuePhong(fPhong.MaPtag);
+            dtpkNgayDi.MinDate = thuePhong.NGAYO.Value.Date;
             var thongTinPhongDat = (from a in db.Phongs
-                                    where a.MAPHONG == datPhong.MAPHONG
+                                    where a.MAPHONG == thuePhong.MAPHONG
                                     select new
                                     {
                                         MAPHONG = a.MAPHONG,
@@ -130,16 +125,16 @@ namespace KS
                                         TINHTRANGPHONG = a.TINHTRANGPHONG,
                                         MALOAIPHONG = a.MALOAIPHONG,
                                         GIAPHONG = a.GIAPHONG,
-                                        DONVITIENTE = a.DONVITIENTE
+                                        MOTA = a.MOTA
                                     }).ToList();
 
             dtgvThongTinPhongThanhToan.DataSource = thongTinPhongDat;
             var thongTinDichVuDat = (from a in db.DatDichVus
-                                     where a.MADATPHONG == datPhong.MADATPHONG
+                                     where a.MATHUEPHONG == thuePhong.MATHUEPHONG
                                      select new
                                      {
                                          Id = a.Id,
-                                         MADATPHONG = a.MADATPHONG,
+                                         MADATPHONG = a.MATHUEPHONG,
                                          MADV = a.MADV,
                                          SoLuong = a.SoLuong,
                                          ngayDung = a.ngayDung,
@@ -152,53 +147,52 @@ namespace KS
                 tienDV += datDV.giaDichVuHienTai;
             }
             lbTienDV.Text = tienDV.ToString();
-            lbTraTruoc.Text = datPhong.TRATRUOC.ToString();
-            dtpkNgayO.Value = datPhong.NGAYO.Value.Date;
-            dtpkNgayDi.Value = dtpkNgayThanhToan.Value.Date;
+            dtpkNgayO.Value = thuePhong.NGAYO.Value.Date;
+            dtpkNgayDi.Value = thuePhong.NGAYDI.Value.Date;
 
-            var tienPhong = tinhTongTienPhong(db.DatPhongs.Find(datPhong.MADATPHONG));
+            var tienPhong = tinhTongTienPhong(db.ThuePhongs.Find(thuePhong.MATHUEPHONG));
             lbTienPhg.Text = tienPhong.ToString();
             lbTienDV.Text = tienDV.ToString();
             var TongTien = tienDV + tienPhong;
             lbTongTien.Text = TongTien.ToString();
-            var conLai = TongTien - datPhong.TRATRUOC;
-            lbConLai.Text = conLai.ToString();
             dtpkNgayThanhToan.Value = DateTime.Today;
             
         }
         private void btn_Click(object sender, EventArgs e)
         {
-            var dp = ((sender as Button).Tag as DatPhong).MADATPHONG;
+            var dp = ((sender as Button).Tag as ThuePhong).MATHUEPHONG;
             loadThongTin(dp);
         }
 
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
+            DatDichVuDAO datDichVuDAO = new DatDichVuDAO();
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
             if (txbTienMat.Text == "") lbThongBao.Visible = true;
-            if (txbTienMat.Text != "" && Convert.ToDouble(txbTienMat.Text) >= Convert.ToDouble(lbConLai.Text))
+            if (txbTienMat.Text != "" && Convert.ToDouble(txbTienMat.Text) >= Convert.ToDouble(lbTongTien.Text))
             {
                 lbThongBao.Visible = false;
-                var datPhong = datPhongDAO.GetDatPhong(Convert.ToInt32(lbMaDatPhong.Text));
-                var lsdatDichVu = datDichVuDAO.GetListDatDichVu(datPhong.MADATPHONG);
+                var thuePhong = thuePhongDAO.GetThuePhong(Convert.ToInt32(lbMaThuePhong.Text));
+                var lsdatDichVu = datDichVuDAO.GetListDatDichVu(thuePhong.MATHUEPHONG);
                 HoaDon hoaDon = new HoaDon()
                 {
                     NGAYTHANHTOAN = DateTime.Today,
-                    MAKH = datPhong.MAKH,
+                    MAKH = thuePhong.MAKH,
                     TIENPHONG = Convert.ToInt32(lbTienPhg.Text),
                     MANHANVIEN = fLogin.MaNhanVien,
-                    TIENDV = tinhTongTienDichVu(datPhong.MADATPHONG),
+                    TIENDV = tinhTongTienDichVu(thuePhong.MATHUEPHONG),
                 };
                 db.HoaDons.Add(hoaDon);
                 db.SaveChanges();
 
                 foreach (var ddv in lsdatDichVu)
                 {
-                    DatDichVu a = db.DatDichVus.Find(ddv.Id);
-                    db.DatDichVus.Remove(a);
+                    var a = db.DatDichVus.Find(ddv.Id);
+                    a.isDelete = true;
                 }
                 db.SaveChanges();
 
-                var dp = db.DatPhongs.Find(datPhong.MADATPHONG);
+                var dp = db.ThuePhongs.Find(thuePhong.MATHUEPHONG);
                 dp.isDelete = true;
                 db.SaveChanges();
 
@@ -206,13 +200,13 @@ namespace KS
                 ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon()
                 {
                     MAHD = ma,
-                    MADATPHONG = datPhong.MADATPHONG,
+                    MATHUEPHONG = thuePhong.MATHUEPHONG,
                     GHICHU = ""
                 };
                 db.ChiTietHoaDons.Add(chiTietHoaDon);
                 db.SaveChanges();
 
-                MessageBox.Show("Thanh cong");
+                MessageBox.Show("Thành công");
                 this.Close();
             }
             else MessageBox.Show("Không hợp lệ");
@@ -227,7 +221,7 @@ namespace KS
             {
                 lbThongBao.Visible = false;
 
-                var tien = Convert.ToDouble(txbTienMat.Text) - Convert.ToDouble(lbConLai.Text);
+                var tien = Convert.ToDouble(txbTienMat.Text) - Convert.ToDouble(lbTongTien.Text);
                 if (tien < 0) lbThongBao2.Visible = true;
                 else
                 {
@@ -245,14 +239,15 @@ namespace KS
 
         private void dtpkNgayDi_ValueChanged(object sender, EventArgs e)
         {
-            //    double soNgayThue = 0;
-            //    var phong = phongDAO.GetPhong(Convert.ToInt32(labMaPhong.Text));
-            //    if (dtpkNgayDi.Value.Date == dtpkNgayO.Value.Date)
-            //    {
-            //        soNgayThue = 0.5;
-            //    }
-            //    else soNgayThue = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
-            //    lbTienPhg.Text = (soNgayThue * phong.GIAPHONG).ToString();
+            PhongDAO phongDAO = new PhongDAO();
+            double soNgayThue = 0;
+            var phong = phongDAO.GetPhong(Convert.ToInt32(labMaPhong.Text));
+            if (dtpkNgayDi.Value.Date == dtpkNgayO.Value.Date)
+            {
+                soNgayThue = 0.5;
+            }
+            else soNgayThue = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
+            lbTienPhg.Text = (soNgayThue * phong.GIAPHONG).ToString();
             //    fPrintChiTietHoaDon.NgayDi = dtpkNgayDi.Value.Date;
         }
 
@@ -267,10 +262,10 @@ namespace KS
             else
             {
                 lbThongBao.Visible = false;
-                if (double.Parse(txbTienMat.Text) >= double.Parse(lbConLai.Text))
+                if (double.Parse(txbTienMat.Text) >= double.Parse(lbTongTien.Text))
                 {
                     lbThongBao2.Visible = false;
-                    lbTienThua.Text = (double.Parse(txbTienMat.Text) - double.Parse(lbConLai.Text)).ToString();
+                    lbTienThua.Text = (double.Parse(txbTienMat.Text) - double.Parse(lbTongTien.Text)).ToString();
                 }
                 else
                 {
@@ -278,6 +273,42 @@ namespace KS
                     lbTienThua.Text = "0";
                 }
             }
+
+        }
+
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            dtpkNgayDi.Value = DateTime.Today;
+        }
+        Bitmap memoryImage;
+        private void CaptureScreen()
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = panel1.Size;
+            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+        }
+
+        private void printDocument1_PrintPage_1(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+        }
+
+        private void btnInHoaDon_Click_1(object sender, EventArgs e)
+        {
+            CaptureScreen();
+            printDocument1.Print();
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage_1);
+        }
+
+        private void dtgvThongTinPhongThanhToan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

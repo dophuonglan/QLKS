@@ -5,7 +5,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="MAHD" Type="int" Nullable="false" />
-    <Property Name="MADATPHONG" Type="int" Nullable="false" />
+    <Property Name="MATHUEPHONG" Type="int" Nullable="false" />
     <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="MADATPHONG" Type="int" Nullable="false" />
+    <Property Name="MATHUEPHONG" Type="int" Nullable="false" />
     <Property Name="MADV" Type="int" Nullable="false" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="ngayDung" Type="datetime" Nullable="false" />
@@ -41,6 +41,8 @@
     <Property Name="TrangThaiThanhToan" Type="nvarchar" MaxLength="100" />
     <Property Name="GiaPhongHienTai" Type="float" />
     <Property Name="isDelete" Type="bit" />
+    <Property Name="isUse" Type="bit" />
+    <Property Name="isLate" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DichVu">
     <Key>
@@ -113,7 +115,7 @@
     <Property Name="TINHTRANGPHONG" Type="nvarchar" MaxLength="100" />
     <Property Name="MALOAIPHONG" Type="int" />
     <Property Name="GIAPHONG" Type="float" />
-    <Property Name="DONVITIENTE" Type="nvarchar" MaxLength="100" />
+    <Property Name="MOTA" Type="nvarchar" MaxLength="100" />
     <Property Name="isDelete" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -134,19 +136,22 @@
     <Property Name="PASS" Type="nvarchar" MaxLength="100" />
     <Property Name="MACHUCVU" Type="int" />
     <Property Name="MANHANVIEN" Type="int" />
+    <Property Name="isBan" Type="bit" />
   </EntityType>
-  <Association Name="FK__ChiTietHo__MADAT__24927208">
-    <End Role="DatPhong" Type="Self.DatPhong" Multiplicity="1" />
-    <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DatPhong">
-        <PropertyRef Name="MADATPHONG" />
-      </Principal>
-      <Dependent Role="ChiTietHoaDon">
-        <PropertyRef Name="MADATPHONG" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="ThuePhong">
+    <Key>
+      <PropertyRef Name="MATHUEPHONG" />
+    </Key>
+    <Property Name="MATHUEPHONG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAPHONG" Type="int" />
+    <Property Name="MAKH" Type="int" />
+    <Property Name="TRATRUOC" Type="float" />
+    <Property Name="NGAYO" Type="datetime" />
+    <Property Name="NGAYDI" Type="datetime" />
+    <Property Name="TrangThaiThanhToan" Type="nvarchar" MaxLength="100" />
+    <Property Name="GiaPhongHienTai" Type="float" />
+    <Property Name="isDelete" Type="bit" />
+  </EntityType>
   <Association Name="FK__ChiTietHoa__MAHD__239E4DCF">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
     <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -156,18 +161,6 @@
       </Principal>
       <Dependent Role="ChiTietHoaDon">
         <PropertyRef Name="MAHD" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__DatDichVu__MADAT__29572725">
-    <End Role="DatPhong" Type="Self.DatPhong" Multiplicity="1" />
-    <End Role="DatDichVu" Type="Self.DatDichVu" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DatPhong">
-        <PropertyRef Name="MADATPHONG" />
-      </Principal>
-      <Dependent Role="DatDichVu">
-        <PropertyRef Name="MADATPHONG" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -291,6 +284,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__ThuePhong__MAKH__1D7B6025">
+    <End Role="KhachHang" Type="Self.KhachHang" Multiplicity="0..1" />
+    <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="ThuePhong">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ThuePhong__MAPHO__1C873BEC">
+    <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+    <End Role="ThuePhong" Type="Self.ThuePhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Phong">
+        <PropertyRef Name="MAPHONG" />
+      </Principal>
+      <Dependent Role="ThuePhong">
+        <PropertyRef Name="MAPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -335,17 +353,10 @@
     <EntitySet Name="Phong" EntityType="Self.Phong" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__ChiTietHo__MADAT__24927208" Association="Self.FK__ChiTietHo__MADAT__24927208">
-      <End Role="DatPhong" EntitySet="DatPhong" />
-      <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-    </AssociationSet>
+    <EntitySet Name="ThuePhong" EntityType="Self.ThuePhong" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__ChiTietHoa__MAHD__239E4DCF" Association="Self.FK__ChiTietHoa__MAHD__239E4DCF">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
-    </AssociationSet>
-    <AssociationSet Name="FK__DatDichVu__MADAT__29572725" Association="Self.FK__DatDichVu__MADAT__29572725">
-      <End Role="DatPhong" EntitySet="DatPhong" />
-      <End Role="DatDichVu" EntitySet="DatDichVu" />
     </AssociationSet>
     <AssociationSet Name="FK__DatDichVu__MADV__2A4B4B5E" Association="Self.FK__DatDichVu__MADV__2A4B4B5E">
       <End Role="DichVu" EntitySet="DichVu" />
@@ -386,6 +397,14 @@
     <AssociationSet Name="FK__TaiKhoan__MANHAN__3D5E1FD2" Association="Self.FK__TaiKhoan__MANHAN__3D5E1FD2">
       <End Role="NhanVien" EntitySet="NhanVien" />
       <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThuePhong__MAKH__1D7B6025" Association="Self.FK__ThuePhong__MAKH__1D7B6025">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="ThuePhong" EntitySet="ThuePhong" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ThuePhong__MAPHO__1C873BEC" Association="Self.FK__ThuePhong__MAPHO__1C873BEC">
+      <End Role="Phong" EntitySet="Phong" />
+      <End Role="ThuePhong" EntitySet="ThuePhong" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -9,11 +9,12 @@ namespace KS.DAO
 {
     public class PhongDAO
     {
-        QLKSEntities2 db = new QLKSEntities2();
+        QLKSEntities2 db =null;
         private PhongDTO phongDTO;
         public PhongDAO()
         {
             phongDTO = new PhongDTO();
+            db = new QLKSEntities2();
         }
         public List<Phong> GetPhong()
         {
@@ -26,6 +27,10 @@ namespace KS.DAO
         public Phong GetPhong(int id)
         {
             return phongDTO.GetPhong(id);
+        }
+        public Phong GetPhong(string name)
+        {
+            return phongDTO.GetPhong(name);
         }
         public Phong GetLoaiPhong(int ma)
         {

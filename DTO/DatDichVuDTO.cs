@@ -16,38 +16,39 @@ namespace KS.DTO
         public void Remove(int id)
         {
             var datDichVuFound = db.DatDichVus.Find(id);
-            db.DatDichVus.Remove(datDichVuFound);
+            datDichVuFound.isDelete = true;
             db.SaveChanges();
         }
         public List<DatDichVu> GetDatDichVu()
         {
-            return db.DatDichVus.ToList();
+            return db.DatDichVus.Where(x=>x.isDelete==false).ToList();
         }
 
         public DatDichVu GetDatDichVu(int maDP, int maDV, DateTime ngayDung)
         {
-            return db.DatDichVus.SingleOrDefault(x => x.MADATPHONG == maDP && x.MADV == maDV && x.ngayDung == ngayDung);
+            return db.DatDichVus.SingleOrDefault(x => x.MATHUEPHONG == maDP && x.MADV == maDV && x.ngayDung == ngayDung);
         }
 
         public DatDichVu GetDatDichVu(int id)
         {
             return db.DatDichVus.Find(id);
         }
-        public List<DatDichVu> GetListDatDichVu(int ma)
+        public List<DatDichVu> GetListDatDichVu(int maThuePhong)
         {
             List<DatDichVu> lst = new List<DatDichVu>();
             foreach (var datDichVu in db.DatDichVus)
             {
-                if(datDichVu.MADATPHONG == ma)
+                if(datDichVu.MATHUEPHONG == maThuePhong)
                 {
                     lst.Add(datDichVu);
                 }
             }
             return lst;
         }
+
         public DatDichVu GetDatDichVu(DateTime ngay)
         {
-            return db.DatDichVus.FirstOrDefault(x => x.ngayDung == ngay);
+            return db.DatDichVus.FirstOrDefault(x => x.ngayDung == ngay && x.isDelete == false);
         }
     }
 }

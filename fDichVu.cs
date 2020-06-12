@@ -17,16 +17,10 @@ namespace KS
     public partial class fDichVu : Form
     {
         QLKSEntities2 db = null;
-        DatPhongDAO datPhongDAO = null;
-        DichVuDAO dichVuDAO = null;
-        DatDichVuDAO datDichVuDAO = null;
         public fDichVu()
         {
             InitializeComponent();
-            datPhongDAO = new DatPhongDAO();
-            dichVuDAO = new DichVuDAO();
             db = new QLKSEntities2();
-            datDichVuDAO = new DatDichVuDAO();
         }
 
         void phanQuyen()
@@ -53,11 +47,11 @@ namespace KS
             var result = (from c in db.DatDichVus
                           from a in db.DichVus
                           where c.MADV == a.MADV
-                          && c.MADATPHONG.ToString() == cbbMaDP.Text
+                          && c.MATHUEPHONG.ToString() == cbbMaTP.Text
                           select new RowDichVu
                           {
                               Id = c.Id,
-                              MaDatPhong = c.MADATPHONG,
+                              MaDatPhong = c.MATHUEPHONG,
                               MaDV = c.MADV,
                               TenDV = a.TENDV,
                               SoLuong = c.SoLuong,
@@ -83,19 +77,42 @@ namespace KS
             cbbTenDV_Sua.DataSource = lstDichVu;
             cbbTenDV_Sua.DisplayMember = "TENDV";
         }
+        void loadThuePhong()
+        {
+            var result = (from a in db.ThuePhongs
+                          from b in db.Phongs
+                          from c in db.KhachHangs
+                          where a.MAPHONG == b.MAPHONG
+                          && a.MAKH == c.MAKH
+                           && a.isDelete == false
+                          && b.TENPHONG == cbbChonPhong.Text
+                          select new SelectThuePhong
+                          {
+                              MaThuePhong = a.MATHUEPHONG,
+                              TenPhong = b.TENPHONG,
+                              NgayO = a.NGAYO,
+                              NgayDi = a.NGAYDI,
+                              TenKhachHang = c.TENKH,
+                              NgaySinh = c.NGAYSINH,
+                              SoDienThoai = c.SODIENTHOAI,
+                          }).ToList();
+            cbbMaTP.DataSource = result;
+            cbbMaTP.DisplayMember = "maThuePhong";
+        }
+
         void loadCacBox()
         {
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            loadThuePhong();
 
-            var lstDatphg = datPhongDAO.GetDatPhong();
-            if (lstDatphg.Count != 0)
+            var lstThuephg = thuePhongDAO.GetThuePhong();
+            if (lstThuephg.Count != 0)
             {
-                cbbMaDP.Text = lstDatphg[0].MADATPHONG.ToString();
-                var datPhong = datPhongDAO.GetDatPhong(Convert.ToInt32(cbbMaDP.Text));
-                dtpkNgayDi.Value = datPhong.NGAYDI.Value;
-                dtpkNgayO.Value = datPhong.NGAYO.Value;
-                txbmaPhong.Text = datPhong.MAPHONG.ToString();
+                cbbMaTP.Text = lstThuephg[0].MATHUEPHONG.ToString();
+                var thuePhg = thuePhongDAO.GetThuePhong(Convert.ToInt32(cbbMaTP.Text));
+                dtpkNgayDi.Value = thuePhg.NGAYDI.Value;
+                dtpkNgayO.Value = thuePhg.NGAYO.Value;
             }
-
         }
         void loadTenDV_CapNhatDV()
         {
@@ -116,27 +133,51 @@ namespace KS
             this.dtgvThongTinDatDichVu.Columns.Add(buttonXoa);
         }
 
+        void loadTenPhongThuePhong()
+        {
+            var result = (from a in db.ThuePhongs
+                         from b in db.Phongs
+                         from c in db.KhachHangs
+                         where a.MAPHONG == b.MAPHONG
+                         && a.MAKH == c.MAKH
+                         && a.isDelete == false
+                         select new SelectThuePhong
+                         {
+                             MaThuePhong = a.MATHUEPHONG,
+                             TenPhong = b.TENPHONG,
+                             NgayO= a.NGAYO,
+                             NgayDi=a.NGAYDI,
+                             TenKhachHang = c.TENKH,
+                             NgaySinh = c.NGAYSINH,
+                             SoDienThoai = c.SODIENTHOAI,
+                         }).ToList();
+            cbbChonPhong.DataSource = result;
+            cbbChonPhong.DisplayMember = "TENPHONG";
+        }
         private void fDichVu_Load(object sender, EventArgs e)
         {
             phanQuyen();
-            var lstDatphg = datPhongDAO.GetDatPhong();
-            cbbMaDP.DataSource = lstDatphg;
-            cbbMaDP.DisplayMember = "MADATPHONG";
+            loadTenPhongThuePhong();
             dtpkNgayDung.Value = DateTime.Today;
             loadDichVu();
             loadCacBox();
             loadThongTinDatDichVu();
             CreateButtonDelete();
-            //CreateButtonEdit();
         }
 
         private void cbbMaDP_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DatPhong DPSelected = (DatPhong)cbbMaDP.SelectedItem;
-            var datPhong = datPhongDAO.GetDatPhong(DPSelected.MADATPHONG);//////////
-            dtpkNgayDi.Value = datPhong.NGAYDI.Value;
-            dtpkNgayO.Value = datPhong.NGAYO.Value;
-            txbmaPhong.Text = datPhong.MAPHONG.ToString();
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            SelectThuePhong TPSelected = (SelectThuePhong)cbbMaTP.SelectedItem;
+            var thuePhong = thuePhongDAO.GetThuePhong(TPSelected.MaThuePhong);
+            dtpkNgayDi.Value = thuePhong.NGAYDI.Value;
+            dtpkNgayO.Value = thuePhong.NGAYO.Value;
+            //txbTenKH.Text = TPSelected.TenKhachHang;
+            //txbSDTKH.Text = TPSelected.SoDienThoai;
+            KhachHangDAO khachHangDAO = new KhachHangDAO();
+            var kh = khachHangDAO.GetKhachHang(thuePhong.MAKH);
+            txbTenKH.Text = kh.TENKH;
+            txbSDTKH.Text = kh.SODIENTHOAI;
             dtgvThongTinDatDichVu.DataBindings.Clear();
             loadThongTinDatDichVu();
         }
@@ -156,49 +197,6 @@ namespace KS
             loadDichVu();
             loadCacBox();
             loadThongTinDatDichVu();
-        }
-
-        private void btnDatDV_Click(object sender, EventArgs e)
-        {
-            var lstDichVu = dichVuDAO.GetDichVu();
-
-            if (numSoLuong.Value == 0)
-            {
-                lbThongBaoChonSoLg.Visible = true;
-            }
-            else
-            {
-                lbThongBaoChonSoLg.Visible = false;
-                var dichVu = dichVuDAO.GetDichVu(cbbTenDichVu.Text);//lay dichvu co ten xac dinh
-                int ma = dichVu.MADV;// madv đang dc dat
-                DatDichVu datDV = null;
-                int slgThem = Convert.ToInt32(numSoLuong.Value);
-                double giaThem = Convert.ToDouble(txbTienDV.Text);
-                foreach (var datdv in db.DatDichVus.ToList())
-                {
-                    if (datdv.MADATPHONG.ToString() == cbbMaDP.Text && datdv.MADV == ma && datdv.ngayDung.Date == dtpkNgayDung.Value.Date)
-                    {
-                        datdv.SoLuong = slgThem + datdv.SoLuong;
-                        datdv.giaDichVuHienTai = datdv.giaDichVuHienTai + giaThem;
-                        MessageBox.Show("Thêm thành công!");
-                        db.SaveChanges();
-                        loadThongTinDatDichVu();
-                        return;
-                    }
-                    continue;
-                }
-                datDV = new DatDichVu();
-                datDV.MADATPHONG = Convert.ToInt32(cbbMaDP.Text);
-                datDV.SoLuong = Convert.ToInt32(numSoLuong.Value);
-                datDV.ngayDung = dtpkNgayDung.Value;
-                datDV.giaDichVuHienTai = Convert.ToDouble(txbTienDV.Text);
-                datDV.MADV = dichVu.MADV;
-                datDV.isDelete = false;
-                db.DatDichVus.Add(datDV);
-                db.SaveChanges();
-                MessageBox.Show("Đặt thành công!");
-                loadThongTinDatDichVu();
-            }
         }
 
         private void btnThemDV_Click(object sender, EventArgs e)
@@ -242,6 +240,7 @@ namespace KS
                 }
                 else
                 {
+                    DichVuDAO dichVuDAO = new DichVuDAO();
                     var DV = dichVuDAO.GetDichVu(cbbTenDichVu.Text);
                     DichVu dichVu = db.DichVus.SingleOrDefault(x => x.MADV == DV.MADV);
                     dichVu.GIADV = Convert.ToDouble(txbDonGia_Sua.Text);
@@ -276,6 +275,7 @@ namespace KS
 
         private void dtgvThongTinDatDichVu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DatDichVuDAO datDichVuDAO = new DatDichVuDAO();
             var senderGrid = (DataGridView)sender;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
@@ -333,5 +333,59 @@ namespace KS
                 lbThongBaoSua2.Visible = false;
             }
         }
+
+        private void cbbChonPhong_SelectedValueChanged(object sender, EventArgs e)
+        {
+            loadThuePhong();
+        }
+
+        private void btnDatDV_Click_1(object sender, EventArgs e)
+        {
+            DichVuDAO dichVuDAO = new DichVuDAO();
+            var lstDichVu = dichVuDAO.GetDichVu();
+
+            if (numSoLuong.Value == 0)
+            {
+                lbThongBaoChonSoLg.Visible = true;
+            }
+            else
+            {
+                lbThongBaoChonSoLg.Visible = false;
+                var dichVu = dichVuDAO.GetDichVu(cbbTenDichVu.Text);//lay dichvu co ten xac dinh
+                int ma = dichVu.MADV;// madv đang dc dat
+                DatDichVu datDV = null;
+                int slgThem = Convert.ToInt32(numSoLuong.Value);
+                double giaThem = Convert.ToDouble(txbTienDV.Text);
+                foreach (var datdv in db.DatDichVus.ToList())
+                {
+                    if (datdv.MATHUEPHONG.ToString() == cbbMaTP.Text && datdv.MADV == ma && datdv.ngayDung.Date == dtpkNgayDung.Value.Date)
+                    {
+                        datdv.SoLuong = slgThem + datdv.SoLuong;
+                        datdv.giaDichVuHienTai = datdv.giaDichVuHienTai + giaThem;
+                        MessageBox.Show("Thêm thành công!");
+                        db.SaveChanges();
+                        loadThongTinDatDichVu();
+                        return;
+                    }
+                    continue;
+                }
+                datDV = new DatDichVu();
+                datDV.MATHUEPHONG = Convert.ToInt32(cbbMaTP.Text);
+                datDV.SoLuong = Convert.ToInt32(numSoLuong.Value);
+                datDV.ngayDung = dtpkNgayDung.Value;
+                datDV.giaDichVuHienTai = Convert.ToDouble(txbTienDV.Text);
+                datDV.MADV = dichVu.MADV;
+                datDV.isDelete = false;
+                db.DatDichVus.Add(datDV);
+                db.SaveChanges();
+                MessageBox.Show("Đặt thành công!");
+                loadThongTinDatDichVu();
+            }
+        }
+
+        //private void cbbMaDP_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

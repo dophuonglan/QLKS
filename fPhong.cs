@@ -12,8 +12,6 @@ using static System.Windows.Forms.ListViewItem;
 
 namespace KS
 {
-
-
     public partial class fPhong : Form
     {
         public class MyButton : Button
@@ -25,10 +23,7 @@ namespace KS
         }
         static int phongID = 0;
         static string tinhTrangPhg = "";
-        QLKSEntities2 db = new QLKSEntities2();
-        PhongDAO phongDAO = null;
-        DatDichVuDAO datDichVuDAO = null;
-        DatPhongDAO datPhongDAO = null;
+        QLKSEntities2 db = null;
         private static int maPtag;
 
         public static int PhongID { get => phongID; set => phongID = value; }
@@ -46,30 +41,55 @@ namespace KS
         public fPhong()
         {
             InitializeComponent();
-            phongDAO = new PhongDAO();
-            datPhongDAO = new DatPhongDAO();
-            datDichVuDAO = new DatDichVuDAO();
+            db = new QLKSEntities2();
         }
         private void loadDataPhg()
         {
             phanQuyen();
-            var result = from c in db.Phongs
+            var result =( from c in db.Phongs
                          from a in db.LoaiPhongs
 
                          where c.MALOAIPHONG == a.MALOAIPHONG
                          && c.isDelete == false
-                         select new
+                         select new RowPhong
                          {
-                             c.MAPHONG,
-                             c.TENPHONG,
-                             c.TINHTRANGPHONG,
-                             a.TENLOAIPHONG,
-                             c.GIAPHONG,
-                             c.DONVITIENTE
-                         };
-            dtgrChiTietPhong.DataSource = result.ToList();
+                             TENPHONG = c.TENPHONG,
+                             TINHTRANGPHONG = c.TINHTRANGPHONG,
+                             TENLOAIPHONG = a.TENLOAIPHONG,
+                             GIAPHONG = c.GIAPHONG,
+                             MOTA = c.MOTA,
+                         }).ToList();
+            int stt = 1;
+            foreach (var item in result)
+            {
+                item.STT = stt;
+                stt++;
+            }
+            dtgrChiTietPhong.DataSource = result;
         }
 
+        void showThongTin(int id)
+        {
+            var result = (from c in db.Phongs
+                          from a in db.LoaiPhongs
+
+                          where c.MALOAIPHONG == a.MALOAIPHONG && c.MAPHONG == id
+                          && c.isDelete == false
+                          select new RowPhong
+                          {
+                              TINHTRANGPHONG = c.TINHTRANGPHONG,
+                              TENLOAIPHONG = a.TENLOAIPHONG,
+                              GIAPHONG = c.GIAPHONG,
+                              TENPHONG = c.TENPHONG,
+                          }).ToList();
+            int stt = 1;
+            foreach (var item in result)
+            {
+                item.STT = stt;
+                stt++;
+            }
+            dtgrChiTietPhong.DataSource = result;
+        }
         public void refreshSoDo()
         {
             flowRoom.Controls.Clear();
@@ -78,7 +98,7 @@ namespace KS
         }
         public void loadSoDoPhong()
         {
-            phongDAO = new PhongDAO();
+            PhongDAO phongDAO = new PhongDAO();
             var rooms = phongDAO.GetPhongNotDeleted();
             int i = 0;
             foreach (var room in rooms)
@@ -93,9 +113,10 @@ namespace KS
                 btn.DoubleClick += btn_DoubleClick;
                 btn.Tag = room;
                 i++;
-                var datPhong = datPhongDAO.GetListDatPhong(room.MAPHONG);
+                ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+                var thuePhong = thuePhongDAO.GetListThuePhong(room.MAPHONG);
                 Phong editPhong = db.Phongs.Find(room.MAPHONG);
-                if (datPhong.Count != 0)
+                if (thuePhong.Count != 0)
                 {
                     editPhong.TINHTRANGPHONG = "Đang cho thuê";
                     db.SaveChanges();
@@ -115,7 +136,7 @@ namespace KS
                         btn.BackColor = Color.SteelBlue;
                         break;
                 }
-                btn.Text = "Phòng "+ room.MAPHONG + "\n" + room.TINHTRANGPHONG;
+                btn.Text = "Phòng "+ i + "\n" + room.TINHTRANGPHONG;
 
             }
             lbTongSoPhg.Text = i.ToString();
@@ -130,6 +151,7 @@ namespace KS
                 fThanhToan thanhToan = new fThanhToan();
                 Hide();
                 thanhToan.ShowDialog();
+                Show();
                 refreshSoDo();
             }
         }
@@ -140,33 +162,11 @@ namespace KS
             loadSoDoPhong();
         }
 
-        void showThongTin(int id)
-        {
-            var result = from c in db.Phongs
-                         from a in db.LoaiPhongs
-
-                         where c.MALOAIPHONG == a.MALOAIPHONG && c.MAPHONG == id
-                         && c.isDelete ==false
-                         select new
-                         {
-                             c.MAPHONG,
-                             c.TENPHONG,
-                             c.TINHTRANGPHONG,
-                             a.TENLOAIPHONG,
-                             c.GIAPHONG,
-                             c.DONVITIENTE
-                         };
-            dtgrChiTietPhong.DataSource = result.ToList();
-        }
+        
         private void btn_Click(object sender, EventArgs e)
         {
             PhongID = ((sender as Button).Tag as Phong).MAPHONG;
             showThongTin(PhongID);
-        }
-
-        private void btnExitDSP_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace KS
             fAddThongTinPhg fAdd = new fAddThongTinPhg();
             //this.Hide();
             fAdd.ShowDialog();
-           refreshSoDo();
+            refreshSoDo();
             this.Show();
         }
 
@@ -201,6 +201,7 @@ namespace KS
 
         private void btnXoaPhg_Click(object sender, EventArgs e)
         {
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
             if (phongID == 0)
             {
                 MessageBox.Show("Vui lòng chọn phòng!");
@@ -210,10 +211,10 @@ namespace KS
                 if (MessageBox.Show("Bạn có thật sự muốn xóa phòng "+phongID+" này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     
-                    var listDatPhong = datPhongDAO.GetListDatPhong(phongID);
+                    var listDatPhong = thuePhongDAO.GetListThuePhong(phongID);
                     if (listDatPhong.Count() != 0)
                     {
-                        MessageBox.Show("Phòng đang có đơn phòng. Vui lòng hủy đơn đặt và quay lại!");
+                        MessageBox.Show("Phòng đang có đơn thuê phòng. Vui lòng hủy thuê và quay lại!");
                     }
                     else
                     {
@@ -225,6 +226,11 @@ namespace KS
                     }
                 }
             }
+        }
+
+        private void btnChuyenPhg_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

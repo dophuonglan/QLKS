@@ -159,3 +159,5 @@ D:\Lan\GitHub\KS\obj\Debug\KS.exe.config
 D:\Lan\GitHub\KS\obj\Debug\KS.fThongTinTaiKhoanVaViecLam.resources
 D:\Lan\GitHub\KS\obj\Debug\KS.fManageLichLamViec.resources
 D:\Lan\GitHub\KS\obj\Debug\KS.fChucVu.resources
+D:\Lan\GitHub\KS\obj\Debug\KS.fThuePhong.resources
+D:\Lan\GitHub\KS\obj\Debug\KS.fQLTaiKhoan.resources

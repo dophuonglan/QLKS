@@ -25,6 +25,10 @@ namespace KS.DTO
         {
             return db.Phongs.Find( ma);
         }
+        public Phong GetPhong(string name)
+        {
+            return db.Phongs.Single(x=>x.TENPHONG ==name);
+        }
         public Phong GetLoaiPhong(int ma)
         {
             return db.Phongs.SingleOrDefault(x => x.MALOAIPHONG == ma);

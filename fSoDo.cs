@@ -71,8 +71,9 @@ namespace KS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var lstDatPhong = datPhongDAO.GetDatPhong();
-            if (lstDatPhong.Count != 0)
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            var lstThuePhong = thuePhongDAO.GetThuePhong();
+            if (lstThuePhong.Count > 0)
             {
                 fThanhToan thanhToan = new fThanhToan();
                 IsClick = true;
@@ -137,6 +138,23 @@ namespace KS
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnThuePhong_Click(object sender, EventArgs e)
+        {
+            fThuePhong fThuePhong = new fThuePhong();
+            Hide();
+            fThuePhong.ShowDialog();
+            Show();
+            
+        }
+
+        private void QLTaiKhoanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fQLTaiKhoan f = new fQLTaiKhoan();
+            Hide();
+            f.ShowDialog();
+            Show();
         }
     }
 }

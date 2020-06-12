@@ -73,7 +73,7 @@ namespace KS
                         TENPHONG = txbAddTenPhg.Text,
                         MALOAIPHONG = maLP,
                         GIAPHONG = Convert.ToDouble(txbAddGiaPhg.Text),
-                        DONVITIENTE = txbAddDonViTT.Text,
+                        MOTA = txbAddDonViTT.Text,
                         isDelete = false
                     };
                     db.Phongs.Add(phg);

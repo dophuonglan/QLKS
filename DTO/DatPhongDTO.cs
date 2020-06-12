@@ -15,15 +15,19 @@ namespace KS.DTO
         }
         public List<DatPhong> GetDatPhong()
         {
-            return db.DatPhongs.Where(x => x.isDelete == false).ToList();
+            return db.DatPhongs.Where(x => x.isDelete == false && x.isUse ==false && x.isLate =="Early").ToList();
+        }
+        public List<DatPhong> GetDatPhongCoDatPhongTre()
+        {
+            return db.DatPhongs.Where(x => x.isDelete == false && x.isUse == false).ToList();
         }
         public DatPhong GetDatPhong(int ma)
         {
-            return db.DatPhongs.Find( ma);
+            return db.DatPhongs.Find(ma);
         }
         public List<DatPhong> GetListDatPhong(int maPhong)
         {
-            return db.DatPhongs.Where(x => x.isDelete == false && x.MAPHONG ==maPhong).ToList();
+            return db.DatPhongs.Where(x => x.isDelete == false && x.MAPHONG ==maPhong &&x.isUse ==false).ToList();
         }
         //public DatPhong GetDatPhongg(int ma)
         //{

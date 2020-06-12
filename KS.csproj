@@ -65,6 +65,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -84,10 +85,10 @@
     </Compile>
     <Compile Include="Common\RowChucVu.cs" />
     <Compile Include="Common\RowDichVu.cs" />
-    <Compile Include="Common\RowDatPhong.cs" />
     <Compile Include="Common\RowLichLamViec.cs" />
     <Compile Include="Common\RowNhanVien.cs" />
     <Compile Include="Common\RowThongKeHoaDon.cs" />
+    <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
     <Compile Include="DAO\ChucVuDAO.cs" />
     <Compile Include="DAO\DatDichVuDAO.cs" />
     <Compile Include="DAO\DatPhongDAO.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="DAO\LoaiPhongDAO.cs" />
     <Compile Include="DAO\PhongDAO.cs" />
     <Compile Include="DAO\TaiKhoanDAO.cs" />
+    <Compile Include="DAO\ThuePhongDAO.cs" />
     <Compile Include="DatDichVu.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
@@ -107,6 +109,7 @@
     <Compile Include="DichVu.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\ChiTietHoaDonDTO.cs" />
     <Compile Include="DTO\ChucVuDTO.cs" />
     <Compile Include="DTO\DatDichVuDTO.cs" />
     <Compile Include="DTO\DatPhongDTO.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="DTO\PhongDTO.cs" />
     <Compile Include="DTO\TaiKhoanDTO.cs" />
+    <Compile Include="DTO\ThuePhongDTO.cs" />
     <Compile Include="fDatPhong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +145,12 @@
     </Compile>
     <Compile Include="fChucVu.Designer.cs">
       <DependentUpon>fChucVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fQLTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fQLTaiKhoan.Designer.cs">
+      <DependentUpon>fQLTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="fLogin.cs">
       <SubType>Form</SubType>
@@ -196,6 +206,12 @@
     <Compile Include="fThongTinTaiKhoanVaViecLam.Designer.cs">
       <DependentUpon>fThongTinTaiKhoanVaViecLam.cs</DependentUpon>
     </Compile>
+    <Compile Include="fThuePhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fThuePhong.Designer.cs">
+      <DependentUpon>fThuePhong.cs</DependentUpon>
+    </Compile>
     <Compile Include="HoaDon.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
@@ -236,6 +252,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLKSModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Common\RowThuePhong.cs" />
+    <Compile Include="Common\RowDatPhong.cs" />
+    <Compile Include="Common\RowPhong.cs" />
+    <Compile Include="Common\SelectThuePhong.cs" />
+    <Compile Include="QuanLyDatDichVu.cs" />
+    <Compile Include="QuanLyPhong.cs" />
+    <Compile Include="RowTenDangNhap.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
@@ -247,6 +270,10 @@
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TaiKhoan.cs">
+      <DependentUpon>QLKSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinKhachHangDangThue.cs" />
+    <Compile Include="ThuePhong.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="fDatPhong.resx">
@@ -263,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fChucVu.resx">
       <DependentUpon>fChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fQLTaiKhoan.resx">
+      <DependentUpon>fQLTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fLogin.resx">
       <DependentUpon>fLogin.cs</DependentUpon>
@@ -287,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fThongTinTaiKhoanVaViecLam.resx">
       <DependentUpon>fThongTinTaiKhoanVaViecLam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fThuePhong.resx">
+      <DependentUpon>fThuePhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

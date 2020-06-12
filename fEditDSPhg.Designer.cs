@@ -30,13 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.labTBSaiDVTT = new System.Windows.Forms.Label();
             this.btnSubMitEditPhg = new System.Windows.Forms.Button();
-            this.txbEditDonViTT = new System.Windows.Forms.ComboBox();
             this.txbEditMaPhg = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.labTBSaiGiaPhg = new System.Windows.Forms.Label();
             this.labTBSaiMa = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +43,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labTBSaiTenPhg = new System.Windows.Forms.Label();
             this.txbEditLoaiPhg = new System.Windows.Forms.ComboBox();
+            this.labTBSaiDVTT = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txbEditMoTa = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,11 +62,10 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.txbEditMoTa);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.labTBSaiDVTT);
             this.panel1.Controls.Add(this.btnSubMitEditPhg);
-            this.panel1.Controls.Add(this.txbEditDonViTT);
             this.panel1.Controls.Add(this.txbEditMaPhg);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.labTBSaiGiaPhg);
@@ -85,15 +83,6 @@
             this.panel1.Size = new System.Drawing.Size(548, 408);
             this.panel1.TabIndex = 26;
             // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::KS.Properties.Resources._489a7166;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Location = new System.Drawing.Point(370, 231);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(114, 113);
-            this.panel2.TabIndex = 25;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -104,39 +93,17 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Mã Phòng";
             // 
-            // labTBSaiDVTT
-            // 
-            this.labTBSaiDVTT.ForeColor = System.Drawing.Color.Red;
-            this.labTBSaiDVTT.Location = new System.Drawing.Point(350, 172);
-            this.labTBSaiDVTT.Name = "labTBSaiDVTT";
-            this.labTBSaiDVTT.Size = new System.Drawing.Size(160, 23);
-            this.labTBSaiDVTT.TabIndex = 22;
-            this.labTBSaiDVTT.Text = "Không được bỏ trống phần này";
-            this.labTBSaiDVTT.Visible = false;
-            // 
             // btnSubMitEditPhg
             // 
             this.btnSubMitEditPhg.BackColor = System.Drawing.Color.Azure;
             this.btnSubMitEditPhg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubMitEditPhg.Location = new System.Drawing.Point(248, 295);
+            this.btnSubMitEditPhg.Location = new System.Drawing.Point(247, 325);
             this.btnSubMitEditPhg.Name = "btnSubMitEditPhg";
             this.btnSubMitEditPhg.Size = new System.Drawing.Size(75, 28);
             this.btnSubMitEditPhg.TabIndex = 1;
             this.btnSubMitEditPhg.Text = "Lưu";
             this.btnSubMitEditPhg.UseVisualStyleBackColor = false;
             this.btnSubMitEditPhg.Click += new System.EventHandler(this.btnSubMitEditPhg_Click);
-            // 
-            // txbEditDonViTT
-            // 
-            this.txbEditDonViTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txbEditDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEditDonViTT.FormattingEnabled = true;
-            this.txbEditDonViTT.Items.AddRange(new object[] {
-            "vnd"});
-            this.txbEditDonViTT.Location = new System.Drawing.Point(353, 136);
-            this.txbEditDonViTT.Name = "txbEditDonViTT";
-            this.txbEditDonViTT.Size = new System.Drawing.Size(157, 26);
-            this.txbEditDonViTT.TabIndex = 24;
             // 
             // txbEditMaPhg
             // 
@@ -145,16 +112,6 @@
             this.txbEditMaPhg.Name = "txbEditMaPhg";
             this.txbEditMaPhg.Size = new System.Drawing.Size(157, 24);
             this.txbEditMaPhg.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(256, 139);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 16);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Đơn Vị Tiền Tệ";
             // 
             // labTBSaiGiaPhg
             // 
@@ -207,7 +164,7 @@
             // labTBSaiLoaiPhg
             // 
             this.labTBSaiLoaiPhg.ForeColor = System.Drawing.Color.Red;
-            this.labTBSaiLoaiPhg.Location = new System.Drawing.Point(80, 250);
+            this.labTBSaiLoaiPhg.Location = new System.Drawing.Point(350, 166);
             this.labTBSaiLoaiPhg.Name = "labTBSaiLoaiPhg";
             this.labTBSaiLoaiPhg.Size = new System.Drawing.Size(160, 23);
             this.labTBSaiLoaiPhg.TabIndex = 20;
@@ -226,7 +183,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 226);
+            this.label3.Location = new System.Drawing.Point(273, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 11;
@@ -250,10 +207,39 @@
             this.txbEditLoaiPhg.Items.AddRange(new object[] {
             "Cao Cấp",
             "Tiêu Chuẩn"});
-            this.txbEditLoaiPhg.Location = new System.Drawing.Point(83, 221);
+            this.txbEditLoaiPhg.Location = new System.Drawing.Point(353, 137);
             this.txbEditLoaiPhg.Name = "txbEditLoaiPhg";
             this.txbEditLoaiPhg.Size = new System.Drawing.Size(157, 26);
             this.txbEditLoaiPhg.TabIndex = 7;
+            // 
+            // labTBSaiDVTT
+            // 
+            this.labTBSaiDVTT.ForeColor = System.Drawing.Color.Red;
+            this.labTBSaiDVTT.Location = new System.Drawing.Point(80, 272);
+            this.labTBSaiDVTT.Name = "labTBSaiDVTT";
+            this.labTBSaiDVTT.Size = new System.Drawing.Size(160, 23);
+            this.labTBSaiDVTT.TabIndex = 22;
+            this.labTBSaiDVTT.Text = "Không được bỏ trống phần này";
+            this.labTBSaiDVTT.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(24, 235);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Mô tả";
+            // 
+            // txbEditMoTa
+            // 
+            this.txbEditMoTa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbEditMoTa.Location = new System.Drawing.Point(83, 219);
+            this.txbEditMoTa.Multiline = true;
+            this.txbEditMoTa.Name = "txbEditMoTa";
+            this.txbEditMoTa.Size = new System.Drawing.Size(427, 50);
+            this.txbEditMoTa.TabIndex = 26;
             // 
             // fEditDSPhg
             // 
@@ -286,14 +272,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labTBSaiMa;
         private System.Windows.Forms.Label labTBSaiGiaPhg;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txbEditMaPhg;
-        private System.Windows.Forms.ComboBox txbEditDonViTT;
         private System.Windows.Forms.Button btnSubMitEditPhg;
-        private System.Windows.Forms.Label labTBSaiDVTT;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labTBSaiDVTT;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txbEditMoTa;
     }
 }

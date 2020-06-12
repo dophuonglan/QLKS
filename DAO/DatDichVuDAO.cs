@@ -23,9 +23,9 @@ namespace KS.DAO
             return datDichVuDTO.GetDatDichVu(maDP, maDV, ngayDung);
         }
 
-        public void Remove(int id)
+        public void Remove(int maThuePhong)
         {
-            datDichVuDTO.Remove(id);
+            datDichVuDTO.Remove(maThuePhong);
         }
         public DatDichVu GetDatDichVu(int ma)
         {

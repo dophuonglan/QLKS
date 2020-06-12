@@ -4,24 +4,19 @@ namespace KS.Common
 {
     class RowThongKeHoaDon
     {
-        private int maHD;
-        private DateTime? ngayThanhToan;
-        private string tenKH;
-        private string soDienThoai;
-        private DateTime? ngayO;
-        private DateTime? ngayDi;
-        private double? tienDV;
-        private double? tienPhong;
-        private double? tongTien;
-
-        public int MaHD { get => maHD; set => maHD = value; }
-        public DateTime? NgayThanhToan { get => ngayThanhToan; set => ngayThanhToan = value; }
-        public string TenKH { get => tenKH; set => tenKH = value; }
-        public string SoDienThoai { get => soDienThoai; set => soDienThoai = value; }
-        public DateTime? NgayO { get => ngayO; set => ngayO = value; }
-        public DateTime? NgayDi { get => ngayDi; set => ngayDi = value; }
-        public double? TienDV { get => tienDV; set => tienDV = value; }
-        public double? TienPhong { get => tienPhong; set => tienPhong = value; }
-        public double ?TongTien { get => tongTien; set => tongTien = value; }
+        public int STT { get; internal set; }
+        public int MaHD { get; internal set; }
+        public DateTime? NgayThanhToan { get; internal set; }
+        public string TenKH { get; internal set; }
+        public string SoDienThoai { get; internal set; }
+        public DateTime? NgayO { get; internal set; }
+        public DateTime? NgayDi { get; internal set; }
+        public double? TienDV { get; internal set; }
+        public double? TienPhong { get; internal set; }
+        public double? TongTien { get; internal set; }
+        public string TenPhong { get; internal set; }
+        public string DichVuSuDung { get; internal set; }
+        public int MaThuePhong { get; internal set; }
+        
     }
 }

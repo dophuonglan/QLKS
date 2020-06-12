@@ -18,6 +18,7 @@ namespace KS
         public string PASS { get; set; }
         public Nullable<int> MACHUCVU { get; set; }
         public Nullable<int> MANHANVIEN { get; set; }
+        public Nullable<bool> isBan { get; set; }
     
         public virtual ChucVu ChucVu { get; set; }
         public virtual NhanVien NhanVien { get; set; }

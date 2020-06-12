@@ -18,6 +18,7 @@ namespace KS
         public Phong()
         {
             this.DatPhongs = new HashSet<DatPhong>();
+            this.ThuePhongs = new HashSet<ThuePhong>();
         }
     
         public int MAPHONG { get; set; }
@@ -25,11 +26,13 @@ namespace KS
         public string TINHTRANGPHONG { get; set; }
         public Nullable<int> MALOAIPHONG { get; set; }
         public Nullable<double> GIAPHONG { get; set; }
-        public string DONVITIENTE { get; set; }
+        public string MOTA { get; set; }
         public Nullable<bool> isDelete { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatPhong> DatPhongs { get; set; }
         public virtual LoaiPhong LoaiPhong { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuePhong> ThuePhongs { get; set; }
     }
 }

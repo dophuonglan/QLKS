@@ -19,6 +19,7 @@ namespace KS
         {
             this.DatPhongs = new HashSet<DatPhong>();
             this.HoaDons = new HashSet<HoaDon>();
+            this.ThuePhongs = new HashSet<ThuePhong>();
         }
     
         public int MAKH { get; set; }
@@ -33,5 +34,7 @@ namespace KS
         public virtual ICollection<DatPhong> DatPhongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThuePhong> ThuePhongs { get; set; }
     }
 }

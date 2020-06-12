@@ -18,6 +18,10 @@ namespace KS.DAO
         {
             return taiKhoanDTO.GetTaiKhoan(tenTaiKhoan);
         }
+        public TaiKhoan GetTaiKhoanAll(string tenTaiKhoan)
+        {
+            return taiKhoanDTO.GetTaiKhoanAll(tenTaiKhoan);
+        }
         public void CapNhatTKCuaNhanVien(NhanVien nhanVien)
         {
              taiKhoanDTO.CapNhatTKCuaNhanVien(nhanVien);

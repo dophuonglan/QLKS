@@ -45,23 +45,17 @@ namespace KS
                 labTBSaiGiaPhg.Visible = true;
             }
             else labTBSaiGiaPhg.Visible = false;
-            if (txbEditDonViTT.Text == "")
+            if (txbEditMoTa.Text == "")
             {
                 labTBSaiDVTT.Visible = true;
             }
             else labTBSaiDVTT.Visible = false;
-            //if (db.Phongs.SingleOrDefault(x => x.MAPHONG.ToString() == txbEditMaPhg.Text) != null)
-            //{
-            //    labTBTrungMaPhg.Visible = true;
-            //}
-            //else labTBTrungMaPhg.Visible = false;
-
             if (!IsNumber(txbEditGiaPhg.Text))
             {
                 MessageBox.Show("Giá phòng không hợp lệ");
             }
             else if (txbEditMaPhg.Text != "" && txbEditTenPhg.Text != "" && txbEditLoaiPhg.Text != "" && txbEditGiaPhg.Text != "" &&
-               txbEditDonViTT.Text != "" && txbEditDonViTT.Text != "")
+               txbEditMoTa.Text != "" && txbEditMoTa.Text != "")
             {
 
                 var maLP = 0;
@@ -75,15 +69,14 @@ namespace KS
                     TENPHONG = txbEditTenPhg.Text,
                     MALOAIPHONG = maLP,
                     GIAPHONG = Convert.ToDouble(txbEditGiaPhg.Text),
-                    DONVITIENTE = txbEditDonViTT.Text
+                    MOTA = txbEditMoTa.Text
                 };
-                //db.Phongs.Add(phg);
                 int IDPhong = fPhong.PhongID;
                 Phong phong = db.Phongs.Find(IDPhong);
                 phong.TENPHONG = txbEditTenPhg.Text;
                 phong.MALOAIPHONG = maLP;
                 phong.GIAPHONG = Convert.ToDouble(txbEditGiaPhg.Text);
-                phong.DONVITIENTE = txbEditDonViTT.Text;
+                phong.MOTA = txbEditMoTa.Text;
                 if (MessageBox.Show("Bạn có thật sự muốn sửa phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     db.SaveChanges();
@@ -100,7 +93,7 @@ namespace KS
             var rooms = phongDAO.GetPhong(IDPhong);
             txbEditTenPhg.Text = rooms.TENPHONG;
             txbEditGiaPhg.Text = rooms.GIAPHONG.ToString();
-            txbEditDonViTT.Text = rooms.DONVITIENTE;
+            txbEditMoTa.Text = rooms.MOTA;
             switch (rooms.MALOAIPHONG)
             {
                 case 1:

@@ -15,11 +15,10 @@ namespace KS
     public partial class ChiTietHoaDon
     {
         public int MAHD { get; set; }
-        public int MADATPHONG { get; set; }
+        public int MATHUEPHONG { get; set; }
         public string GHICHU { get; set; }
         public int Id { get; set; }
     
-        public virtual DatPhong DatPhong { get; set; }
         public virtual HoaDon HoaDon { get; set; }
     }
 }

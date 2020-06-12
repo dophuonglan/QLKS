@@ -30,7 +30,7 @@
         <MappingFragment StoreEntitySet="ChiTietHoaDon">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-          <ScalarProperty Name="MADATPHONG" ColumnName="MADATPHONG" />
+          <ScalarProperty Name="MATHUEPHONG" ColumnName="MATHUEPHONG" />
           <ScalarProperty Name="MAHD" ColumnName="MAHD" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -52,13 +52,15 @@
           <ScalarProperty Name="ngayDung" ColumnName="ngayDung" />
           <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
           <ScalarProperty Name="MADV" ColumnName="MADV" />
-          <ScalarProperty Name="MADATPHONG" ColumnName="MADATPHONG" />
+          <ScalarProperty Name="MATHUEPHONG" ColumnName="MATHUEPHONG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="DatPhongs">
       <EntityTypeMapping TypeName="QLKSModel.DatPhong">
         <MappingFragment StoreEntitySet="DatPhong">
+          <ScalarProperty Name="isLate" ColumnName="isLate" />
+          <ScalarProperty Name="isUse" ColumnName="isUse" />
           <ScalarProperty Name="isDelete" ColumnName="isDelete" />
           <ScalarProperty Name="GiaPhongHienTai" ColumnName="GiaPhongHienTai" />
           <ScalarProperty Name="TrangThaiThanhToan" ColumnName="TrangThaiThanhToan" />
@@ -143,7 +145,7 @@
       <EntityTypeMapping TypeName="QLKSModel.Phong">
         <MappingFragment StoreEntitySet="Phong">
           <ScalarProperty Name="isDelete" ColumnName="isDelete" />
-          <ScalarProperty Name="DONVITIENTE" ColumnName="DONVITIENTE" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="GIAPHONG" ColumnName="GIAPHONG" />
           <ScalarProperty Name="MALOAIPHONG" ColumnName="MALOAIPHONG" />
           <ScalarProperty Name="TINHTRANGPHONG" ColumnName="TINHTRANGPHONG" />
@@ -166,10 +168,26 @@
     <EntitySetMapping Name="TaiKhoans">
       <EntityTypeMapping TypeName="QLKSModel.TaiKhoan">
         <MappingFragment StoreEntitySet="TaiKhoan">
+          <ScalarProperty Name="isBan" ColumnName="isBan" />
           <ScalarProperty Name="MANHANVIEN" ColumnName="MANHANVIEN" />
           <ScalarProperty Name="MACHUCVU" ColumnName="MACHUCVU" />
           <ScalarProperty Name="PASS" ColumnName="PASS" />
           <ScalarProperty Name="TENTAIKHOAN" ColumnName="TENTAIKHOAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThuePhongs">
+      <EntityTypeMapping TypeName="QLKSModel.ThuePhong">
+        <MappingFragment StoreEntitySet="ThuePhong">
+          <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+          <ScalarProperty Name="GiaPhongHienTai" ColumnName="GiaPhongHienTai" />
+          <ScalarProperty Name="TrangThaiThanhToan" ColumnName="TrangThaiThanhToan" />
+          <ScalarProperty Name="NGAYDI" ColumnName="NGAYDI" />
+          <ScalarProperty Name="NGAYO" ColumnName="NGAYO" />
+          <ScalarProperty Name="TRATRUOC" ColumnName="TRATRUOC" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+          <ScalarProperty Name="MATHUEPHONG" ColumnName="MATHUEPHONG" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

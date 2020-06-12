@@ -14,7 +14,7 @@ namespace KS
     
     public partial class DatDichVu
     {
-        public int MADATPHONG { get; set; }
+        public int MATHUEPHONG { get; set; }
         public int MADV { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public System.DateTime ngayDung { get; set; }
@@ -22,7 +22,6 @@ namespace KS
         public int Id { get; set; }
         public Nullable<bool> isDelete { get; set; }
     
-        public virtual DatPhong DatPhong { get; set; }
         public virtual DichVu DichVu { get; set; }
     }
 }

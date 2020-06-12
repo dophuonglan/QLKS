@@ -42,9 +42,9 @@
             this.labTBSaiLoaiPhg = new System.Windows.Forms.Label();
             this.labTBSaiGiaPhg = new System.Windows.Forms.Label();
             this.labTBSaiDVTT = new System.Windows.Forms.Label();
-            this.txbAddDonViTT = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txbAddDonViTT = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,11 +103,11 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(260, 140);
+            this.label5.Location = new System.Drawing.Point(31, 232);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 16);
+            this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Đơn Vị Tiền Tệ";
+            this.label5.Text = "Mô tả";
             // 
             // label6
             // 
@@ -120,7 +120,7 @@
             // btnSubMitAddPhg
             // 
             this.btnSubMitAddPhg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubMitAddPhg.Location = new System.Drawing.Point(251, 255);
+            this.btnSubMitAddPhg.Location = new System.Drawing.Point(244, 306);
             this.btnSubMitAddPhg.Name = "btnSubMitAddPhg";
             this.btnSubMitAddPhg.Size = new System.Drawing.Size(72, 33);
             this.btnSubMitAddPhg.TabIndex = 15;
@@ -179,30 +179,18 @@
             // labTBSaiDVTT
             // 
             this.labTBSaiDVTT.ForeColor = System.Drawing.Color.Red;
-            this.labTBSaiDVTT.Location = new System.Drawing.Point(350, 172);
+            this.labTBSaiDVTT.Location = new System.Drawing.Point(86, 280);
             this.labTBSaiDVTT.Name = "labTBSaiDVTT";
             this.labTBSaiDVTT.Size = new System.Drawing.Size(160, 23);
             this.labTBSaiDVTT.TabIndex = 22;
             this.labTBSaiDVTT.Text = "Không được bỏ trống phần này";
             this.labTBSaiDVTT.Visible = false;
             // 
-            // txbAddDonViTT
-            // 
-            this.txbAddDonViTT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txbAddDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAddDonViTT.FormattingEnabled = true;
-            this.txbAddDonViTT.Items.AddRange(new object[] {
-            "vnd"});
-            this.txbAddDonViTT.Location = new System.Drawing.Point(358, 136);
-            this.txbAddDonViTT.Name = "txbAddDonViTT";
-            this.txbAddDonViTT.Size = new System.Drawing.Size(157, 26);
-            this.txbAddDonViTT.TabIndex = 24;
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txbAddDonViTT);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.labTBSaiDVTT);
-            this.panel1.Controls.Add(this.txbAddDonViTT);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.labTBSaiGiaPhg);
             this.panel1.Controls.Add(this.label2);
@@ -227,6 +215,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(81, 82);
             this.panel2.TabIndex = 25;
+            // 
+            // txbAddDonViTT
+            // 
+            this.txbAddDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbAddDonViTT.Location = new System.Drawing.Point(89, 213);
+            this.txbAddDonViTT.Multiline = true;
+            this.txbAddDonViTT.Name = "txbAddDonViTT";
+            this.txbAddDonViTT.Size = new System.Drawing.Size(426, 54);
+            this.txbAddDonViTT.TabIndex = 25;
             // 
             // fAddThongTinPhg
             // 
@@ -263,8 +260,8 @@
         private System.Windows.Forms.Label labTBSaiLoaiPhg;
         private System.Windows.Forms.Label labTBSaiGiaPhg;
         private System.Windows.Forms.Label labTBSaiDVTT;
-        private System.Windows.Forms.ComboBox txbAddDonViTT;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox txbAddDonViTT;
     }
 }

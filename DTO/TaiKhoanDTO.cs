@@ -15,6 +15,10 @@ namespace KS.DTO
         }
         public TaiKhoan GetTaiKhoan(string tenTaiKhoan)
         {
+            return db.TaiKhoans.SingleOrDefault(x => x.TENTAIKHOAN == tenTaiKhoan &&x.isBan ==false);
+        }
+        public TaiKhoan GetTaiKhoanAll(string tenTaiKhoan)
+        {
             return db.TaiKhoans.SingleOrDefault(x => x.TENTAIKHOAN == tenTaiKhoan);
         }
         public TaiKhoan GetTaiKhoan(int maTK)
