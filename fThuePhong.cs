@@ -347,7 +347,7 @@ namespace KS
                 {
                     if (checkThoiGianDatPhongCoTrungDatPhongKo(thuePhong) == true)
                     {
-                        if (MessageBox.Show("Bạn có thật sự muốn đặt phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                        if (MessageBox.Show("Bạn có thật sự muốn thuê phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                         {
                             if (khachHangDAO.isKhachHangHopLe(khachHang) == false)//ko hop le
                             {

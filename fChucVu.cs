@@ -124,8 +124,8 @@ namespace KS
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                if (MessageBox.Show("Bạn có thật sự muốn xóa chức vụ này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
+                //if (MessageBox.Show("Bạn có thật sự muốn xóa chức vụ này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //{
                     var selectedChucVu = db.ChucVus.Find(((RowChucVu)dtgvChucVu.CurrentRow.DataBoundItem).MaChucVu);
                     if(selectedChucVu.MACHUCVU ==4 || selectedChucVu.MACHUCVU ==5 || selectedChucVu.MACHUCVU == 3)
                     {
@@ -137,7 +137,7 @@ namespace KS
                     db.SaveChanges();
                     MessageBox.Show("Xóa thành công");
                     refreshForm();
-                }
+                //}
             }
         }
 

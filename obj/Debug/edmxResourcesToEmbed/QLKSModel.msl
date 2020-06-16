@@ -144,6 +144,7 @@
     <EntitySetMapping Name="Phongs">
       <EntityTypeMapping TypeName="QLKSModel.Phong">
         <MappingFragment StoreEntitySet="Phong">
+          <ScalarProperty Name="DONVITIENTE" ColumnName="DONVITIENTE" />
           <ScalarProperty Name="isDelete" ColumnName="isDelete" />
           <ScalarProperty Name="MOTA" ColumnName="MOTA" />
           <ScalarProperty Name="GIAPHONG" ColumnName="GIAPHONG" />

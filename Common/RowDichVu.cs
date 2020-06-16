@@ -20,6 +20,7 @@ namespace KS.Common
         public int Id { get => id; set => id = value; }
         public int MaDatPhong { get => maDatPhong; set => maDatPhong = value; }
         public int MaDV { get => maDV; set => maDV = value; }
+        public int STT { get; internal set; }
         public string TenDV { get => tenDV; set => tenDV = value; }
         public int? SoLuong { get => soLuong; set => soLuong = value; }
         public DateTime NgayDung { get => ngayDung; set => ngayDung = value; }

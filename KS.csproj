@@ -258,7 +258,7 @@
     <Compile Include="Common\SelectThuePhong.cs" />
     <Compile Include="QuanLyDatDichVu.cs" />
     <Compile Include="QuanLyPhong.cs" />
-    <Compile Include="RowTenDangNhap.cs" />
+    <Compile Include="Common\RowTenDangNhap.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
@@ -273,6 +273,8 @@
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ThongTinKhachHangDangThue.cs" />
+    <Compile Include="ThongTinThanhToanDichVu.cs" />
+    <Compile Include="ThongTinThanhToanPhong.cs" />
     <Compile Include="ThuePhong.cs">
       <DependentUpon>QLKSModel.tt</DependentUpon>
     </Compile>

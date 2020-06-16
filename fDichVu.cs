@@ -50,6 +50,7 @@ namespace KS
                           && c.MATHUEPHONG.ToString() == cbbMaTP.Text
                           select new RowDichVu
                           {
+                              STT=1,
                               Id = c.Id,
                               MaDatPhong = c.MATHUEPHONG,
                               MaDV = c.MADV,
@@ -62,8 +63,11 @@ namespace KS
             ngayDung.DefaultCellStyle.Format = "dd/MM/yyyy";
             dtgvThongTinDatDichVu.DataSource = result;
             double tongTien = 0;
+            int i = 1;
             foreach (var item in result)
             {
+                item.STT = i;
+                i++;
                 tongTien += item.Gia.Value;
             }
             lbTongTienDichVu.Text = tongTien + " VNĐ";

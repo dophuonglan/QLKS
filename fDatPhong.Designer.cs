@@ -87,7 +87,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dtgvDanhSachDangThue = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenPhongg = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,6 +95,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label17 = new System.Windows.Forms.Label();
             this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maDatPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenPhongDP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -535,7 +535,7 @@
             this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel6.Location = new System.Drawing.Point(7, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(102, 70);
+            this.panel6.Size = new System.Drawing.Size(113, 67);
             this.panel6.TabIndex = 43;
             // 
             // label16
@@ -600,7 +600,7 @@
             this.dtgvDSPhg.RowHeadersVisible = false;
             this.dtgvDSPhg.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtgvDSPhg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDSPhg.Size = new System.Drawing.Size(673, 257);
+            this.dtgvDSPhg.Size = new System.Drawing.Size(681, 257);
             this.dtgvDSPhg.TabIndex = 1;
             // 
             // tenPhong_DS
@@ -712,7 +712,7 @@
             this.tabControl1.Location = new System.Drawing.Point(7, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(681, 286);
+            this.tabControl1.Size = new System.Drawing.Size(689, 286);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -721,7 +721,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(673, 260);
+            this.tabPage1.Size = new System.Drawing.Size(681, 260);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Danh sách phòng";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -732,7 +732,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(673, 260);
+            this.tabPage2.Size = new System.Drawing.Size(681, 260);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Đang thuê";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -773,19 +773,8 @@
             this.dtgvDanhSachDangThue.RowHeadersVisible = false;
             this.dtgvDanhSachDangThue.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dtgvDanhSachDangThue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvDanhSachDangThue.Size = new System.Drawing.Size(664, 257);
+            this.dtgvDanhSachDangThue.Size = new System.Drawing.Size(678, 257);
             this.dtgvDanhSachDangThue.TabIndex = 1;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(279, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(179, 24);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Danh Sách Phòng";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -800,6 +789,7 @@
             this.MTP.HeaderText = "MTP";
             this.MTP.Name = "MTP";
             this.MTP.ReadOnly = true;
+            this.MTP.Visible = false;
             // 
             // tenPhongg
             // 
@@ -843,6 +833,17 @@
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(279, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(179, 24);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Danh Sách Phòng";
+            // 
             // stt
             // 
             this.stt.DataPropertyName = "STT";
@@ -856,6 +857,7 @@
             this.maDatPhong.HeaderText = "MĐP";
             this.maDatPhong.Name = "maDatPhong";
             this.maDatPhong.ReadOnly = true;
+            this.maDatPhong.Visible = false;
             // 
             // tenPhongDP
             // 
@@ -905,6 +907,7 @@
             this.tinhTrang.HeaderText = "Trạng Thái Nhận Phòng";
             this.tinhTrang.Name = "tinhTrang";
             this.tinhTrang.ReadOnly = true;
+            this.tinhTrang.Visible = false;
             // 
             // btnHuy
             // 

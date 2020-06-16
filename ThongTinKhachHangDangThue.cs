@@ -16,5 +16,6 @@ namespace KS
         public DateTime? NgayDi { get; set; }
         public string DichVuSuDung { get; set; }
         public int MaThuePhong { get; internal set; }
+        public double? TienPhong { get; internal set; }
     }
 }

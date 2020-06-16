@@ -34,7 +34,7 @@ namespace KS
                           && d.NGAYTHANHTOAN >= dtpkNgayBatDau.Value.Date && d.NGAYTHANHTOAN <= dtpkNgayKetThuc.Value.Date
                           select new QuanLyPhong
                           {
-                              maThuePhong = b.MATHUEPHONG,
+                              maThuePhong = c.MATHUEPHONG,
                               maPhong = a.MAPHONG,
                               NgayO = b.NGAYO,
                               NgayDi = b.NGAYDI,
@@ -46,17 +46,17 @@ namespace KS
             double tongNgay = 0;
             foreach (var item in phong)
             {
-                //var list = thuePhongDAO.GetListThuePhong(item.MAPHONG);
+                //var listThuePhg = thuePhongDAO.GetListThuePhong(item.MAPHONG);
                 double tongngayo = 0;
                 var list = result.Where(x => item.MAPHONG == x.maPhong).ToList();
                 foreach (var it in list)
                 {
-                    tongngayo = (it.NgayDi.Value.Date - it.NgayDi.Value.Date).TotalDays;
+                    tongngayo = (it.NgayDi.Value.Date - it.NgayO.Value.Date).TotalDays;
                     if (tongngayo == 0)
                     {
                         tongngayo = 1;
-                        tongNgay += tongngayo;
                     }
+                    tongNgay += tongngayo;
                 }
                 chart1.Series["Số Ngày"].Points.AddXY(item.TENPHONG, tongNgay);
                 chart1.Series["Số Ngày"].IsValueShownAsLabel = true;
@@ -364,6 +364,7 @@ namespace KS
                              TenLoaiPhong = d.TENLOAIPHONG,
                              NgayNhanPhong = b.NGAYO,
                              NgayDi = b.NGAYDI,
+                             TienPhong = b.GiaPhongHienTai,
                          }).ToList();
             dtgvDanhSachKhachHangDangThue.DataSource = result;
             int i = 1;
@@ -383,6 +384,20 @@ namespace KS
                 }
             }
         }
+
+        private void loadChartPie()
+        {
+            ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
+            var lst = thuePhongDAO.GetThuePhong();
+            var soPhong = lst.Count();
+            PhongDAO phongDAO = new PhongDAO();
+            var lstPh = phongDAO.GetPhongNotDeleted();
+            var soPhongTrong = lstPh.Count - soPhong;
+            chartPie.Series["Series1"].Points.AddXY("Trống",soPhongTrong);
+            chartPie.Series["Series1"].Points.AddXY("Đang Thuê", soPhong);
+            chartPie.Series["Series1"].IsValueShownAsLabel = true;
+        }
+
         private void fThongKe_Load(object sender, EventArgs e)
         {
             int num = int.Parse(txbNumberPage.Text);
@@ -390,6 +405,7 @@ namespace KS
             loadCbbTenPhong();
             chart();
             loadDanhSachKhachHangDangThue();
+            loadChartPie();
         }
 
         private void dtpkNgayBatDau_ValueChanged(object sender, EventArgs e)
@@ -448,6 +464,7 @@ namespace KS
         {
             int num = int.Parse(txbNumberPage.Text);
             loadDuLieuTheoPhong(10, num);
+            txbNumberPage.Text = "1";
         }
 
         private void chart1_Click(object sender, EventArgs e)

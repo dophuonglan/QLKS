@@ -22,5 +22,9 @@ namespace KS.DAO
         {
             return phongDTO.GetLoaiPhong(ten);
         }
+        public LoaiPhong GetLoaiPhong(int? ma)
+        {
+            return phongDTO.GetLoaiPhong(ma);
+        }
     }
 }

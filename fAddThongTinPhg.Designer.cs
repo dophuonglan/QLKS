@@ -41,10 +41,12 @@
             this.labTBSaiTenPhg = new System.Windows.Forms.Label();
             this.labTBSaiLoaiPhg = new System.Windows.Forms.Label();
             this.labTBSaiGiaPhg = new System.Windows.Forms.Label();
-            this.labTBSaiDVTT = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.txbAddDonViTT = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbThongBaoDonViTienTe = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbDonViTienTe = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +110,7 @@
             this.label5.Size = new System.Drawing.Size(41, 16);
             this.label5.TabIndex = 13;
             this.label5.Text = "Mô tả";
+            this.label5.Visible = false;
             // 
             // label6
             // 
@@ -176,21 +179,13 @@
             this.labTBSaiGiaPhg.Text = "Không được bỏ trống phần này";
             this.labTBSaiGiaPhg.Visible = false;
             // 
-            // labTBSaiDVTT
-            // 
-            this.labTBSaiDVTT.ForeColor = System.Drawing.Color.Red;
-            this.labTBSaiDVTT.Location = new System.Drawing.Point(86, 280);
-            this.labTBSaiDVTT.Name = "labTBSaiDVTT";
-            this.labTBSaiDVTT.Size = new System.Drawing.Size(160, 23);
-            this.labTBSaiDVTT.TabIndex = 22;
-            this.labTBSaiDVTT.Text = "Không được bỏ trống phần này";
-            this.labTBSaiDVTT.Visible = false;
-            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lbThongBaoDonViTienTe);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.cbbDonViTienTe);
             this.panel1.Controls.Add(this.txbAddDonViTT);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.labTBSaiDVTT);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.labTBSaiGiaPhg);
             this.panel1.Controls.Add(this.label2);
@@ -207,6 +202,16 @@
             this.panel1.Size = new System.Drawing.Size(561, 364);
             this.panel1.TabIndex = 25;
             // 
+            // txbAddDonViTT
+            // 
+            this.txbAddDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbAddDonViTT.Location = new System.Drawing.Point(89, 213);
+            this.txbAddDonViTT.Multiline = true;
+            this.txbAddDonViTT.Name = "txbAddDonViTT";
+            this.txbAddDonViTT.Size = new System.Drawing.Size(426, 54);
+            this.txbAddDonViTT.TabIndex = 25;
+            this.txbAddDonViTT.Visible = false;
+            // 
             // panel2
             // 
             this.panel2.BackgroundImage = global::KS.Properties.Resources._489a7166;
@@ -216,14 +221,37 @@
             this.panel2.Size = new System.Drawing.Size(81, 82);
             this.panel2.TabIndex = 25;
             // 
-            // txbAddDonViTT
+            // lbThongBaoDonViTienTe
             // 
-            this.txbAddDonViTT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAddDonViTT.Location = new System.Drawing.Point(89, 213);
-            this.txbAddDonViTT.Multiline = true;
-            this.txbAddDonViTT.Name = "txbAddDonViTT";
-            this.txbAddDonViTT.Size = new System.Drawing.Size(426, 54);
-            this.txbAddDonViTT.TabIndex = 25;
+            this.lbThongBaoDonViTienTe.ForeColor = System.Drawing.Color.Red;
+            this.lbThongBaoDonViTienTe.Location = new System.Drawing.Point(350, 172);
+            this.lbThongBaoDonViTienTe.Name = "lbThongBaoDonViTienTe";
+            this.lbThongBaoDonViTienTe.Size = new System.Drawing.Size(160, 23);
+            this.lbThongBaoDonViTienTe.TabIndex = 32;
+            this.lbThongBaoDonViTienTe.Text = "Không được bỏ trống phần này";
+            this.lbThongBaoDonViTienTe.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(307, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 16);
+            this.label1.TabIndex = 31;
+            this.label1.Text = "DVTT";
+            // 
+            // cbbDonViTienTe
+            // 
+            this.cbbDonViTienTe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbDonViTienTe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbDonViTienTe.FormattingEnabled = true;
+            this.cbbDonViTienTe.Items.AddRange(new object[] {
+            "VNĐ"});
+            this.cbbDonViTienTe.Location = new System.Drawing.Point(358, 136);
+            this.cbbDonViTienTe.Name = "cbbDonViTienTe";
+            this.cbbDonViTienTe.Size = new System.Drawing.Size(157, 26);
+            this.cbbDonViTienTe.TabIndex = 30;
             // 
             // fAddThongTinPhg
             // 
@@ -259,9 +287,11 @@
         private System.Windows.Forms.Label labTBSaiTenPhg;
         private System.Windows.Forms.Label labTBSaiLoaiPhg;
         private System.Windows.Forms.Label labTBSaiGiaPhg;
-        private System.Windows.Forms.Label labTBSaiDVTT;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txbAddDonViTT;
+        private System.Windows.Forms.Label lbThongBaoDonViTienTe;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbDonViTienTe;
     }
 }

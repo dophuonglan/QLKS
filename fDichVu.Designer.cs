@@ -82,6 +82,7 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maDatPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenDV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.soLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ngayDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -361,6 +362,7 @@
             this.cbbMaTP.Name = "cbbMaTP";
             this.cbbMaTP.Size = new System.Drawing.Size(121, 24);
             this.cbbMaTP.TabIndex = 11;
+            this.cbbMaTP.Visible = false;
             this.cbbMaTP.SelectedIndexChanged += new System.EventHandler(this.cbbMaDP_SelectedIndexChanged);
             // 
             // label1
@@ -372,6 +374,7 @@
             this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Mã Thuê Phòng";
+            this.label1.Visible = false;
             // 
             // btnThemDV
             // 
@@ -642,6 +645,7 @@
             this.Id,
             this.maDatPhong,
             this.maDV,
+            this.STT,
             this.tenDV,
             this.soLuong,
             this.ngayDung,
@@ -669,18 +673,27 @@
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
+            this.Id.Visible = false;
             // 
             // maDatPhong
             // 
             this.maDatPhong.DataPropertyName = "MADATPHONG";
             this.maDatPhong.HeaderText = "Mã ĐP";
             this.maDatPhong.Name = "maDatPhong";
+            this.maDatPhong.Visible = false;
             // 
             // maDV
             // 
             this.maDV.DataPropertyName = "MADV";
             this.maDV.HeaderText = "Mã DV";
             this.maDV.Name = "maDV";
+            this.maDV.Visible = false;
+            // 
+            // STT
+            // 
+            this.STT.DataPropertyName = "STT";
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
             // 
             // tenDV
             // 
@@ -799,14 +812,6 @@
         private System.Windows.Forms.Label lbSuaGiaDV;
         private System.Windows.Forms.Label lbThongBao2;
         private System.Windows.Forms.Label lbThongBaoSua2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maDatPhong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maDV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenDV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngayDung;
-        private System.Windows.Forms.DataGridViewTextBoxColumn giaHienTai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
         private System.Windows.Forms.TextBox txbSDTKH;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbTenKH;
@@ -829,5 +834,14 @@
         private System.Windows.Forms.NumericUpDown numSoLuong;
         private System.Windows.Forms.ComboBox cbbMaTP;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maDatPhong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maDV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenDV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soLuong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayDung;
+        private System.Windows.Forms.DataGridViewTextBoxColumn giaHienTai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thanhTien;
     }
 }

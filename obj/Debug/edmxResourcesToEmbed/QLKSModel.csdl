@@ -248,6 +248,7 @@
     <NavigationProperty Name="DatPhongs" Relationship="QLKSModel.FK__DatPhong__MAPHON__173876EA" FromRole="Phong" ToRole="DatPhong" />
     <NavigationProperty Name="LoaiPhong" Relationship="QLKSModel.FK__Phong__MALOAIPHO__145C0A3F" FromRole="Phong" ToRole="LoaiPhong" />
     <NavigationProperty Name="ThuePhongs" Relationship="QLKSModel.FK__ThuePhong__MAPHO__1C873BEC" FromRole="Phong" ToRole="ThuePhong" />
+    <Property Name="DONVITIENTE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>

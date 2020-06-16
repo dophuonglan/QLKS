@@ -28,18 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.chartDoanhThuPhong = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -73,7 +76,21 @@
             this.maThuePhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dtgvDanhSachKhachHangDangThue = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CMT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThuPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -81,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongke)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhSachKhachHangDangThue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,64 +133,64 @@
             // 
             // chartDoanhThuPhong
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chartDoanhThuPhong.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartDoanhThuPhong.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chartDoanhThuPhong.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartDoanhThuPhong.Legends.Add(legend1);
             this.chartDoanhThuPhong.Location = new System.Drawing.Point(8, 342);
             this.chartDoanhThuPhong.Name = "chartDoanhThuPhong";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Số tiền";
-            this.chartDoanhThuPhong.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Số tiền";
+            this.chartDoanhThuPhong.Series.Add(series1);
             this.chartDoanhThuPhong.Size = new System.Drawing.Size(739, 324);
             this.chartDoanhThuPhong.TabIndex = 49;
             this.chartDoanhThuPhong.Text = "chart2";
-            title4.Name = "Title1";
-            title4.Text = "Biểu đồ thể hiện doanh thu theo phòng";
-            this.chartDoanhThuPhong.Titles.Add(title4);
+            title1.Name = "Title1";
+            title1.Text = "Biểu đồ thể hiện doanh thu theo phòng";
+            this.chartDoanhThuPhong.Titles.Add(title1);
             this.chartDoanhThuPhong.Visible = false;
             this.chartDoanhThuPhong.Click += new System.EventHandler(this.chartDoanhThuPhong_Click);
             // 
             // chart1
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart1.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(8, 342);
             this.chart1.Name = "chart1";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Số Ngày";
-            this.chart1.Series.Add(series5);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Số Ngày";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(739, 324);
             this.chart1.TabIndex = 48;
             this.chart1.Text = "chart2";
-            title5.Name = "Title1";
-            title5.Text = "Biểu đồ thể hiện số ngày thuê theo phòng";
-            this.chart1.Titles.Add(title5);
+            title2.Name = "Title1";
+            title2.Text = "Biểu đồ thể hiện số ngày thuê theo phòng";
+            this.chart1.Titles.Add(title2);
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
             // chartDV
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartDV.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartDV.Legends.Add(legend6);
+            chartArea3.Name = "ChartArea1";
+            this.chartDV.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartDV.Legends.Add(legend3);
             this.chartDV.Location = new System.Drawing.Point(734, 342);
             this.chartDV.Name = "chartDV";
             this.chartDV.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Số lượng";
-            this.chartDV.Series.Add(series6);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Số lượng";
+            this.chartDV.Series.Add(series3);
             this.chartDV.Size = new System.Drawing.Size(610, 324);
             this.chartDV.TabIndex = 47;
             this.chartDV.Text = "chart2";
-            title6.Name = "Title1";
-            title6.Text = "Biểu đồ thể hiện số lượng dịch vụ sử dụng";
-            this.chartDV.Titles.Add(title6);
+            title3.Name = "Title1";
+            title3.Text = "Biểu đồ thể hiện số lượng dịch vụ sử dụng";
+            this.chartDV.Titles.Add(title3);
             // 
             // label1
             // 
@@ -242,7 +260,7 @@
             this.dtpkNgayKetThuc.Name = "dtpkNgayKetThuc";
             this.dtpkNgayKetThuc.Size = new System.Drawing.Size(176, 22);
             this.dtpkNgayKetThuc.TabIndex = 10;
-            this.dtpkNgayKetThuc.Value = new System.DateTime(2020, 6, 8, 0, 0, 0, 0);
+            this.dtpkNgayKetThuc.Value = new System.DateTime(2020, 6, 30, 0, 0, 0, 0);
             this.dtpkNgayKetThuc.ValueChanged += new System.EventHandler(this.dtpkNgayKetThuc_ValueChanged);
             // 
             // dtpkNgayBatDau
@@ -437,23 +455,151 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightGreen;
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.chartPie);
             this.tabPage2.Controls.Add(this.dtgvDanhSachKhachHangDangThue);
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1350, 699);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thống kê phòng";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(511, 17);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(455, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "THÔNG TIN THUÊ PHÒNG HIỆN TẠI CỦA KHÁCH SẠN";
+            // 
+            // chartPie
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartPie.Legends.Add(legend4);
+            this.chartPie.Location = new System.Drawing.Point(462, 386);
+            this.chartPie.Name = "chartPie";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.MarkerBorderColor = System.Drawing.Color.Black;
+            series4.Name = "Series1";
+            this.chartPie.Series.Add(series4);
+            this.chartPie.Size = new System.Drawing.Size(437, 268);
+            this.chartPie.TabIndex = 5;
+            this.chartPie.Text = "chart2";
             // 
             // dtgvDanhSachKhachHangDangThue
             // 
+            this.dtgvDanhSachKhachHangDangThue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDanhSachKhachHangDangThue.BackgroundColor = System.Drawing.Color.White;
+            this.dtgvDanhSachKhachHangDangThue.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.dtgvDanhSachKhachHangDangThue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDanhSachKhachHangDangThue.Location = new System.Drawing.Point(8, 43);
+            this.dtgvDanhSachKhachHangDangThue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn4,
+            this.ngaySinh,
+            this.dataGridViewTextBoxColumn5,
+            this.diaChi,
+            this.CMT,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn13});
+            this.dtgvDanhSachKhachHangDangThue.Location = new System.Drawing.Point(3, 40);
             this.dtgvDanhSachKhachHangDangThue.Name = "dtgvDanhSachKhachHangDangThue";
-            this.dtgvDanhSachKhachHangDangThue.Size = new System.Drawing.Size(1336, 366);
-            this.dtgvDanhSachKhachHangDangThue.TabIndex = 0;
+            this.dtgvDanhSachKhachHangDangThue.RowHeadersVisible = false;
+            this.dtgvDanhSachKhachHangDangThue.Size = new System.Drawing.Size(1344, 329);
+            this.dtgvDanhSachKhachHangDangThue.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "STT";
+            this.dataGridViewTextBoxColumn1.FillWeight = 58.28496F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "STT";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "TenPhong";
+            this.dataGridViewTextBoxColumn12.FillWeight = 103.9796F;
+            this.dataGridViewTextBoxColumn12.HeaderText = "Tên Phòng";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "tenKH";
+            this.dataGridViewTextBoxColumn4.FillWeight = 109.9711F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tên KH";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // ngaySinh
+            // 
+            this.ngaySinh.DataPropertyName = "ngaySinh";
+            this.ngaySinh.HeaderText = "Ngày Sinh";
+            this.ngaySinh.Name = "ngaySinh";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "soDienThoai";
+            this.dataGridViewTextBoxColumn5.FillWeight = 109.9711F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "SĐT";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // diaChi
+            // 
+            this.diaChi.DataPropertyName = "DiaChi";
+            this.diaChi.HeaderText = "Địa Chỉ";
+            this.diaChi.Name = "diaChi";
+            // 
+            // CMT
+            // 
+            this.CMT.DataPropertyName = "CMT";
+            this.CMT.HeaderText = "CMT";
+            this.CMT.Name = "CMT";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "ngayNhanPhong";
+            this.dataGridViewTextBoxColumn6.FillWeight = 109.9711F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Ngày Nhận Phòng";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "ngayDi";
+            this.dataGridViewTextBoxColumn7.FillWeight = 109.9711F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Ngày Đi";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "DichVuSuDung";
+            this.dataGridViewTextBoxColumn8.FillWeight = 103.9796F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Dịch Vụ Sử Dụng";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "TIENPHONG";
+            this.dataGridViewTextBoxColumn9.FillWeight = 114.0639F;
+            this.dataGridViewTextBoxColumn9.HeaderText = "Tiền Phòng";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "MaThuePhong";
+            this.dataGridViewTextBoxColumn13.HeaderText = "maThuePhong";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.Visible = false;
             // 
             // fThongKe
             // 
@@ -474,6 +620,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgvThongke)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDanhSachKhachHangDangThue)).EndInit();
             this.ResumeLayout(false);
 
@@ -511,9 +659,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tenPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn maThuePhong;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dtgvDanhSachKhachHangDangThue;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDV;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThuPhong;
+        private System.Windows.Forms.DataGridView dtgvDanhSachKhachHangDangThue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diaChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CMT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
+        private System.Windows.Forms.Label label3;
     }
 }

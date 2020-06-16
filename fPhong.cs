@@ -53,11 +53,13 @@ namespace KS
                          && c.isDelete == false
                          select new RowPhong
                          {
+                             MaPhong = c.MAPHONG,
                              TENPHONG = c.TENPHONG,
                              TINHTRANGPHONG = c.TINHTRANGPHONG,
                              TENLOAIPHONG = a.TENLOAIPHONG,
                              GIAPHONG = c.GIAPHONG,
                              MOTA = c.MOTA,
+                             DonVi = c.DONVITIENTE
                          }).ToList();
             int stt = 1;
             foreach (var item in result)
@@ -77,10 +79,13 @@ namespace KS
                           && c.isDelete == false
                           select new RowPhong
                           {
+                              MaPhong = c.MAPHONG,
+                              TENPHONG = c.TENPHONG,
                               TINHTRANGPHONG = c.TINHTRANGPHONG,
                               TENLOAIPHONG = a.TENLOAIPHONG,
                               GIAPHONG = c.GIAPHONG,
-                              TENPHONG = c.TENPHONG,
+                              MOTA = c.MOTA,
+                              DonVi = c.DONVITIENTE
                           }).ToList();
             int stt = 1;
             foreach (var item in result)
@@ -136,7 +141,7 @@ namespace KS
                         btn.BackColor = Color.SteelBlue;
                         break;
                 }
-                btn.Text = "Phòng "+ i + "\n" + room.TINHTRANGPHONG;
+                btn.Text = /*"Phòng "+ i*/room.TENPHONG + "\n" + room.TINHTRANGPHONG;
 
             }
             lbTongSoPhg.Text = i.ToString();

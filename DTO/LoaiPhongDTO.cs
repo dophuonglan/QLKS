@@ -21,6 +21,10 @@ namespace KS.DTO
         {
             return db.LoaiPhongs.SingleOrDefault(x => x.TENLOAIPHONG == ten);
         }
+        public LoaiPhong GetLoaiPhong(int? ma)
+        {
+            return db.LoaiPhongs.SingleOrDefault(x => x.MALOAIPHONG == ma);
+        }
 
     }
 }

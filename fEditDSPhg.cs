@@ -1,13 +1,6 @@
 ﻿using KS.DAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KS
@@ -28,7 +21,8 @@ namespace KS
             Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
             return regex.IsMatch(pText);
         }
-        private void btnSubMitEditPhg_Click(object sender, EventArgs e)
+
+        private bool checkHopLe()
         {
             if (txbEditTenPhg.Text == "")
             {
@@ -45,55 +39,80 @@ namespace KS
                 labTBSaiGiaPhg.Visible = true;
             }
             else labTBSaiGiaPhg.Visible = false;
-            if (txbEditMoTa.Text == "")
+            //if (txbEditMoTa.Text == "")
+            //{
+            //    labTBSaiDVTT.Visible = true;
+            //}
+            if (cbbDonViTienTe.Text == "")
             {
-                labTBSaiDVTT.Visible = true;
+                lbThongBaoDonViTienTe.Visible = true;
             }
-            else labTBSaiDVTT.Visible = false;
-            if (!IsNumber(txbEditGiaPhg.Text))
-            {
-                MessageBox.Show("Giá phòng không hợp lệ");
-            }
-            else if (txbEditMaPhg.Text != "" && txbEditTenPhg.Text != "" && txbEditLoaiPhg.Text != "" && txbEditGiaPhg.Text != "" &&
-               txbEditMoTa.Text != "" && txbEditMoTa.Text != "")
-            {
+            else lbThongBaoDonViTienTe.Visible = false;
+            //else labTBSaiDVTT.Visible = false;
+            if (txbEditTenPhg.Text == "" && txbEditLoaiPhg.Text == "" && txbEditGiaPhg.Text == "" &&
+               txbEditMoTa.Text == "" && cbbDonViTienTe.Text == "") return false;
+            return true;
+        }
 
+        private bool checkTenPhongHopLe(Phong ph)
+        {
+            PhongDAO phongDAO = new PhongDAO();
+            var lstPhong = phongDAO.GetPhongNotDeleted();
+            foreach (var item in lstPhong)
+            {
+                if (item.TENPHONG == txbEditTenPhg.Text && item.isDelete == false && item.TENPHONG == ph.TENPHONG) continue;
+                if (item.TENPHONG == txbEditTenPhg.Text && item.isDelete == false)
+                {
+                    MessageBox.Show("Tên phòng tồn tại");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void btnSubMitEditPhg_Click(object sender, EventArgs e)
+        {
+            if (checkHopLe() == true)
+            {
+                PhongDAO phongDAO = new PhongDAO();
+                var ph = phongDAO.GetPhong(fPhong.PhongID);
+                if (!IsNumber(txbEditGiaPhg.Text))
+                {
+                    MessageBox.Show("Giá phòng không hợp lệ");
+                    return;
+                }
+                if (checkTenPhongHopLe(ph) == false)
+                {
+                    return;
+                }
                 var maLP = 0;
                 if (txbEditLoaiPhg.Text == "Cao Cấp") maLP = 2;
                 else maLP = 1;
-                Phong phg = new Phong()
-                {
-
-                    MAPHONG = Convert.ToInt32(txbEditMaPhg.Text),
-                    TINHTRANGPHONG = "Trống",
-                    TENPHONG = txbEditTenPhg.Text,
-                    MALOAIPHONG = maLP,
-                    GIAPHONG = Convert.ToDouble(txbEditGiaPhg.Text),
-                    MOTA = txbEditMoTa.Text
-                };
                 int IDPhong = fPhong.PhongID;
                 Phong phong = db.Phongs.Find(IDPhong);
                 phong.TENPHONG = txbEditTenPhg.Text;
                 phong.MALOAIPHONG = maLP;
                 phong.GIAPHONG = Convert.ToDouble(txbEditGiaPhg.Text);
+                phong.DONVITIENTE = cbbDonViTienTe.Text;
                 phong.MOTA = txbEditMoTa.Text;
-                if (MessageBox.Show("Bạn có thật sự muốn sửa phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    db.SaveChanges();
-                    MessageBox.Show("Updata thành công!");
-                }
-                this.Close();
+                //if (MessageBox.Show("Bạn có thật sự muốn sửa phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //{
+                db.SaveChanges();
+                MessageBox.Show("Updata thành công!");
+                //}
+                //this.Close();
             }
         }
 
         private void fEditDSPhg_Load(object sender, EventArgs e)
         {
             int IDPhong = fPhong.PhongID;
-            txbEditMaPhg.Text = IDPhong.ToString();
+            lbID.Text = IDPhong.ToString();
             var rooms = phongDAO.GetPhong(IDPhong);
             txbEditTenPhg.Text = rooms.TENPHONG;
             txbEditGiaPhg.Text = rooms.GIAPHONG.ToString();
             txbEditMoTa.Text = rooms.MOTA;
+            cbbDonViTienTe.Text = rooms.DONVITIENTE;
             switch (rooms.MALOAIPHONG)
             {
                 case 1:
@@ -105,7 +124,6 @@ namespace KS
                 default:
                     break;
             }
-            txbEditMaPhg.Enabled = false;
         }
     }
 }

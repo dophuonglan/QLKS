@@ -46,6 +46,10 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.dtgvDSPhg = new System.Windows.Forms.DataGridView();
+            this.tenPhong_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trangThai_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenLoaiPhong_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Giá = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.btnThuePhg = new System.Windows.Forms.Button();
@@ -84,18 +88,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dtgvThongTinPhongDat = new System.Windows.Forms.DataGridView();
-            this.Giá = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenLoaiPhong_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trangThai_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhong_DS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhongTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maDatPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenPhongg = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +97,14 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenPhongTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhg)).BeginInit();
             this.panel3.SuspendLayout();
@@ -269,6 +269,34 @@
             this.dtgvDSPhg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvDSPhg.Size = new System.Drawing.Size(696, 272);
             this.dtgvDSPhg.TabIndex = 1;
+            // 
+            // tenPhong_DS
+            // 
+            this.tenPhong_DS.DataPropertyName = "TENPHONG";
+            this.tenPhong_DS.HeaderText = "Tên Phòng";
+            this.tenPhong_DS.Name = "tenPhong_DS";
+            this.tenPhong_DS.ReadOnly = true;
+            // 
+            // trangThai_DS
+            // 
+            this.trangThai_DS.DataPropertyName = "TINHTRANGPHONG";
+            this.trangThai_DS.HeaderText = "Trạng Thái";
+            this.trangThai_DS.Name = "trangThai_DS";
+            this.trangThai_DS.ReadOnly = true;
+            // 
+            // tenLoaiPhong_DS
+            // 
+            this.tenLoaiPhong_DS.DataPropertyName = "TENLOAIPHONG";
+            this.tenLoaiPhong_DS.HeaderText = "Loại Phòng";
+            this.tenLoaiPhong_DS.Name = "tenLoaiPhong_DS";
+            this.tenLoaiPhong_DS.ReadOnly = true;
+            // 
+            // Giá
+            // 
+            this.Giá.DataPropertyName = "GIAPHONG";
+            this.Giá.HeaderText = "Giá";
+            this.Giá.Name = "Giá";
+            this.Giá.ReadOnly = true;
             // 
             // panel3
             // 
@@ -756,90 +784,6 @@
             this.dtgvThongTinPhongDat.Size = new System.Drawing.Size(664, 254);
             this.dtgvThongTinPhongDat.TabIndex = 1;
             // 
-            // Giá
-            // 
-            this.Giá.DataPropertyName = "GIAPHONG";
-            this.Giá.HeaderText = "Giá";
-            this.Giá.Name = "Giá";
-            this.Giá.ReadOnly = true;
-            // 
-            // tenLoaiPhong_DS
-            // 
-            this.tenLoaiPhong_DS.DataPropertyName = "TENLOAIPHONG";
-            this.tenLoaiPhong_DS.HeaderText = "Loại Phòng";
-            this.tenLoaiPhong_DS.Name = "tenLoaiPhong_DS";
-            this.tenLoaiPhong_DS.ReadOnly = true;
-            // 
-            // trangThai_DS
-            // 
-            this.trangThai_DS.DataPropertyName = "TINHTRANGPHONG";
-            this.trangThai_DS.HeaderText = "Trạng Thái";
-            this.trangThai_DS.Name = "trangThai_DS";
-            this.trangThai_DS.ReadOnly = true;
-            // 
-            // tenPhong_DS
-            // 
-            this.tenPhong_DS.DataPropertyName = "TENPHONG";
-            this.tenPhong_DS.HeaderText = "Tên Phòng";
-            this.tenPhong_DS.Name = "tenPhong_DS";
-            this.tenPhong_DS.ReadOnly = true;
-            // 
-            // stt
-            // 
-            this.stt.DataPropertyName = "STT";
-            this.stt.HeaderText = "STT";
-            this.stt.Name = "stt";
-            this.stt.ReadOnly = true;
-            // 
-            // MTP
-            // 
-            this.MTP.DataPropertyName = "MATHUEPHONG";
-            this.MTP.HeaderText = "MTP";
-            this.MTP.Name = "MTP";
-            this.MTP.ReadOnly = true;
-            // 
-            // tenPhongTP
-            // 
-            this.tenPhongTP.DataPropertyName = "TenPhong";
-            this.tenPhongTP.HeaderText = "Tên Phòng";
-            this.tenPhongTP.Name = "tenPhongTP";
-            this.tenPhongTP.ReadOnly = true;
-            // 
-            // tenPhong
-            // 
-            this.tenPhong.DataPropertyName = "TENKHACHHANG";
-            this.tenPhong.HeaderText = "Tên Khách Hàng";
-            this.tenPhong.Name = "tenPhong";
-            this.tenPhong.ReadOnly = true;
-            // 
-            // soDienThoai
-            // 
-            this.soDienThoai.DataPropertyName = "sodienthoai";
-            this.soDienThoai.HeaderText = "SĐT";
-            this.soDienThoai.Name = "soDienThoai";
-            this.soDienThoai.ReadOnly = true;
-            // 
-            // gia
-            // 
-            this.gia.DataPropertyName = "GIAPHONG";
-            this.gia.HeaderText = "Giá Hiện Tại";
-            this.gia.Name = "gia";
-            this.gia.ReadOnly = true;
-            // 
-            // ngayO
-            // 
-            this.ngayO.DataPropertyName = "NGAYO";
-            this.ngayO.HeaderText = "Ngày đến ở";
-            this.ngayO.Name = "ngayO";
-            this.ngayO.ReadOnly = true;
-            // 
-            // ngayDi
-            // 
-            this.ngayDi.DataPropertyName = "NGAYDI";
-            this.ngayDi.HeaderText = "Ngày dự kiến đi";
-            this.ngayDi.Name = "ngayDi";
-            this.ngayDi.ReadOnly = true;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "STT";
@@ -902,6 +846,63 @@
             this.tinhTrang.HeaderText = "Trạng Thái Nhận Phòng";
             this.tinhTrang.Name = "tinhTrang";
             this.tinhTrang.ReadOnly = true;
+            // 
+            // stt
+            // 
+            this.stt.DataPropertyName = "STT";
+            this.stt.HeaderText = "STT";
+            this.stt.Name = "stt";
+            this.stt.ReadOnly = true;
+            // 
+            // MTP
+            // 
+            this.MTP.DataPropertyName = "MATHUEPHONG";
+            this.MTP.HeaderText = "MTP";
+            this.MTP.Name = "MTP";
+            this.MTP.ReadOnly = true;
+            this.MTP.Visible = false;
+            // 
+            // tenPhongTP
+            // 
+            this.tenPhongTP.DataPropertyName = "TenPhong";
+            this.tenPhongTP.HeaderText = "Tên Phòng";
+            this.tenPhongTP.Name = "tenPhongTP";
+            this.tenPhongTP.ReadOnly = true;
+            // 
+            // tenPhong
+            // 
+            this.tenPhong.DataPropertyName = "TENKHACHHANG";
+            this.tenPhong.HeaderText = "Tên Khách Hàng";
+            this.tenPhong.Name = "tenPhong";
+            this.tenPhong.ReadOnly = true;
+            // 
+            // soDienThoai
+            // 
+            this.soDienThoai.DataPropertyName = "sodienthoai";
+            this.soDienThoai.HeaderText = "SĐT";
+            this.soDienThoai.Name = "soDienThoai";
+            this.soDienThoai.ReadOnly = true;
+            // 
+            // gia
+            // 
+            this.gia.DataPropertyName = "GIAPHONG";
+            this.gia.HeaderText = "Giá Hiện Tại";
+            this.gia.Name = "gia";
+            this.gia.ReadOnly = true;
+            // 
+            // ngayO
+            // 
+            this.ngayO.DataPropertyName = "NGAYO";
+            this.ngayO.HeaderText = "Ngày đến ở";
+            this.ngayO.Name = "ngayO";
+            this.ngayO.ReadOnly = true;
+            // 
+            // ngayDi
+            // 
+            this.ngayDi.DataPropertyName = "NGAYDI";
+            this.ngayDi.HeaderText = "Ngày dự kiến đi";
+            this.ngayDi.Name = "ngayDi";
+            this.ngayDi.ReadOnly = true;
             // 
             // fThuePhong
             // 
@@ -996,14 +997,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn trangThai_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenLoaiPhong_DS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Giá;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MTP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongTP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhong;
-        private System.Windows.Forms.DataGridViewTextBoxColumn soDienThoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngayO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ngayDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn maDatPhong;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongg;
@@ -1013,5 +1006,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn tinhTrang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MTP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhongTP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tenPhong;
+        private System.Windows.Forms.DataGridViewTextBoxColumn soDienThoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ngayDi;
     }
 }

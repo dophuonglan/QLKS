@@ -23,7 +23,7 @@ namespace KS.DTO
         }
         public DichVu GetDichVu(string tendv)
         {
-            return db.DichVus.SingleOrDefault(x => x.TENDV == tendv);
+            return db.DichVus.SingleOrDefault(x => x.TENDV == tendv && x.isDelete ==false);
         }
 
         public List<DichVu> GetDichVus(string tendv)

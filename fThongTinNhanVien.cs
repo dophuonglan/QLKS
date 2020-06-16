@@ -1,13 +1,9 @@
 ﻿using KS.Common;
 using KS.DAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KS
@@ -152,12 +148,12 @@ namespace KS
                 nhanVien.MACHUCVU = chucVu.MACHUCVU;
                 nhanVien.isDelete = false;
                 db.NhanViens.Add(nhanVien);
-                if (MessageBox.Show("Bạn có thật sự muốn thêm Nhân Viên này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    db.SaveChanges();
-                    refreshForm();
-                    MessageBox.Show("Thêm nhân viên thành công");
-                }
+                //if (MessageBox.Show("Bạn có thật sự muốn thêm Nhân Viên này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //{
+                db.SaveChanges();
+                refreshForm();
+                MessageBox.Show("Thêm nhân viên thành công");
+                //}
             }
         }
 
@@ -169,7 +165,7 @@ namespace KS
 
         void phanQuyen(NhanVien nhanVien)
         {
-            
+
         }
         private void btnSuaNhanVien_Click(object sender, EventArgs e)
         {
@@ -177,7 +173,7 @@ namespace KS
             {
                 int id = int.Parse(dtgvThongTInNhanVien.SelectedCells[0].OwningRow.Cells["maNhanVien"].Value.ToString());
                 NhanVien nhanVien = db.NhanViens.Find(id);
-                
+
                 nhanVien.TENNHANVIEN = txbTenNhanVien.Text;
                 nhanVien.NGAYSINH = dtpkNgaySinh.Value.Date;
                 nhanVien.SODIENTHOAI = txbSDT.Text;
@@ -188,7 +184,7 @@ namespace KS
                 }
                 if (fLogin.maChucVu == 4)
                 {
-                    if (nhanVien.MACHUCVU == 4 || nhanVien.MACHUCVU==5)
+                    if (nhanVien.MACHUCVU == 4 || nhanVien.MACHUCVU == 5)
                     {
                         MessageBox.Show("Bạn không thể thay đổi chức vụ của nhân viên này");
                         return;
@@ -205,13 +201,13 @@ namespace KS
                 var chucVu = chucVuDAO.GetChucVuTheoTen(cbbChucVu.Text);
                 nhanVien.MACHUCVU = chucVu.MACHUCVU;
                 TaiKhoanDAO taiKhoanDAO = new TaiKhoanDAO();
-                if (MessageBox.Show("Sửa thông tin nhân Viên MSNV " + nhanVien.MANHANVIEN + " với thông tin này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                {
-                    taiKhoanDAO.CapNhatTKCuaNhanVien(nhanVien);
-                    db.SaveChanges();
-                    MessageBox.Show("Sửa thông tin nhân viên thành công");
-                    refreshForm();
-                }
+                //if (MessageBox.Show("Sửa thông tin nhân Viên MSNV " + nhanVien.MANHANVIEN + " với thông tin này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //{
+                taiKhoanDAO.CapNhatTKCuaNhanVien(nhanVien);
+                db.SaveChanges();
+                MessageBox.Show("Sửa thông tin nhân viên thành công");
+                refreshForm();
+                //}
             }
         }
 
@@ -240,17 +236,17 @@ namespace KS
                     MessageBox.Show("Không thể xóa quản trị");
                     return;
                 }
-                else if (MessageBox.Show("Bạn có thật sự muốn xóa Nhân Viên này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //else if (MessageBox.Show("Bạn có thật sự muốn xóa Nhân Viên này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                //{
+                if (KiemTraNhanVien(selectedNhanVien) == true)
                 {
-                    if (KiemTraNhanVien(selectedNhanVien) == true)
-                    {
-                        db.NhanViens.Remove(selectedNhanVien);
-                    }
-                    else selectedNhanVien.isDelete = true;
-                    db.SaveChanges();
-                    MessageBox.Show("remove success");
-                    refreshForm();
+                    db.NhanViens.Remove(selectedNhanVien);
                 }
+                else selectedNhanVien.isDelete = true;
+                db.SaveChanges();
+                MessageBox.Show($"Xóa thành nhân viên MS: {selectedNhanVien.MANHANVIEN} thành công");
+                refreshForm();
+                //}
             }
         }
 

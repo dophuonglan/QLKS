@@ -117,33 +117,44 @@ namespace KS
             var lstDatPhong = thuePhongDAO.GetListThuePhong(fPhong.MaPtag);
             dtpkNgayDi.MinDate = thuePhong.NGAYO.Value.Date;
             var thongTinPhongDat = (from a in db.Phongs
+                                    from b in db.LoaiPhongs
                                     where a.MAPHONG == thuePhong.MAPHONG
-                                    select new
+                                    && a.MALOAIPHONG ==b.MALOAIPHONG
+                                    select new ThongTinThanhToanPhong
                                     {
-                                        MAPHONG = a.MAPHONG,
                                         TENPHONG = a.TENPHONG,
                                         TINHTRANGPHONG = a.TINHTRANGPHONG,
                                         MALOAIPHONG = a.MALOAIPHONG,
+                                        TenLoaiPhong = b.TENLOAIPHONG,
                                         GIAPHONG = a.GIAPHONG,
                                         MOTA = a.MOTA
                                     }).ToList();
-
+            LoaiPhongDAO loaiPhongDAO = new LoaiPhongDAO();
+            foreach (var item in thongTinPhongDat)
+            {
+                var loaiPhong = loaiPhongDAO.GetLoaiPhong(item.MALOAIPHONG);
+                item.TenLoaiPhong = loaiPhong.TENLOAIPHONG;
+                
+            }
             dtgvThongTinPhongThanhToan.DataSource = thongTinPhongDat;
             var thongTinDichVuDat = (from a in db.DatDichVus
+                                     from b in db.DichVus
                                      where a.MATHUEPHONG == thuePhong.MATHUEPHONG
-                                     select new
+                                     && b.MADV ==a.MADV
+                                     select new ThongTinThanhToanDichVu
                                      {
-                                         Id = a.Id,
-                                         MADATPHONG = a.MATHUEPHONG,
-                                         MADV = a.MADV,
+                                         TenDichVu = b.TENDV,
                                          SoLuong = a.SoLuong,
                                          ngayDung = a.ngayDung,
                                          giaDichVuHienTai = a.giaDichVuHienTai,
                                      }).ToList();
             dtgvThongTinDichVuThanhToan.DataSource = thongTinDichVuDat;
             double? tienDV = 0;
+            int i = 1;
             foreach (var datDV in thongTinDichVuDat)
             {
+                datDV.STT = i;
+                i++;
                 tienDV += datDV.giaDichVuHienTai;
             }
             lbTienDV.Text = tienDV.ToString();
@@ -244,7 +255,7 @@ namespace KS
             var phong = phongDAO.GetPhong(Convert.ToInt32(labMaPhong.Text));
             if (dtpkNgayDi.Value.Date == dtpkNgayO.Value.Date)
             {
-                soNgayThue = 0.5;
+                soNgayThue = 1;
             }
             else soNgayThue = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
             lbTienPhg.Text = (soNgayThue * phong.GIAPHONG).ToString();
@@ -310,6 +321,12 @@ namespace KS
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void lbTienPhg_TextChanged(object sender, EventArgs e)
+        {
+            var TongTien = float.Parse(lbTienDV.Text) + float.Parse(lbTienPhg.Text);
+            lbTongTien.Text = TongTien.ToString();
         }
     }
 }
