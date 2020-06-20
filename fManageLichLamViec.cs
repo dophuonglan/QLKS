@@ -1,13 +1,9 @@
 ﻿using KS.Common;
 using KS.DAO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KS
@@ -130,7 +126,7 @@ namespace KS
         private void dtgvLichLamViec_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-        
+
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
@@ -162,7 +158,7 @@ namespace KS
                 lichLamViecMoi.MANHANVIEN = nhanVien.MANHANVIEN;
                 lichLamViecMoi.NGAYLAMVIEC = dtpkLichLamLich.Value.Date;
                 lichLamViecMoi.BUOI = cbbBuoiLich.Text;
-                if (lichLamViecDAO.checkExistLichLam(lichLamViecMoi,1) ==false)
+                if (lichLamViecDAO.checkExistLichLam(lichLamViecMoi, 1) == false)
                 {
                     MessageBox.Show("Lịch tồn tại");
                     return;
@@ -177,17 +173,7 @@ namespace KS
 
         private void cbbMaNhanVienLich_KeyUp(object sender, KeyEventArgs e)
         {
-            NhanVienDAO nhanVienDAO = new NhanVienDAO();
-            if (cbbMaNhanVienLich.Text != null)
-            {
-                var nhanVien = nhanVienDAO.GetNhanVien(int.Parse(cbbMaNhanVienLich.Text));
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (nhanVien != null) txbTenNhanVienLich.Text = nhanVien.TENNHANVIEN;
-                    else MessageBox.Show("Nhân viên không tồn tại");
-                }
-            }
-            else lbThongBaoMA.Visible = true;
+
         }
 
         private void cbbMaNhanVienLich_KeyPress(object sender, KeyPressEventArgs e)
@@ -243,6 +229,26 @@ namespace KS
                 dtpkLichLamLich.Value = DateTime.Parse(row.Cells["ngayLamViec"].Value.ToString());
                 cbbBuoiLich.Text = row.Cells["buoi"].Value.ToString();
             }
+        }
+        private void cbbMaNhanVienLich_SelectedValueChanged(object sender, EventArgs e)
+        {
+            NhanVienDAO nhanVienDAO = new NhanVienDAO();
+            if (cbbMaNhanVienLich.Text != null)
+            {
+                var nhanVien = nhanVienDAO.GetNhanVien(int.Parse(cbbMaNhanVienLich.Text));
+                if (nhanVien != null)
+                {
+                    txbTenNhanVienLich.Text = nhanVien.TENNHANVIEN;
+                    lbTbMaNVKhongTonTai.Visible = true;
+                }
+                lbTbMaNVKhongTonTai.Visible = false;
+            }
+            else lbThongBaoMA.Visible = true;
+        }
+
+        private void cbbMaNhanVienLich_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

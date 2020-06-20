@@ -8,5 +8,7 @@
         public double? GIAPHONG { get; set; }
         public string MOTA { get; set; }
         public string TenLoaiPhong { get; internal set; }
+        public int MaPhong { get; internal set; }
+        public string DV { get; internal set; }
     }
 }

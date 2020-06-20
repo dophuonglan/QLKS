@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
+            this.lbTbMaNVKhongTonTai = new System.Windows.Forms.Label();
             this.btnSua = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
@@ -62,6 +63,7 @@
             // groupBoxAdmin
             // 
             this.groupBoxAdmin.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.groupBoxAdmin.Controls.Add(this.lbTbMaNVKhongTonTai);
             this.groupBoxAdmin.Controls.Add(this.btnSua);
             this.groupBoxAdmin.Controls.Add(this.label15);
             this.groupBoxAdmin.Controls.Add(this.btnThem);
@@ -84,6 +86,18 @@
             this.groupBoxAdmin.TabIndex = 3;
             this.groupBoxAdmin.TabStop = false;
             this.groupBoxAdmin.Text = "Thêm lịch làm việc";
+            // 
+            // lbTbMaNVKhongTonTai
+            // 
+            this.lbTbMaNVKhongTonTai.AutoSize = true;
+            this.lbTbMaNVKhongTonTai.ForeColor = System.Drawing.Color.Red;
+            this.lbTbMaNVKhongTonTai.Location = new System.Drawing.Point(380, 96);
+            this.lbTbMaNVKhongTonTai.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbTbMaNVKhongTonTai.Name = "lbTbMaNVKhongTonTai";
+            this.lbTbMaNVKhongTonTai.Size = new System.Drawing.Size(186, 18);
+            this.lbTbMaNVKhongTonTai.TabIndex = 53;
+            this.lbTbMaNVKhongTonTai.Text = "không tồn tại nhân viên này";
+            this.lbTbMaNVKhongTonTai.Visible = false;
             // 
             // btnSua
             // 
@@ -221,6 +235,8 @@
             this.cbbMaNhanVienLich.Name = "cbbMaNhanVienLich";
             this.cbbMaNhanVienLich.Size = new System.Drawing.Size(189, 26);
             this.cbbMaNhanVienLich.TabIndex = 0;
+            this.cbbMaNhanVienLich.SelectedValueChanged += new System.EventHandler(this.cbbMaNhanVienLich_SelectedValueChanged);
+            this.cbbMaNhanVienLich.TextChanged += new System.EventHandler(this.cbbMaNhanVienLich_TextChanged);
             this.cbbMaNhanVienLich.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbMaNhanVienLich_KeyPress);
             this.cbbMaNhanVienLich.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cbbMaNhanVienLich_KeyUp);
             // 
@@ -252,6 +268,7 @@
             this.maLichLamViec.HeaderText = "Mã LLV";
             this.maLichLamViec.Name = "maLichLamViec";
             this.maLichLamViec.ReadOnly = true;
+            this.maLichLamViec.Visible = false;
             // 
             // maNhanVien
             // 
@@ -406,11 +423,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn maLichLamViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn maNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenNhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayLamViec;
         private System.Windows.Forms.DataGridViewTextBoxColumn buoi;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbTbMaNVKhongTonTai;
     }
 }

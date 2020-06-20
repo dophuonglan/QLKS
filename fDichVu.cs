@@ -364,25 +364,31 @@ namespace KS
                 {
                     if (datdv.MATHUEPHONG.ToString() == cbbMaTP.Text && datdv.MADV == ma && datdv.ngayDung.Date == dtpkNgayDung.Value.Date)
                     {
-                        datdv.SoLuong = slgThem + datdv.SoLuong;
-                        datdv.giaDichVuHienTai = datdv.giaDichVuHienTai + giaThem;
-                        MessageBox.Show("Thêm thành công!");
-                        db.SaveChanges();
-                        loadThongTinDatDichVu();
-                        return;
+                        if (MessageBox.Show("Thêm dịch vụ này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                        {
+                            datdv.SoLuong = slgThem + datdv.SoLuong;
+                            datdv.giaDichVuHienTai = datdv.giaDichVuHienTai + giaThem;
+                            MessageBox.Show("Thêm thành công!");
+                            db.SaveChanges();
+                            loadThongTinDatDichVu();
+                            return;
+                        }
                     }
                     continue;
                 }
-                datDV = new DatDichVu();
-                datDV.MATHUEPHONG = Convert.ToInt32(cbbMaTP.Text);
-                datDV.SoLuong = Convert.ToInt32(numSoLuong.Value);
-                datDV.ngayDung = dtpkNgayDung.Value;
-                datDV.giaDichVuHienTai = Convert.ToDouble(txbTienDV.Text);
-                datDV.MADV = dichVu.MADV;
-                datDV.isDelete = false;
-                db.DatDichVus.Add(datDV);
-                db.SaveChanges();
-                MessageBox.Show("Đặt thành công!");
+                if (MessageBox.Show("Thêm dịch vụ này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    datDV = new DatDichVu();
+                    datDV.MATHUEPHONG = Convert.ToInt32(cbbMaTP.Text);
+                    datDV.SoLuong = Convert.ToInt32(numSoLuong.Value);
+                    datDV.ngayDung = dtpkNgayDung.Value;
+                    datDV.giaDichVuHienTai = Convert.ToDouble(txbTienDV.Text);
+                    datDV.MADV = dichVu.MADV;
+                    datDV.isDelete = false;
+                    db.DatDichVus.Add(datDV);
+                    db.SaveChanges();
+                    MessageBox.Show("Đặt thành công!");
+                }
                 loadThongTinDatDichVu();
             }
         }

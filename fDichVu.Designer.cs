@@ -362,7 +362,6 @@
             this.cbbMaTP.Name = "cbbMaTP";
             this.cbbMaTP.Size = new System.Drawing.Size(121, 24);
             this.cbbMaTP.TabIndex = 11;
-            this.cbbMaTP.Visible = false;
             this.cbbMaTP.SelectedIndexChanged += new System.EventHandler(this.cbbMaDP_SelectedIndexChanged);
             // 
             // label1
@@ -374,7 +373,6 @@
             this.label1.Size = new System.Drawing.Size(103, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Mã Thuê Phòng";
-            this.label1.Visible = false;
             // 
             // btnThemDV
             // 

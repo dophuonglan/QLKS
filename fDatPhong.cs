@@ -73,11 +73,11 @@ namespace KS
                 MessageBox.Show("Không được ngày ở > ngày đi");
                 return false;
             }
-            //if ((dtPKerNgayVao.Value.Date - DateTime.Today.Date).TotalDays < 1)
-            //{
-            //    MessageBox.Show("Đặt trước tối thiểu 1 ngày");
-            //    return false;
-            //}
+            if ((dtPKerNgayVao.Value.Date - DateTime.Today.Date).TotalDays < 1)
+            {
+                MessageBox.Show("Đặt trước tối thiểu 1 ngày");
+                return false;
+            }
             PhongDAO phongDAO = new PhongDAO();
             var ph = phongDAO.GetPhong(cbbChonPhg.Text);
             foreach (var phg in datPhg)
@@ -127,7 +127,6 @@ namespace KS
             loadThongTinPhongDangChon();
             loadDanhSachDangChoThueCuaPhong();
             loadDanhSachPhong();
-            
         }
 
         void editDatPhong()
@@ -150,12 +149,12 @@ namespace KS
             {
                 if (checkThoiGianDatPhongCoTrungThuePhongKo(datPhong) == true)
                 {
-                    if (MessageBox.Show("Bạn có thật sự muốn Sửa đặt phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                    {
+                    //if (MessageBox.Show("Bạn có thật sự muốn Sửa đặt phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    //{
                         db.SaveChanges();
                         loadThongTinPhongDangChon();
                         MessageBox.Show("Sửa thành công");
-                    }
+                    //}
                 }
             }
         }
@@ -264,26 +263,26 @@ namespace KS
             buttonThue.FlatStyle = FlatStyle.Popup;
             buttonThue.DefaultCellStyle.BackColor = Color.Green;
         }
-        //void capNhatDatPhongCoLateKo()
-        //{
-        //    DatPhongDAO datPhongDAO = new DatPhongDAO();
-        //    var dp = datPhongDAO.GetDatPhongCoDatPhongTre();
-            
-        //    foreach (var datphg in dp)
-        //    {
-        //        var capnhat = db.DatPhongs.Find(datphg.MADATPHONG);
-        //        if ((DateTime.Today.Date - datphg.NGAYO.Value.Date).TotalDays  > 0)
-        //        {
-        //            capnhat.isLate = "Late";
-        //            db.SaveChanges();
-        //        }
-        //        else
-        //        {
-        //            capnhat.isLate = "Early";
-        //            db.SaveChanges();
-        //        }
-        //    }
-        //}
+        void capNhatDatPhongCoLateKo()
+        {
+            DatPhongDAO datPhongDAO = new DatPhongDAO();
+            var dp = datPhongDAO.GetDatPhongCoDatPhongTre();
+
+            foreach (var datphg in dp)
+            {
+                var capnhat = db.DatPhongs.Find(datphg.MADATPHONG);
+                if ((DateTime.Today.Date - datphg.NGAYO.Value.Date).TotalDays > 0)
+                {
+                    capnhat.isLate = "Late";
+                    db.SaveChanges();
+                }
+                else
+                {
+                    capnhat.isLate = "Early";
+                    db.SaveChanges();
+                }
+            }
+        }
         void loadThongTinPhongDangChon()
         {
             int stt = 1;
@@ -311,7 +310,7 @@ namespace KS
                 item.STT = stt;
                 stt++;
             }
-            //capNhatDatPhongCoLateKo();
+            capNhatDatPhongCoLateKo();
             ngayO.DefaultCellStyle.Format = "dd/MM/yyyy";
             ngayDi.DefaultCellStyle.Format = "dd/MM/yyyy";
             dtgvThongTinPhg.DataSource = result;
@@ -328,7 +327,7 @@ namespace KS
             {
                 if (tongNgayo == 0) tongNgayo = 0.5;
                 txbgiaPhong.Text = (phong.GIAPHONG * tongNgayo).ToString();
-                //txbTraTruoc.Text = "0";
+                txbTraTruoc.Text = (phong.GIAPHONG * tongNgayo *0.2).ToString();
             }
         }
 
@@ -509,25 +508,65 @@ namespace KS
                 if (MessageBox.Show("Chuyển Đặt Trước sáng Thuê Phòng?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     var selectedDatPhong = db.DatPhongs.Find(((RowDatPhong)dtgvThongTinPhg.CurrentRow.DataBoundItem).MaDatPhong);
-                    ThuePhong tp = new ThuePhong()
+                    if (selectedDatPhong.isLate =="Late")
                     {
-                        MAPHONG = selectedDatPhong.MAPHONG,
-                        MAKH = selectedDatPhong.MAKH,
-                        TRATRUOC = selectedDatPhong.TRATRUOC,
-                        NGAYO = selectedDatPhong.NGAYO,
-                        NGAYDI = selectedDatPhong.NGAYDI,
-                        TrangThaiThanhToan = selectedDatPhong.TrangThaiThanhToan,
-                        GiaPhongHienTai = selectedDatPhong.GiaPhongHienTai,
-                        isDelete = false
-                    };
-                    var update = db.DatPhongs.Find(selectedDatPhong.MADATPHONG);
-                    update.isUse = true;
-                    db.ThuePhongs.Add(tp);
-                    db.SaveChanges();
-                    MessageBox.Show("Thành công");
+                        if (checkThoiGianDatPhongCoTrungThuePhongKo(selectedDatPhong) == false)
+                        {
+                            return;
+                        }
+                        DatPhongDAO datPhongDAO = new DatPhongDAO();
+                        var dp = datPhongDAO.GetDatPhong();
+                        if (checkThoiGianDatPhongCoTrungDatPhongKhacKo(selectedDatPhong)==false)
+                        {
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        ThuePhong tp = new ThuePhong()
+                        {
+                            MAPHONG = selectedDatPhong.MAPHONG,
+                            MAKH = selectedDatPhong.MAKH,
+                            TRATRUOC = selectedDatPhong.TRATRUOC,
+                            NGAYO = selectedDatPhong.NGAYO,
+                            NGAYDI = selectedDatPhong.NGAYDI,
+                            TrangThaiThanhToan = selectedDatPhong.TrangThaiThanhToan,
+                            GiaPhongHienTai = selectedDatPhong.GiaPhongHienTai,
+                            isDelete = false
+                        };
+                        var update = db.DatPhongs.Find(selectedDatPhong.MADATPHONG);
+                        update.isUse = true;
+                        db.ThuePhongs.Add(tp);
+                        db.SaveChanges();
+                        MessageBox.Show("Thành công");
+                    }
                 }
             }
             RefreshForm();
+        }
+
+        bool checkThoiGianDatPhongCoTrungDatPhongKhacKo(DatPhong datPhong)
+        {
+            DatPhongDAO datPhongDAO = new DatPhongDAO();
+            var datPhg = datPhongDAO.GetDatPhongCoDatPhongTre();
+            foreach (var phg in datPhg)
+            {
+                if (phg.MAPHONG == datPhong.MAPHONG)
+                {
+                    if ((datPhong.NGAYO.Value.Date >= phg.NGAYO.Value.Date && datPhong.NGAYO.Value.Date <= phg.NGAYDI.Value.Date) || (datPhong.NGAYDI.Value.Date >= phg.NGAYO.Value.Date && datPhong.NGAYDI.Value.Date <= phg.NGAYDI.Value.Date) ||
+                       (datPhong.NGAYO.Value.Date <= phg.NGAYO.Value.Date && datPhong.NGAYDI.Value.Date <= phg.NGAYDI.Value.Date &&
+                       datPhong.NGAYDI.Value.Date >= phg.NGAYDI.Value.Date ||
+                       datPhong.NGAYO.Value.Date <= phg.NGAYO.Value.Date && datPhong.NGAYDI.Value.Date >= phg.NGAYDI.Value.Date
+                       )
+                       )
+                    {
+                        MessageBox.Show("Thời Gian này trùng đơn đặt phòng khác!!");
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void dtPKerNgayRa_ValueChanged(object sender, EventArgs e)

@@ -59,6 +59,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.dtgvThongTinPhg = new System.Windows.Forms.DataGridView();
+            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenPhongTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tenPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.soDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ngayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -97,14 +105,8 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tinhTrang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhongTP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenPhong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.soDienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ngayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txbTraTruoc = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvDSPhg)).BeginInit();
             this.panel3.SuspendLayout();
@@ -303,6 +305,8 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.LavenderBlush;
+            this.panel3.Controls.Add(this.txbTraTruoc);
+            this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.btnSuaDatPhong);
             this.panel3.Controls.Add(this.lbChonLoaiPhong);
             this.panel3.Controls.Add(this.lbChonPhong);
@@ -436,6 +440,63 @@
             this.dtgvThongTinPhg.Size = new System.Drawing.Size(662, 272);
             this.dtgvThongTinPhg.TabIndex = 0;
             this.dtgvThongTinPhg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvThongTinPhg_CellContentClick);
+            // 
+            // stt
+            // 
+            this.stt.DataPropertyName = "STT";
+            this.stt.HeaderText = "STT";
+            this.stt.Name = "stt";
+            this.stt.ReadOnly = true;
+            // 
+            // MTP
+            // 
+            this.MTP.DataPropertyName = "MATHUEPHONG";
+            this.MTP.HeaderText = "MTP";
+            this.MTP.Name = "MTP";
+            this.MTP.ReadOnly = true;
+            this.MTP.Visible = false;
+            // 
+            // tenPhongTP
+            // 
+            this.tenPhongTP.DataPropertyName = "TenPhong";
+            this.tenPhongTP.HeaderText = "Tên Phòng";
+            this.tenPhongTP.Name = "tenPhongTP";
+            this.tenPhongTP.ReadOnly = true;
+            // 
+            // tenPhong
+            // 
+            this.tenPhong.DataPropertyName = "TENKHACHHANG";
+            this.tenPhong.HeaderText = "Tên Khách Hàng";
+            this.tenPhong.Name = "tenPhong";
+            this.tenPhong.ReadOnly = true;
+            // 
+            // soDienThoai
+            // 
+            this.soDienThoai.DataPropertyName = "sodienthoai";
+            this.soDienThoai.HeaderText = "SĐT";
+            this.soDienThoai.Name = "soDienThoai";
+            this.soDienThoai.ReadOnly = true;
+            // 
+            // gia
+            // 
+            this.gia.DataPropertyName = "GIAPHONG";
+            this.gia.HeaderText = "Giá Hiện Tại";
+            this.gia.Name = "gia";
+            this.gia.ReadOnly = true;
+            // 
+            // ngayO
+            // 
+            this.ngayO.DataPropertyName = "NGAYO";
+            this.ngayO.HeaderText = "Ngày đến ở";
+            this.ngayO.Name = "ngayO";
+            this.ngayO.ReadOnly = true;
+            // 
+            // ngayDi
+            // 
+            this.ngayDi.DataPropertyName = "NGAYDI";
+            this.ngayDi.HeaderText = "Ngày dự kiến đi";
+            this.ngayDi.Name = "ngayDi";
+            this.ngayDi.ReadOnly = true;
             // 
             // panel4
             // 
@@ -847,62 +908,25 @@
             this.tinhTrang.Name = "tinhTrang";
             this.tinhTrang.ReadOnly = true;
             // 
-            // stt
+            // txbTraTruoc
             // 
-            this.stt.DataPropertyName = "STT";
-            this.stt.HeaderText = "STT";
-            this.stt.Name = "stt";
-            this.stt.ReadOnly = true;
+            this.txbTraTruoc.Enabled = false;
+            this.txbTraTruoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTraTruoc.Location = new System.Drawing.Point(431, 145);
+            this.txbTraTruoc.Name = "txbTraTruoc";
+            this.txbTraTruoc.Size = new System.Drawing.Size(135, 22);
+            this.txbTraTruoc.TabIndex = 49;
+            this.txbTraTruoc.Text = "0";
             // 
-            // MTP
+            // label12
             // 
-            this.MTP.DataPropertyName = "MATHUEPHONG";
-            this.MTP.HeaderText = "MTP";
-            this.MTP.Name = "MTP";
-            this.MTP.ReadOnly = true;
-            this.MTP.Visible = false;
-            // 
-            // tenPhongTP
-            // 
-            this.tenPhongTP.DataPropertyName = "TenPhong";
-            this.tenPhongTP.HeaderText = "Tên Phòng";
-            this.tenPhongTP.Name = "tenPhongTP";
-            this.tenPhongTP.ReadOnly = true;
-            // 
-            // tenPhong
-            // 
-            this.tenPhong.DataPropertyName = "TENKHACHHANG";
-            this.tenPhong.HeaderText = "Tên Khách Hàng";
-            this.tenPhong.Name = "tenPhong";
-            this.tenPhong.ReadOnly = true;
-            // 
-            // soDienThoai
-            // 
-            this.soDienThoai.DataPropertyName = "sodienthoai";
-            this.soDienThoai.HeaderText = "SĐT";
-            this.soDienThoai.Name = "soDienThoai";
-            this.soDienThoai.ReadOnly = true;
-            // 
-            // gia
-            // 
-            this.gia.DataPropertyName = "GIAPHONG";
-            this.gia.HeaderText = "Giá Hiện Tại";
-            this.gia.Name = "gia";
-            this.gia.ReadOnly = true;
-            // 
-            // ngayO
-            // 
-            this.ngayO.DataPropertyName = "NGAYO";
-            this.ngayO.HeaderText = "Ngày đến ở";
-            this.ngayO.Name = "ngayO";
-            this.ngayO.ReadOnly = true;
-            // 
-            // ngayDi
-            // 
-            this.ngayDi.DataPropertyName = "NGAYDI";
-            this.ngayDi.HeaderText = "Ngày dự kiến đi";
-            this.ngayDi.Name = "ngayDi";
-            this.ngayDi.ReadOnly = true;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(339, 151);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(90, 16);
+            this.label12.TabIndex = 48;
+            this.label12.Text = "Trả trước 20%";
             // 
             // fThuePhong
             // 
@@ -1014,5 +1038,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gia;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ngayDi;
+        private System.Windows.Forms.TextBox txbTraTruoc;
+        private System.Windows.Forms.Label label12;
     }
 }

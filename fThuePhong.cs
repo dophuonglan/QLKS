@@ -64,7 +64,7 @@ namespace KS
             var datPhg = datPhongDAO.GetDatPhong();
             foreach (var phg in datPhg)
             {
-                if (phg.MAPHONG == thuePhong.MAPHONG)
+                if (phg.MAPHONG == thuePhong.MAPHONG && phg.isLate !="Late")
                 {
                     if ((thuePhong.NGAYO.Value.Date >= phg.NGAYO.Value.Date && thuePhong.NGAYO.Value.Date <= phg.NGAYDI.Value.Date) || (thuePhong.NGAYDI.Value.Date >= phg.NGAYO.Value.Date && thuePhong.NGAYDI.Value.Date <= phg.NGAYDI.Value.Date) ||
                         (thuePhong.NGAYO.Value.Date <= phg.NGAYO.Value.Date && thuePhong.NGAYDI.Value.Date <= phg.NGAYDI.Value.Date &&
@@ -73,7 +73,7 @@ namespace KS
                         )
                         )
                     {
-                        MessageBox.Show("Thời Gian này trùng đơn Thuê phòng khác!!");
+                        MessageBox.Show("Thời Gian này trùng đơn đặt phòng khác!!");
                         return false;
                     }
                 }
@@ -144,7 +144,7 @@ namespace KS
         {
             if (dtgvThongTinPhg.RowCount == 0)
             {
-                MessageBox.Show("Bạn chưa chọn đơn đặt phòng!!");
+                MessageBox.Show("Bạn chưa chọn đơn thuê phòng!!");
                 return;
             }
             PhongDAO phongDAO = new PhongDAO();
@@ -160,12 +160,12 @@ namespace KS
             {
                 if (checkThoiGianDatPhongCoTrungDatPhongKo(thuePhong) == true)
                 {
-                    if (MessageBox.Show("Bạn có thật sự muốn Sửa thuê phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
-                    {
+                    //if (MessageBox.Show("Bạn có thật sự muốn Sửa thuê phòng này?", "Thông Báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    //{
                         db.SaveChanges();
                         loadThongTinPhongDangChon();
                         MessageBox.Show("Sửa thành công");
-                    }
+                    //}
                 }
             }
         }
@@ -293,7 +293,7 @@ namespace KS
             {
                 if (tongNgayo == 0) tongNgayo = 0.5;
                 txbgiaPhong.Text = (phong.GIAPHONG * tongNgayo).ToString();
-                //txbTraTruoc.Text = (phong.GIAPHONG * tongNgayo * 0.2).ToString();
+                txbTraTruoc.Text = (phong.GIAPHONG * tongNgayo * 0.2).ToString();
             }
         }
         private void fThuePhong_Load(object sender, EventArgs e)
@@ -362,7 +362,7 @@ namespace KS
                                 {
                                     MAPHONG = phong.MAPHONG,
                                     MAKH = khachHang.MAKH,
-                                    //TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
+                                    TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
                                     NGAYO = dtPKerNgayVao.Value.Date,
                                     NGAYDI = dtPKerNgayRa.Value.Date,
                                     TrangThaiThanhToan = "Chưa thanh toán",
@@ -378,7 +378,7 @@ namespace KS
                                 {
                                     MAPHONG = phong.MAPHONG,
                                     MAKH = kh.MAKH,
-                                    //TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
+                                    TRATRUOC = Convert.ToDouble(txbTraTruoc.Text),
                                     NGAYO = dtPKerNgayVao.Value.Date,
                                     NGAYDI = dtPKerNgayRa.Value.Date,
                                     TrangThaiThanhToan = "Chưa thanh toán",

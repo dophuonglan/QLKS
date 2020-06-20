@@ -89,7 +89,7 @@ namespace KS
             double soNgay = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
             if(soNgay == 0)
             {
-                soNgay = 1;
+                soNgay = 0.5;
             }
             double? tienPhong = phong.GIAPHONG * soNgay;
             return tienPhong;
@@ -122,11 +122,13 @@ namespace KS
                                     && a.MALOAIPHONG ==b.MALOAIPHONG
                                     select new ThongTinThanhToanPhong
                                     {
+                                        MaPhong =a.MAPHONG,
                                         TENPHONG = a.TENPHONG,
                                         TINHTRANGPHONG = a.TINHTRANGPHONG,
                                         MALOAIPHONG = a.MALOAIPHONG,
                                         TenLoaiPhong = b.TENLOAIPHONG,
                                         GIAPHONG = a.GIAPHONG,
+                                        DV = a.DONVITIENTE,
                                         MOTA = a.MOTA
                                     }).ToList();
             LoaiPhongDAO loaiPhongDAO = new LoaiPhongDAO();
@@ -140,9 +142,11 @@ namespace KS
             var thongTinDichVuDat = (from a in db.DatDichVus
                                      from b in db.DichVus
                                      where a.MATHUEPHONG == thuePhong.MATHUEPHONG
-                                     && b.MADV ==a.MADV
+                                     && b.MADV == a.MADV
                                      select new ThongTinThanhToanDichVu
                                      {
+                                         MaDDV = a.Id,
+                                         MaDP = a.MATHUEPHONG,
                                          TenDichVu = b.TENDV,
                                          SoLuong = a.SoLuong,
                                          ngayDung = a.ngayDung,
@@ -164,10 +168,13 @@ namespace KS
             var tienPhong = tinhTongTienPhong(db.ThuePhongs.Find(thuePhong.MATHUEPHONG));
             lbTienPhg.Text = tienPhong.ToString();
             lbTienDV.Text = tienDV.ToString();
+            lbTraTruoc.Text = thuePhong.TRATRUOC.ToString() ;
             var TongTien = tienDV + tienPhong;
+            var ConLai = TongTien - thuePhong.TRATRUOC;
+            lbConLai.Text = ConLai.ToString();
             lbTongTien.Text = TongTien.ToString();
             dtpkNgayThanhToan.Value = DateTime.Today;
-            
+
         }
         private void btn_Click(object sender, EventArgs e)
         {
@@ -180,10 +187,12 @@ namespace KS
             DatDichVuDAO datDichVuDAO = new DatDichVuDAO();
             ThuePhongDAO thuePhongDAO = new ThuePhongDAO();
             if (txbTienMat.Text == "") lbThongBao.Visible = true;
-            if (txbTienMat.Text != "" && Convert.ToDouble(txbTienMat.Text) >= Convert.ToDouble(lbTongTien.Text))
+            if (txbTienMat.Text != "" && Convert.ToDouble(txbTienMat.Text) >= Convert.ToDouble(lbConLai.Text))
             {
                 lbThongBao.Visible = false;
                 var thuePhong = thuePhongDAO.GetThuePhong(Convert.ToInt32(lbMaThuePhong.Text));
+                var updateThuePhong =db.ThuePhongs.Find(thuePhong.MATHUEPHONG);
+                updateThuePhong.NGAYDI = dtpkNgayDi.Value;
                 var lsdatDichVu = datDichVuDAO.GetListDatDichVu(thuePhong.MATHUEPHONG);
                 HoaDon hoaDon = new HoaDon()
                 {
@@ -216,7 +225,7 @@ namespace KS
                 };
                 db.ChiTietHoaDons.Add(chiTietHoaDon);
                 db.SaveChanges();
-
+                
                 MessageBox.Show("Thành công");
                 this.Close();
             }
@@ -225,22 +234,6 @@ namespace KS
         }
 
 
-        private void txbTienMat_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (txbTienMat.Text == "") lbThongBao.Visible = true;
-            else if (e.KeyCode == Keys.Enter)
-            {
-                lbThongBao.Visible = false;
-
-                var tien = Convert.ToDouble(txbTienMat.Text) - Convert.ToDouble(lbTongTien.Text);
-                if (tien < 0) lbThongBao2.Visible = true;
-                else
-                {
-                    lbThongBao2.Visible = false;
-                    lbTienThua.Text = tien.ToString();
-                }
-            }
-        }
 
         private void txbTienMat_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -255,11 +248,13 @@ namespace KS
             var phong = phongDAO.GetPhong(Convert.ToInt32(labMaPhong.Text));
             if (dtpkNgayDi.Value.Date == dtpkNgayO.Value.Date)
             {
-                soNgayThue = 1;
+                soNgayThue = 0.5;
             }
             else soNgayThue = (dtpkNgayDi.Value.Date - dtpkNgayO.Value.Date).TotalDays;
             lbTienPhg.Text = (soNgayThue * phong.GIAPHONG).ToString();
-            //    fPrintChiTietHoaDon.NgayDi = dtpkNgayDi.Value.Date;
+            var TongTien = double.Parse(lbTienDV.Text) + double.Parse(lbTienPhg.Text);
+            var ConLai = TongTien - double.Parse(lbTraTruoc.Text);
+            lbConLai.Text = ConLai.ToString();
         }
 
         private void fThanhToan_FormClosing(object sender, FormClosingEventArgs e)
@@ -273,10 +268,10 @@ namespace KS
             else
             {
                 lbThongBao.Visible = false;
-                if (double.Parse(txbTienMat.Text) >= double.Parse(lbTongTien.Text))
+                if (double.Parse(txbTienMat.Text) >= double.Parse(lbConLai.Text))
                 {
                     lbThongBao2.Visible = false;
-                    lbTienThua.Text = (double.Parse(txbTienMat.Text) - double.Parse(lbTongTien.Text)).ToString();
+                    lbTienThua.Text = (double.Parse(txbTienMat.Text) - double.Parse(lbConLai.Text)).ToString();
                 }
                 else
                 {
@@ -327,6 +322,11 @@ namespace KS
         {
             var TongTien = float.Parse(lbTienDV.Text) + float.Parse(lbTienPhg.Text);
             lbTongTien.Text = TongTien.ToString();
+        }
+
+        private void lbThongBao_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
